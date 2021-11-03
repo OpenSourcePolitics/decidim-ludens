@@ -1,0 +1,6 @@
+---
+en:
+  decidim:
+    components:
+      participative_assistant:
+        name: ParticipativeAssistant
