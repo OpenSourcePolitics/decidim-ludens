@@ -1,8 +1,8 @@
 class AddAssistantToOrganization < ActiveRecord::Migration[6.0]
   def up
-    add_column :decidim_organization, :assistant, :jsonb
+    add_column :decidim_organizations, :assistant, :jsonb
   end
   def down
-    remove_column :decidim_organization, :assistant
+    remove_column :decidim_organizations, :assistant
   end
 end

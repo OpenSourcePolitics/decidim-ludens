@@ -9,6 +9,10 @@ module Decidim
     class Engine < ::Rails::Engine
       isolate_namespace Decidim::ParticipativeAssistant
 
+      config.to_prepare do
+        Decidim::Organization.include Decidim::ParticipativeAssistant::OrganizationModelExtend
+      end
+
       routes do
         # Add engine routes here
         # resources :participative_assistant

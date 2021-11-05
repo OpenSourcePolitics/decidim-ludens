@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
 
   s.name = "decidim-participative_assistant"
   s.summary = "A decidim participative_assistant module"
-  s.description = "Participative assistant for administrators."
+  s.description = "Participative participative_assistant for administrators."
 
   s.files = Dir["{app,config,lib}/**/*", "LICENSE-AGPLv3.txt", "Rakefile", "README.md"]
 

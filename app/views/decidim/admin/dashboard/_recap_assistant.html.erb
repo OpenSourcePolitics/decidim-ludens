@@ -1,0 +1,12 @@
+<div class="recap_assistant grid-x float-left">
+  <%= image_tag ActionController::Base.helpers.asset_pack_path("media/images/pineTree.png"), class: "card__image avatar", alt: "avatar" %>
+  <div class="assistant_values grid-y">
+    <div class="written_values">
+      <h2 class="assistant_level"><b> Niveau <%= current_organization.level %> </b></h2>
+      <h3 class="assistant_score"><b> <%= current_organization.score %> points</b></h3>
+    </div>
+    <div class="progress">
+      <div class="color progress_bar"></div>
+    </div>
+  </div>
+</div>

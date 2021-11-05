@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-divider">
+    <h2 class="card-title">
+      <%= t("decidim.admin.assistant.title") %>
+    </h2>
+  </div>
+  <div class="table-scroll grid-x">
+    <%= render(
+          partial: "decidim/admin/dashboard/recap_assistant"
+        ) %>
+    <div class="assistant_recommendations">
+      <ul>
+        <li> <%= recommendations[0] %> </li>
+        <li> <%= recommendations[1] %> </li>
+        <li> <%= recommendations[2] %> </li>
+      </ul>
+    </div>
+  </div>
+</div>

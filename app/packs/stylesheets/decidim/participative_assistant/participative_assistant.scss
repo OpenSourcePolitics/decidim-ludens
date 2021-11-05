@@ -1,1 +1,77 @@
 /* css for decidim_participative_assistant */
+
+.avatar{
+  width:7vw;
+}
+
+.assistant_values{
+  margin:auto;
+}
+
+.recap_assistant{
+  border:solid 1px;
+  border-radius:15px;
+  padding:10px;
+  margin:10px;
+}
+
+.written_values{
+  margin:auto;
+}
+
+.assistant_recommendations{
+  margin-left:7vw;
+  margin-top:auto;
+  margin-bottom:auto;
+}
+
+.assistant_level{
+  color:green;
+}
+
+.progress{
+  height: 10px;
+  width: 7vw;
+  background-color: white;
+  border: 1px solid;
+  border-radius: 15px;
+}
+.progress_bar{
+  position: absolute;
+  background-color: green;
+  width: 3vw;
+  height: 9px;
+  border-radius: 15px;
+}
+
+.list_lvls{
+  margin-top: 4em;
+  list-style: none;
+}
+
+.list_lvls .normal_bullet{
+  margin-top:-3.5em;
+  margin-bottom: -2.7em;
+}
+
+.list_lvls .normal_bullet::before {
+  content: "\2022 ";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: green; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  font-size: 50px;
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 0.5em; /* Also needed for space (tweak if needed) */
+  margin-left: -0.5em; /* Also needed for space (tweak if needed) */
+  position:relative;
+  top:8px;
+}
+
+.list_lvls .inter_line::before {
+  content: "\007c ";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: green; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  font-size: 50px;
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 0.5em; /* Also needed for space (tweak if needed) */
+  margin-left: -0.46em; /* Also needed for space (tweak if needed) */
+}
