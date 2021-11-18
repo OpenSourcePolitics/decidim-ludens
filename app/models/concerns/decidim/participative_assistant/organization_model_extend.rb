@@ -12,7 +12,18 @@ module Decidim
         end
 
         def level
-          return 4
+          case(score)
+          when 0..5
+            1
+          when 6..15
+            2
+          when 16..27
+            3
+          when 28..39
+            4
+          else
+            5
+          end
         end
 
       end
