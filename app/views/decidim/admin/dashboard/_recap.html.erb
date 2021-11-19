@@ -10,9 +10,9 @@
         ) %>
     <div class="assistant_recommendations">
       <ul>
-        <li> <%= recommendations[0] %> </li>
-        <li> <%= recommendations[1] %> </li>
-        <li> <%= recommendations[2] %> </li>
+        <% Decidim::ParticipativeAssistant::ParticipativeAction.recommendations.each do |recommendation| %>
+          <li> <%= recommendation.recommendation %> </li>
+        <% end %>
       </ul>
     </div>
   </div>

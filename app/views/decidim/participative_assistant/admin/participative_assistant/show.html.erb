@@ -11,13 +11,7 @@
 <div class="content">
   <div class="grid-x">
     <div class="cell small-3">
-    <%= render(
-          partial: "decidim/admin/dashboard/recap_assistant",
-          locals: {
-            score: 14,
-            level: 2,
-          }
-        ) %>
+    <%= render(partial: "decidim/admin/dashboard/recap_assistant") %>
     </div>
     <div class="cell small-9">
       <h3> <%= t "decidim.admin.assistant.explication.title" %></h3>
@@ -42,28 +36,28 @@
               partial: "list_actions",
               locals: {
                 title: "Edition",
-                recommendations: ["Lorem Ipsum 1", "Lorem Ipsum 2", "Lorem Ipsum 3"]
+                recommendations: @recoEdition
               }
             ) %>
         <%= render(
               partial: "list_actions",
               locals: {
                 title: "Collaboration",
-                recommendations: ["Lorem Ipsum 1", "Lorem Ipsum 2", "Lorem Ipsum 3"]
+                recommendations: @recoCollab
               }
             ) %>
         <%= render(
               partial: "list_actions",
               locals: {
                 title: "Interaction",
-                recommendations: ["Lorem Ipsum 1", "Lorem Ipsum 2", "Lorem Ipsum 3"]
+                recommendations: @recoInteraction
               }
             ) %>
         <%= render(
               partial: "list_actions",
               locals: {
                 title: "Configuration",
-                recommendations: ["Lorem Ipsum 1", "Lorem Ipsum 2", "Lorem Ipsum 3"]
+                recommendations: @recoConfig
               }
             ) %>
       </div>

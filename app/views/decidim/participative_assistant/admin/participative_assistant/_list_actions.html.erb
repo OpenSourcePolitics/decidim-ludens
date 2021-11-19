@@ -6,9 +6,9 @@
   </div>
   <div class="grid-x">
       <ul>
-        <li> <%= recommendations[0] %> </li>
-        <li> <%= recommendations[1] %> </li>
-        <li> <%= recommendations[2] %> </li>
+        <% recommendations.each do |recommendation| %>
+          <li> <%= recommendation.recommendation %> </li>
+        <% end %>
       </ul>
   </div>
 </div>
