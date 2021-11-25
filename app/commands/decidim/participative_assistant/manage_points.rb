@@ -9,33 +9,30 @@ module Decidim
         @resource = resource
       end
 
-      # Executes the command. Broadcasts these events:
-      #
-      # - :ok when everything is valid.
-      # - :invalid if the form wasn't valid and we couldn't proceed.
-      #
-      # Returns nothing.
       def call
         return unless participative_action.present?
+        transaction do
+          increase_score_by!(participative_action.points)
+          participative_action.update!(completed: true)
+        end
+        end
 
-        increase_score_by participative_action.points
-        participative_action.completed = 1
-        participative_action.save
-        data = {
-          event: 'decidim.events.comments.comment_created',
-          event_class: Decidim::Comments::CommentCreatedEvent,
-          resource: @resource,
-          affected_users: [@user]
-        }
-        Decidim::EventsManager.publish(data)
-      end
-
-      def increase_score_by(points)
-        Decidim::Organization.first.update_column('assistant', { 'score' => @user.organization.increase_score(points) })
+      def increase_score_by!(points)
+        old_data = current_organization.assistant.dup
+        flash_message = "Congratulations ! You just completed the action '"+participative_action.recommendation+"' !"
+        new_data = old_data.merge({
+                                    score: @user.organization.increase_score(points),
+                                    flash: flash_message
+                                  })
+        current_organization.update!(assistant: new_data)
       end
 
       def participative_action
-        ParticipativeAction.where(action: @action, resource: @resource.class.to_s, completed: false).limit(1)[0]
+        ParticipativeAction.find_by(action: @action, resource: @resource.class.to_s, completed: false)
+      end
+
+      def current_organization
+        @current_organization ||= @user.organization
       end
     end
   end
