@@ -11,6 +11,10 @@ FactoryBot.define do
     action { "publish" }
     category { "Edition" }
     recommendation { "Publish an assembly" }
+
+    trait :completed do
+      completed { true }
+    end
   end
 end
 
