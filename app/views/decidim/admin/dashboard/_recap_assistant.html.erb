@@ -1,12 +1,13 @@
-<div class="recap_assistant grid-x float-left">
-  <%= image_tag ActionController::Base.helpers.asset_pack_path("media/images/pineTree.png"), class: "card__image avatar", alt: "avatar" %>
+<div class="recap_assistant grid-y float-left">
   <div class="assistant_values grid-y">
-    <div class="written_values">
-      <h2 class="assistant_level"><b> Niveau <%= current_organization.level %> </b></h2>
-      <h3 class="assistant_score"><b> <%= current_organization.score %> points</b></h3>
+    <div class="grid-x assistant_container">
+      <h3 class="assistant_level letter_spaced"><b> Niveau <%= current_organization.level %> </b></h3>
+      <h5 class="assistant_score"><%= current_organization.score %>/<%= Decidim::ParticipativeAssistant::ParticipativeAction.palierScores[current_organization.level-1] %></h5>
     </div>
     <div class="progress">
+      <input class="paliers" type="hidden" value="<%= Decidim::ParticipativeAssistant::ParticipativeAction.palierScores %>"/>
       <div class="color progress_bar"></div>
     </div>
   </div>
+  <%= image_tag ActionController::Base.helpers.asset_pack_path("media/images/badge"+current_organization.level.to_s+".png"), class: "card__image avatar float-center", alt: "avatar" %>
 </div>

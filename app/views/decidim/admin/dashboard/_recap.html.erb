@@ -9,9 +9,13 @@
           partial: "decidim/admin/dashboard/recap_assistant"
         ) %>
     <div class="assistant_recommendations">
+      <h3 class="letter_spaced"> <b>Recommendations</b> </h3>
       <ul>
+        <% if Decidim::ParticipativeAssistant::ParticipativeAction.lastDoneRecommendations %>
+          <li class="recommendation no-bullet"> <a href="#"><%= Decidim::ParticipativeAssistant::ParticipativeAction.lastDoneRecommendations.recommendation %></a> <span class="recommendation-points"> <%= Decidim::ParticipativeAssistant::ParticipativeAction.lastDoneRecommendations.points %> pts</span></li>
+        <% end %>
         <% Decidim::ParticipativeAssistant::ParticipativeAction.recommendations.each do |recommendation| %>
-          <li> <%= recommendation.recommendation %> </li>
+          <li class="recommendation bulleted"> <a href="#"><%= recommendation.recommendation %></a><span class="recommendation-points"> <%= recommendation.points %> pts</span></li>
         <% end %>
       </ul>
     </div>

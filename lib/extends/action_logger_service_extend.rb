@@ -9,7 +9,6 @@ module Decidim
       included do
         def self.log(action, user, resource, version_id, resource_extra = {})
           new(action, user, resource, version_id, resource_extra).log!
-          byebug
           ManagePoints.call(action, user,resource)
         end
       end

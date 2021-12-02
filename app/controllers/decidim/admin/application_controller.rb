@@ -29,7 +29,7 @@ module Decidim
       helper Decidim::ComponentPathHelper
       helper Decidim::SanitizeHelper
 
-      after_action :flash_points
+      before_action :flash_points
 
       default_form_builder Decidim::Admin::FormBuilder
 

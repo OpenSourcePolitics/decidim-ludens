@@ -4,6 +4,7 @@ en:
     admin:
       assistant:
         level: Level
+        levelTitle: Levels available
         level1: I'm discovering the platform
         level2: I've correctly configured the platform
         level3: I've launched my first consultation

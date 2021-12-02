@@ -10,5 +10,11 @@
           <li> <%= recommendation.recommendation %> </li>
         <% end %>
       </ul>
+
+      <ul>
+        <% recommendationsDone.each do |recommendation| %>
+          <p> ✓ <%= recommendation.recommendation %> </p>
+        <% end %>
+      </ul>
   </div>
 </div>

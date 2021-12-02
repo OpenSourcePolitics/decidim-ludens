@@ -22,7 +22,8 @@ module Decidim
         flash_message = "Congratulations ! You just completed the action '"+participative_action.recommendation+"' !"
         new_data = old_data.merge({
                                     score: @user.organization.increase_score(points),
-                                    flash: flash_message
+                                    flash: flash_message,
+                                    last: participative_action.id
                                   })
         current_organization.update!(assistant: new_data)
       end

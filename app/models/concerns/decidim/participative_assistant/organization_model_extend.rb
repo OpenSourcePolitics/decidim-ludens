@@ -12,14 +12,15 @@ module Decidim
         end
 
         def level
+          paliers=ParticipativeAction.palierScores
           case(score)
-          when 0..5
+          when 0..paliers[0]-1
             1
-          when 6..15
+          when paliers[0]..paliers[1]-1
             2
-          when 16..27
+          when paliers[1]..paliers[2]-1
             3
-          when 28..39
+          when paliers[2]..paliers[3]-1
             4
           else
             5

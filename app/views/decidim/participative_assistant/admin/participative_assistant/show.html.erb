@@ -9,57 +9,60 @@
 </h3>
 
 <div class="content">
-  <div class="grid-x">
-    <div class="cell small-3">
-    <%= render(partial: "decidim/admin/dashboard/recap_assistant") %>
-    </div>
-    <div class="cell small-9">
-      <h3> <%= t "decidim.admin.assistant.explication.title" %></h3>
-      <p> <%= t "decidim.admin.assistant.explication.content" %></p>
-    </div>
+
+  <div class="grid-x grid-margin-x">
+      <div class="cell small-6">
+        <%= render(partial: "decidim/admin/dashboard/recap") %>
+      </div>
+      <div class="cell small-6">
+        <%= render(partial: "decidim/participative_assistant/admin/participative_assistant/levelsGrid")%>
+      </div>
   </div>
-  <div class="grid-x">
-    <ul class="cell small-3 list_lvls">
-      <li class="normal_bullet"> <b><%= t "decidim.admin.assistant.level" %> 1 : </b><%= t "decidim.admin.assistant.level1" %></li>
-      <li class="inter_line"></li>
-      <li class="normal_bullet"> <b><%= t "decidim.admin.assistant.level" %> 2 : </b><%= t "decidim.admin.assistant.level2" %></li>
-      <li class="inter_line"></li>
-      <li class="normal_bullet"> <b><%= t "decidim.admin.assistant.level" %> 3 : </b><%= t "decidim.admin.assistant.level3" %></li>
-      <li class="inter_line"></li>
-      <li class="normal_bullet"> <b><%= t "decidim.admin.assistant.level" %> 4 : </b><%= t "decidim.admin.assistant.level4" %></li>
-      <li class="inter_line"></li>
-      <li class="normal_bullet"> <b><%= t "decidim.admin.assistant.level" %> 5 : </b><%= t "decidim.admin.assistant.level5" %></li>
-    </ul>
-    <div class="cell small-8">
-      <div class="grid-x grid-margin-x">
+
+  <div class="grid-x grid-margin-x">
+      <div class="cell small-6">
         <%= render(
               partial: "list_actions",
               locals: {
                 title: "Edition",
-                recommendations: @recoEdition
+                recommendations: @recoEdition,
+                recommendationsDone: @recoEditionDone
               }
             ) %>
+      </div>
+
+      <div class="cell small-6">
         <%= render(
               partial: "list_actions",
               locals: {
                 title: "Collaboration",
-                recommendations: @recoCollab
+                recommendations: @recoCollab,
+                recommendationsDone: @recoCollabDone
               }
             ) %>
+      </div>
+  </div>
+      <div class="grid-x grid-margin-x">
+        <div class="cell small-6">
         <%= render(
               partial: "list_actions",
               locals: {
                 title: "Interaction",
-                recommendations: @recoInteraction
+                recommendations: @recoInteraction,
+                recommendationsDone: @recoInteractionDone
               }
             ) %>
-        <%= render(
+        </div>
+        <div class="cell small-6">
+          <%= render(
               partial: "list_actions",
               locals: {
                 title: "Configuration",
-                recommendations: @recoConfig
+                recommendations: @recoConfig,
+                recommendationsDone: @recoConfigDone
               }
             ) %>
+        </div>
       </div>
     </div>
   </div>
