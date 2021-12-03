@@ -12,7 +12,10 @@
 
   <div class="grid-x grid-margin-x">
       <div class="cell small-6">
-        <%= render(partial: "decidim/admin/dashboard/recap") %>
+        <%= render(partial: "decidim/admin/dashboard/recap",
+                   locals: {
+                     withKnowMore: false
+                   }) %>
       </div>
       <div class="cell small-6">
         <%= render(partial: "decidim/participative_assistant/admin/participative_assistant/levelsGrid")%>

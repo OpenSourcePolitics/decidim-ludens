@@ -24,7 +24,10 @@
       </div>
       <div class="cell small-6">
         <%= render(
-              partial: "decidim/admin/dashboard/recap"
+              partial: "decidim/admin/dashboard/recap",
+              locals: {
+                withKnowMore: true
+              }
             ) %>
       </div>
     <% end %>

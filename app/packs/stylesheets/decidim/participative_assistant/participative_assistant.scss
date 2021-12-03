@@ -92,9 +92,13 @@
   padding:10px;
 }
 
-.desc_levels:not(:last-child)
+.desc_levels > *
 {
   border-right: solid 0.5px lightgray;
+}
+
+.desc_level_last{
+  border-right: none !important;
 }
 
 .levelDescription{

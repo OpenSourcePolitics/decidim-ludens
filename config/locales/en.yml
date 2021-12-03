@@ -3,6 +3,7 @@ en:
   decidim:
     admin:
       assistant:
+        knowMore: View more
         level: Level
         levelTitle: Levels available
         level1: I'm discovering the platform
