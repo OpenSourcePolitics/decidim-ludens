@@ -3,6 +3,7 @@ en:
   decidim:
     admin:
       assistant:
+        seeMore: See all
         knowMore: View more
         level: Level
         levelTitle: Levels available
