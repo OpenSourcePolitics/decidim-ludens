@@ -12,16 +12,17 @@ module Decidim
 
       def self.palierScores
         paliers = []
+
         (1..5).each do |i|
           if i == 1
             paliers.append(ParticipativeAction.where(points: i).size)
           else
-            paliers.append(ParticipativeAction.where(points: i).size*i + paliers[i - 2])
+            paliers.append(ParticipativeAction.where(points: i).size * i + paliers[i - 2])
           end
         end
+
         return paliers
       end
-
     end
   end
 end

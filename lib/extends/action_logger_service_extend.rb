@@ -1,6 +1,7 @@
-
 # frozen_string_literal: true
+
 require "active_support/concern"
+
 module Decidim
   module ParticipativeAssistant
     module ActionLoggerServiceExtend
@@ -9,7 +10,7 @@ module Decidim
       included do
         def self.log(action, user, resource, version_id, resource_extra = {})
           new(action, user, resource, version_id, resource_extra).log!
-          ManagePoints.call(action, user,resource)
+          ManagePoints.call(action, user, resource)
         end
       end
     end
