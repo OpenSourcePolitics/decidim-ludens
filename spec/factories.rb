@@ -14,6 +14,18 @@ FactoryBot.define do
     trait :completed do
       completed { true }
     end
+
+    trait :collab do
+      category { "Collaboration" }
+    end
+
+    trait :config do
+      category { "Configuration" }
+    end
+
+    trait :interact do
+      category { "Interaction" }
+    end
   end
 end
 

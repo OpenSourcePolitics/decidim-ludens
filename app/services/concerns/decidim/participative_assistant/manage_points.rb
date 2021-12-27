@@ -2,24 +2,31 @@
 
 module Decidim
   module ParticipativeAssistant
-    class ManagePoints < Rectify::Command
+    class ManagePoints
       def initialize(action, user, resource)
         @user = user
         @action = action
         @resource = resource
       end
 
+      def self.run(action, user, resource)
+        new(action, user, resource).call
+      end
+
       def call
         return unless participative_action.present?
-        transaction do
+
+        ActiveRecord::Base.transaction do
           increase_score_by!(participative_action.points)
           participative_action.update!(completed: true)
         end
-        end
+      end
+
+      private
 
       def increase_score_by!(points)
         old_data = current_organization.assistant.dup
-        flash_message = "Congratulations ! You just completed the action '"+participative_action.recommendation+"' !"
+        flash_message = "Congratulations ! You just completed the action '" + participative_action.recommendation + "' !"
         new_data = old_data.merge({
                                     score: @user.organization.increase_score(points),
                                     flash: flash_message,
