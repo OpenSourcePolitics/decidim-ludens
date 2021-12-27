@@ -1,4 +1,4 @@
-<% add_decidim_page_title(t("decidim.admin.titles.dashboard")) %>
+<% add_decidim_page_title(t("decidim.admin.participative_assistant.dashboard.title")) %>
 <%= stylesheet_pack_tag "decidim_participative_assistant", media: "all" %> <!--TODO Move to head-->
 <%= javascript_pack_tag "decidim_participative_assistant", media: "all" %> <!-- TODO Move to head -->
 <h1 class="card-title">
@@ -9,7 +9,6 @@
 </h3>
 
 <div class="content">
-
   <div class="grid-x grid-margin-x">
     <div class="cell small-6">
       <%= render(partial: "decidim/admin/dashboard/recap",
@@ -22,21 +21,20 @@
     </div>
   </div>
 
-  <div class="grid-x grid-margin-x">
-    <% list_of_participative_actions.each do |participative_action| %>
+  <div class="grid-x grid-margin-x actions-grid">
+    <% list_of_participative_actions.each do |action_name , actions| %>
       <div class="cell small-6">
         <%= render(
               partial: "list_actions",
               locals: {
-                title: t(".#{participative_action.key}"),
-                recommendations: participative_action.values[:uncompleted].first(5),
-                recommendationsDone: participative_action.values[:completed].first(5),
-                recommendationsTotal: participative_action.values[:uncompleted],
-                recommendationsDoneTotal: participative_action.values[:completed]
+                title: t(".#{action_name}"),
+                recommendations: actions[:uncompleted]&.first(5),
+                recommendationsDone: actions[:completed]&.first(5),
+                recommendationsTotal: actions[:uncompleted],
+                recommendationsDoneTotal: actions[:completed]
               }
             ) %>
       </div>
     <% end %>
   </div>
-</div>
 </div>
