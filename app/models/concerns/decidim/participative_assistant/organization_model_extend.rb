@@ -28,9 +28,8 @@ module Decidim
         end
 
         def increase_score(points)
-          self.assistant["score"]+=points
+          score + points
         end
-
       end
     end
   end

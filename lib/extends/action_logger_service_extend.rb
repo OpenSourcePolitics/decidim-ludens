@@ -10,7 +10,7 @@ module Decidim
       included do
         def self.log(action, user, resource, version_id, resource_extra = {})
           new(action, user, resource, version_id, resource_extra).log!
-          ManagePoints.call(action, user, resource)
+          Decidim::ParticipativeAssistant::ManagePoints.run(action, user, resource)
         end
       end
     end
