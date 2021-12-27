@@ -11,7 +11,7 @@
     <div class="assistant_recommendations">
       <div>
         <h3 class="letter_spaced"> <b>Recommendations</b> </h3>
-        <ul>
+        <ul class="list-recommendations-uncompleted">
           <% if Decidim::ParticipativeAssistant::ParticipativeAction.lastDoneRecommendations %>
             <li class="recommendation no-bullet"> <a href="#"><%= Decidim::ParticipativeAssistant::ParticipativeAction.lastDoneRecommendations.recommendation %></a> <span class="recommendation-points"> <%= Decidim::ParticipativeAssistant::ParticipativeAction.lastDoneRecommendations.points %> pts</span></li>
           <% end %>

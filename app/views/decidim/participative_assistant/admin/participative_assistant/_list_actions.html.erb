@@ -1,17 +1,17 @@
-<div class="card cell small-3 card-recommandation">
+<div class="card cell small-3 card-recommandation card-<%= title %>">
   <div class="card-divider">
     <h2 class="card-title">
       <%= title %>
     </h2>
   </div>
   <div class="grid-x recommendation-container float-left">
-      <ul>
+      <ul class="list-actions-uncompleted">
         <% recommendations.each do |recommendation| %>
           <li> <%= recommendation.recommendation %> </li>
         <% end %>
       </ul>
 
-      <ul>
+      <ul class="list-actions-completed">
         <% recommendationsDone.each do |recommendation| %>
           <li class="no-bullet"> <%= recommendation.recommendation %> </li>
         <% end %>
@@ -20,13 +20,13 @@
   </div>
   <div class="reveal" id="exampleModal<%= title %>" data-reveal>
     <div class="grid-x">
-      <ul>
+      <ul class="modal-actions-uncompleted">
         <% recommendationsTotal.each do |recommendation| %>
           <li> <%= recommendation.recommendation %> </li>
         <% end %>
       </ul>
 
-      <ul>
+      <ul class="modal-actions-completed">
         <% recommendationsDoneTotal.each do |recommendation| %>
           <li class="no-bullet"> <%= recommendation.recommendation %> </li>
         <% end %>

@@ -9,5 +9,5 @@
       <div class="color progress_bar"></div>
     </div>
   </div>
-  <%= image_tag ActionController::Base.helpers.asset_pack_path("media/images/badge"+current_organization.level.to_s+".png"), class: "card__image avatar float-center", alt: "avatar" %>
+  <%= image_tag ActionController::Base.helpers.asset_pack_path("media/images/badge"+current_organization.level.to_s+".png"), class: "card__image avatar float-center badge-level-"+current_organization.level.to_s, alt: "avatar" %>
 </div>
