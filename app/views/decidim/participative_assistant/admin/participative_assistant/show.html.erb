@@ -1,6 +1,6 @@
 <% add_decidim_page_title(t("decidim.admin.titles.dashboard")) %>
 <%= stylesheet_pack_tag "decidim_participative_assistant", media: "all" %> <!--TODO Move to head-->
-<%= javascript_pack_tag "decidim_participative_assistant", media:"all" %> <!-- TODO Move to head -->
+<%= javascript_pack_tag "decidim_participative_assistant", media: "all" %> <!-- TODO Move to head -->
 <h1 class="card-title">
   <%= t "decidim.admin.assistant.title" %>
 </h1>
@@ -11,70 +11,32 @@
 <div class="content">
 
   <div class="grid-x grid-margin-x">
-      <div class="cell small-6">
-        <%= render(partial: "decidim/admin/dashboard/recap",
-                   locals: {
-                     withKnowMore: false
-                   }) %>
-      </div>
-      <div class="cell small-6">
-        <%= render(partial: "decidim/participative_assistant/admin/participative_assistant/levelsGrid")%>
-      </div>
+    <div class="cell small-6">
+      <%= render(partial: "decidim/admin/dashboard/recap",
+                 locals: {
+                   withKnowMore: false
+                 }) %>
+    </div>
+    <div class="cell small-6">
+      <%= render(partial: "decidim/participative_assistant/admin/participative_assistant/levelsGrid") %>
+    </div>
   </div>
 
   <div class="grid-x grid-margin-x">
+    <% list_of_participative_actions.each do |participative_action| %>
       <div class="cell small-6">
         <%= render(
               partial: "list_actions",
               locals: {
-                title: "Edition",
-                recommendations: @recoEdition,
-                recommendationsDone: @recoEditionDone,
-                recommendationsTotal: @recoEditionTotal,
-                recommendationsDoneTotal: @recoEditionDoneTotal
+                title: t(".#{participative_action.key}"),
+                recommendations: participative_action.values[:uncompleted].first(5),
+                recommendationsDone: participative_action.values[:completed].first(5),
+                recommendationsTotal: participative_action.values[:uncompleted],
+                recommendationsDoneTotal: participative_action.values[:completed]
               }
             ) %>
       </div>
-
-      <div class="cell small-6">
-        <%= render(
-              partial: "list_actions",
-              locals: {
-                title: "Collaboration",
-                recommendations: @recoCollab,
-                recommendationsDone: @recoCollabDone,
-                recommendationsTotal: @recoCollabTotal,
-                recommendationsDoneTotal: @recoCollabDoneTotal
-              }
-            ) %>
-      </div>
+    <% end %>
   </div>
-      <div class="grid-x grid-margin-x">
-        <div class="cell small-6">
-        <%= render(
-              partial: "list_actions",
-              locals: {
-                title: "Interaction",
-                recommendations: @recoInteraction,
-                recommendationsDone: @recoInteractionDone,
-                recommendationsTotal: @recoInteractionTotal,
-                recommendationsDoneTotal: @recoInteractionDoneTotal
-              }
-            ) %>
-        </div>
-        <div class="cell small-6">
-          <%= render(
-              partial: "list_actions",
-              locals: {
-                title: "Configuration",
-                recommendations: @recoConfig,
-                recommendationsDone: @recoConfigDone,
-                recommendationsTotal: @recoConfigTotal,
-                recommendationsDoneTotal: @recoConfigDoneTotal
-              }
-            ) %>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
 </div>

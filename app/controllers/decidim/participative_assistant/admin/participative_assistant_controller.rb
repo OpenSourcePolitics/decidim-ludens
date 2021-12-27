@@ -2,6 +2,8 @@ module Decidim
   module ParticipativeAssistant
     module Admin
       class ParticipativeAssistantController < ParticipativeAssistant::Admin::ApplicationController
+        helper_method :list_of_participative_actions
+
         def show
           @recoEdition = ParticipativeAction.where(category: "Edition", completed: false).limit(5)
           @recoEditionTotal = ParticipativeAction.where(category: "Edition", completed: false)
@@ -20,6 +22,22 @@ module Decidim
           @recoInteractionDone = ParticipativeAction.where(category: "Interaction", completed: true).limit(5)
           @recoInteractionDoneTotal = ParticipativeAction.where(category: "Interaction", completed: true)
         end
+
+        def list_of_participative_actions
+          participative_actions.group_by(&:category)
+                               .each_with_object({}) do |actions, hash|
+            hash[actions[0]] = {
+              completed: actions[1].select(&completed?),
+              uncompleted: actions[1].reject(&completed?)
+            }
+          end
+        end
+      end
+
+      private
+
+      def participative_actions
+        @participative_actions ||= ParticipativeAction.all
       end
     end
   end
