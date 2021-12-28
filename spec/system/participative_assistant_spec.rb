@@ -12,24 +12,18 @@ describe 'Participative assistant', type: :system do
     visit decidim_admin_participative_assistant.root_path
   end
 
-  shared_examples "a participative action grid" do
-    no_contents_grid.each do |content|
-      expect(page).not_to have_content(content)
-    end
-
-    contents_grid.each do |content|
-      expect(page).to have_content(content)
-    end
-  end
-
   context 'when there is no participative action' do
-    let(:no_contents_grid) { ["Edition", "Collaboration", "Interaction", "Configuration"] }
-    let(:contents_grid) { [] }
+    it "doesn't returns a grid of actions" do
+      within '.actions-grid' do
+        expect(page).not_to have_content('Edition')
+        expect(page).not_to have_content('Collaboration')
+        expect(page).not_to have_content('Interaction')
+        expect(page).not_to have_content('Configuration')
+      end
+    end
 
-    it_behaves_like "a participative action grid"
-
-    it "displays recommendations" do
-      expect(page).not_to have_css(".assistant_recommendations")
+    it 'displays recommendations' do
+      expect(page).not_to have_css('.assistant_recommendations')
     end
 
     it 'displays level 1' do
@@ -40,9 +34,28 @@ describe 'Participative assistant', type: :system do
     end
   end
 
+  context 'when there is multiple type of participative actions' do
+    let!(:edition_participative_action) { create(:participative_action) }
+    let!(:collaboration_participative_action) { create(:participative_action, :collab) }
+    let!(:interaction_participative_action) { create(:participative_action, :interact) }
+    let!(:configuration_participative_action) { create(:participative_action, :config) }
+
+    it 'returns a grid of actions' do
+      # TODO: understand why current_path is needed
+      visit current_path
+
+      within '.actions-grid' do
+        expect(page).to have_content('Edition')
+        expect(page).to have_content('Collaboration')
+        expect(page).to have_content('Interaction')
+        expect(page).to have_content('Configuration')
+      end
+    end
+  end
+
+  # TODO: Refactor tests below
   context 'when there is less than 5 participative action in each' do
     context 'when participative actions are all uncompleted' do
-
       let!(:participative_actions) do
         create_list(:participative_action, 4, :collab)
       end
@@ -67,18 +80,16 @@ describe 'Participative assistant', type: :system do
         within '#exampleModalCollaboration .list-actions-uncompleted' do
           expect(page).to have_content(' ')
         end
-
       end
     end
 
-    context "when some participative actions are completed" do
-
+    context 'when some participative actions are completed' do
       let!(:participative_actions) do
         create_list(:participative_action, 4, :collab)
         create_list(:participative_action, 3, :completed, :collab)
       end
 
-      it "displays all actions" do
+      it 'displays all actions' do
         within '.card-Collaboration .list-actions-completed' do
           expect(page).to have_content(' ')
         end
@@ -101,13 +112,12 @@ describe 'Participative assistant', type: :system do
       end
     end
 
-    context "when participative actions are all completed" do
-
+    context 'when participative actions are all completed' do
       let!(:participative_actions) do
         create_list(:participative_action, 3, :completed, :collab)
       end
 
-      it "displays all actions" do
+      it 'displays all actions' do
         within '.card-Collaboration .list-actions-completed' do
           expect(page).to have_content(' ')
         end
@@ -131,9 +141,8 @@ describe 'Participative assistant', type: :system do
     end
   end
 
-  context "when there is more than 5 participative action" do
+  context 'when there is more than 5 participative action' do
     context 'when participative actions are all uncompleted' do
-
       let!(:participative_actions) do
         create_list(:participative_action, 7, :collab)
       end
@@ -158,18 +167,16 @@ describe 'Participative assistant', type: :system do
         within '#exampleModalCollaboration .list-actions-uncompleted' do
           expect(page).to have_content(' ')
         end
-
       end
     end
 
-    context "when some participative actions are completed" do
-
+    context 'when some participative actions are completed' do
       let!(:participative_actions) do
         create_list(:participative_action, 6, :collab)
         create_list(:participative_action, 8, :completed, :collab)
       end
 
-      it "displays all actions" do
+      it 'displays all actions' do
         within '.card-Collaboration .list-actions-completed' do
           expect(page).to have_content(' ')
         end
@@ -192,13 +199,12 @@ describe 'Participative assistant', type: :system do
       end
     end
 
-    context "when participative actions are all completed" do
-
+    context 'when participative actions are all completed' do
       let!(:participative_actions) do
         create_list(:participative_action, 9, :completed, :collab)
       end
 
-      it "displays all actions" do
+      it 'displays all actions' do
         within '.card-Collaboration .list-actions-completed' do
           expect(page).to have_content(' ')
         end
