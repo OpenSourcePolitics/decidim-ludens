@@ -23,7 +23,7 @@ describe 'Participative assistant', type: :system do
     end
 
     it 'displays recommendations' do
-      expect(page).not_to have_css('.assistant_recommendations')
+      expect(page).not_to have_css('.recommendation')
     end
 
     it 'displays level 1' do
@@ -53,7 +53,6 @@ describe 'Participative assistant', type: :system do
     end
   end
 
-  # TODO: Refactor tests below
   context 'when there is less than 5 participative action in each' do
     context 'when participative actions are all uncompleted' do
       let!(:participative_actions) do
@@ -61,23 +60,19 @@ describe 'Participative assistant', type: :system do
       end
 
       it 'displays actions uncompleted' do
-        within '.card-Collaboration .list-actions-completed' do
-          expect(page).not_to have_content(' ')
-        end
+        visit current_path
+
+        expect(page).not_to have_css('.card-Collaboration .list-actions-completed li')
 
         within '.card-Collaboration .list-actions-uncompleted' do
           expect(page).to have_content(' ')
         end
 
-        within '.card-Collaboration' do
-          click_link 'See all'
-        end
+        find('#openModalCollaboration').click
 
-        within '#exampleModalCollaboration .list-actions-completed' do
-          expect(page).not_to have_content(' ')
-        end
+        expect(page).not_to have_css('#exampleModalCollaboration .modal-actions-completed li')
 
-        within '#exampleModalCollaboration .list-actions-uncompleted' do
+        within '#exampleModalCollaboration .modal-actions-uncompleted' do
           expect(page).to have_content(' ')
         end
       end
@@ -90,6 +85,9 @@ describe 'Participative assistant', type: :system do
       end
 
       it 'displays all actions' do
+
+        visit current_path
+
         within '.card-Collaboration .list-actions-completed' do
           expect(page).to have_content(' ')
         end
@@ -98,15 +96,13 @@ describe 'Participative assistant', type: :system do
           expect(page).to have_content(' ')
         end
 
-        within '.card-Collaboration' do
-          click_link 'See all'
-        end
+        find('#openModalCollaboration').click
 
-        within '#exampleModalCollaboration .list-actions-completed' do
+        within '#exampleModalCollaboration .modal-actions-completed' do
           expect(page).to have_content(' ')
         end
 
-        within '#exampleModalCollaboration .list-actions-uncompleted' do
+        within '#exampleModalCollaboration .modal-actions-uncompleted' do
           expect(page).to have_content(' ')
         end
       end
@@ -118,25 +114,22 @@ describe 'Participative assistant', type: :system do
       end
 
       it 'displays all actions' do
+
+        visit current_path
+
         within '.card-Collaboration .list-actions-completed' do
           expect(page).to have_content(' ')
         end
 
-        within '.card-Collaboration .list-actions-uncompleted' do
-          expect(page).not_to have_content(' ')
-        end
+        expect(page).not_to have_css('.card-Collaboration .list-actions-uncompleted li')
 
-        within '.card-Collaboration' do
-          click_link 'See all'
-        end
+        find('#openModalCollaboration').click
 
-        within '#exampleModalCollaboration .list-actions-completed' do
+        within '#exampleModalCollaboration .modal-actions-completed' do
           expect(page).to have_content(' ')
         end
 
-        within '#exampleModalCollaboration .list-actions-uncompleted' do
-          expect(page).not_to have_content(' ')
-        end
+        expect(page).not_to have_css('#exampleModalCollaboration .modal-actions-uncompleted li')
       end
     end
   end
@@ -148,23 +141,20 @@ describe 'Participative assistant', type: :system do
       end
 
       it 'displays actions uncompleted' do
-        within '.card-Collaboration .list-actions-completed' do
-          expect(page).not_to have_content(' ')
-        end
+
+        visit current_path
+
+        expect(page).not_to have_css('.card-Collaboration .list-actions-completed li')
 
         within '.card-Collaboration .list-actions-uncompleted' do
           expect(page).to have_content(' ')
         end
 
-        within '.card-Collaboration' do
-          click_link 'See all'
-        end
+        find('#openModalCollaboration').click
 
-        within '#exampleModalCollaboration .list-actions-completed' do
-          expect(page).not_to have_content(' ')
-        end
+        expect(page).not_to have_css('#exampleModalCollaboration .modal-actions-completed li')
 
-        within '#exampleModalCollaboration .list-actions-uncompleted' do
+        within '#exampleModalCollaboration .modal-actions-uncompleted' do
           expect(page).to have_content(' ')
         end
       end
@@ -177,6 +167,9 @@ describe 'Participative assistant', type: :system do
       end
 
       it 'displays all actions' do
+
+        visit current_path
+
         within '.card-Collaboration .list-actions-completed' do
           expect(page).to have_content(' ')
         end
@@ -185,15 +178,13 @@ describe 'Participative assistant', type: :system do
           expect(page).to have_content(' ')
         end
 
-        within '.card-Collaboration' do
-          click_link 'See all'
-        end
+        find('#openModalCollaboration').click
 
-        within '#exampleModalCollaboration .list-actions-completed' do
+        within '#exampleModalCollaboration .modal-actions-completed' do
           expect(page).to have_content(' ')
         end
 
-        within '#exampleModalCollaboration .list-actions-uncompleted' do
+        within '#exampleModalCollaboration .modal-actions-uncompleted' do
           expect(page).to have_content(' ')
         end
       end
@@ -204,26 +195,24 @@ describe 'Participative assistant', type: :system do
         create_list(:participative_action, 9, :completed, :collab)
       end
 
-      it 'displays all actions' do
+      it 'displays completed actions' do
+
+        visit current_path
+
         within '.card-Collaboration .list-actions-completed' do
           expect(page).to have_content(' ')
         end
 
-        within '.card-Collaboration .list-actions-uncompleted' do
-          expect(page).not_to have_content(' ')
-        end
+        expect(page).not_to have_css('.card-Collaboration .list-actions-uncompleted li')
 
-        within '.card-Collaboration' do
-          click_link 'See all'
-        end
+        find('#openModalCollaboration').click
 
-        within '#exampleModalCollaboration .list-actions-completed' do
+        within '#exampleModalCollaboration .modal-actions-completed' do
           expect(page).to have_content(' ')
         end
 
-        within '#exampleModalCollaboration .list-actions-uncompleted' do
-          expect(page).not_to have_content(' ')
-        end
+        expect(page).not_to have_css('#exampleModalCollaboration .modal-actions-uncompleted li')
+
       end
     end
   end

@@ -4,19 +4,21 @@
       <%= title %>
     </h2>
   </div>
-  <div class="grid-x recommendation-container float-left">
-      <ul class="list-actions-uncompleted">
+  <div class="grid-x recommendation-firstContainer float-left">
+    <div class="cell small-8 grid-x recommendation-container">
+      <ul class="list-actions-uncompleted cell small-5">
         <% recommendations.each do |recommendation| %>
           <li> <%= recommendation.recommendation %> </li>
         <% end %>
       </ul>
 
-      <ul class="list-actions-completed">
+      <ul class="list-actions-completed cell small-5">
         <% recommendationsDone.each do |recommendation| %>
           <li class="no-bullet"> <%= recommendation.recommendation %> </li>
         <% end %>
       </ul>
-      <a data-open="exampleModal<%= title %>"> <%= t "decidim.admin.assistant.seeMore" %> </a>
+    </div>
+      <a class="cell small-1" id="openModal<%= title %>" data-open="exampleModal<%= title %>"><%= t "decidim.admin.assistant.seeMore" %></a>
   </div>
   <div class="reveal" id="exampleModal<%= title %>" data-reveal>
     <div class="grid-x">

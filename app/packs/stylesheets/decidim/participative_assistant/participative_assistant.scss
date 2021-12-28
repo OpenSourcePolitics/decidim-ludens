@@ -106,12 +106,22 @@
 }
 
 .recommendation-container{
-  margin:10px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
 
+.recommendation-firstContainer{
+  margin:10px;
+  display:flex;
+  align-items:start;
+  justify-content:space-evenly;
+}
+
 .card-recommandation{
   height: 21vh;
+}
+
+.list-actions-uncompleted, .list-actions-completed{
+  text-overflow: ellipsis;
 }
