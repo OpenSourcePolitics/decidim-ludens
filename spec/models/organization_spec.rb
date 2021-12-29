@@ -125,11 +125,11 @@ module Decidim
 
     describe ".levels" do
       let!(:participative_actions) do
-        create_list(:participative_action, 2, :completed, points: 1)
-        create_list(:participative_action, 3, :completed, points: 2)
-        create_list(:participative_action, 5, :completed, points: 3)
-        create_list(:participative_action, 1, :completed, points: 4)
-        create_list(:participative_action, 4, :completed, points: 5)
+        create_list(:participative_action, 2, :completed, points: 1, organization: subject)
+        create_list(:participative_action, 3, :completed, points: 2, organization: subject)
+        create_list(:participative_action, 5, :completed, points: 3, organization: subject)
+        create_list(:participative_action, 1, :completed, points: 4, organization: subject)
+        create_list(:participative_action, 4, :completed, points: 5, organization: subject)
       end
 
       it "returns the level" do

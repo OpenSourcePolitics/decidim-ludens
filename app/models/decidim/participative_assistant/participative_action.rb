@@ -3,10 +3,6 @@ module Decidim
     class ParticipativeAction < ApplicationRecord
       self.table_name = 'decidim_participative_actions'
 
-      belongs_to :organization,
-                 foreign_key: "decidim_organization_id",
-                 class_name: "Decidim::Organization"
-
 
       belongs_to :organization,
                  foreign_key: "decidim_organization_id",
