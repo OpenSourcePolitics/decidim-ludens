@@ -35,10 +35,10 @@ describe 'Participative assistant', type: :system do
   end
 
   context 'when there is multiple type of participative actions' do
-    let!(:edition_participative_action) { create(:participative_action) }
-    let!(:collaboration_participative_action) { create(:participative_action, :collab) }
-    let!(:interaction_participative_action) { create(:participative_action, :interact) }
-    let!(:configuration_participative_action) { create(:participative_action, :config) }
+    let!(:edition_participative_action) { create(:participative_action, organization: organization) }
+    let!(:collaboration_participative_action) { create(:participative_action, :collab, organization: organization) }
+    let!(:interaction_participative_action) { create(:participative_action, :interact, organization: organization) }
+    let!(:configuration_participative_action) { create(:participative_action, :config, organization: organization) }
 
     it 'returns a grid of actions' do
       # TODO: understand why current_path is needed
@@ -56,7 +56,7 @@ describe 'Participative assistant', type: :system do
   context 'when there is less than 5 participative action in each' do
     context 'when participative actions are all uncompleted' do
       let!(:participative_actions) do
-        create_list(:participative_action, 4, :collab)
+        create_list(:participative_action, 4, :collab, organization: organization)
       end
 
       it 'displays actions uncompleted' do
@@ -80,8 +80,8 @@ describe 'Participative assistant', type: :system do
 
     context 'when some participative actions are completed' do
       let!(:participative_actions) do
-        create_list(:participative_action, 4, :collab)
-        create_list(:participative_action, 3, :completed, :collab)
+        create_list(:participative_action, 4, :collab, organization: organization)
+        create_list(:participative_action, 3, :completed, :collab, organization: organization)
       end
 
       it 'displays all actions' do
@@ -110,7 +110,7 @@ describe 'Participative assistant', type: :system do
 
     context 'when participative actions are all completed' do
       let!(:participative_actions) do
-        create_list(:participative_action, 3, :completed, :collab)
+        create_list(:participative_action, 3, :completed, :collab, organization: organization)
       end
 
       it 'displays all actions' do
@@ -137,7 +137,7 @@ describe 'Participative assistant', type: :system do
   context 'when there is more than 5 participative action' do
     context 'when participative actions are all uncompleted' do
       let!(:participative_actions) do
-        create_list(:participative_action, 7, :collab)
+        create_list(:participative_action, 7, :collab, organization: organization)
       end
 
       it 'displays actions uncompleted' do
@@ -162,8 +162,8 @@ describe 'Participative assistant', type: :system do
 
     context 'when some participative actions are completed' do
       let!(:participative_actions) do
-        create_list(:participative_action, 6, :collab)
-        create_list(:participative_action, 8, :completed, :collab)
+        create_list(:participative_action, 6, :collab, organization: organization)
+        create_list(:participative_action, 8, :completed, :collab, organization: organization)
       end
 
       it 'displays all actions' do
@@ -192,7 +192,7 @@ describe 'Participative assistant', type: :system do
 
     context 'when participative actions are all completed' do
       let!(:participative_actions) do
-        create_list(:participative_action, 9, :completed, :collab)
+        create_list(:participative_action, 9, :completed, :collab, organization: organization)
       end
 
       it 'displays completed actions' do

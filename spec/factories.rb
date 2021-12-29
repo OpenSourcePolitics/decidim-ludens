@@ -11,7 +11,7 @@ FactoryBot.define do
     action { "publish" }
     category { "Edition" }
     recommendation { Faker::Hipster.sentence(word_count:3, random_words_to_add: 0) }
-
+    organization { nil }
     trait :completed do
       completed { true }
     end

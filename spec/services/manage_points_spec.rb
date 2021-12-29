@@ -30,7 +30,8 @@ module Decidim
                                                   resource: resource.class.to_s,
                                                   completed: false,
                                                   recommendation: 'My recommendation',
-                                                  points: 1
+                                                  points: 1,
+                                                  organization: organization
             )
           end
 

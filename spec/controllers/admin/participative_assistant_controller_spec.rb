@@ -33,7 +33,7 @@ module Decidim
           end
 
           context 'when there is edition actions' do
-            let!(:uncompleted_edition_actions) { create_list(:participative_action, 3) }
+            let!(:uncompleted_edition_actions) { create_list(:participative_action, 3, organization: organization) }
 
             it 'returns the edition actions in a tree of participative actions' do
               expect(subject.list_of_participative_actions).to eq({
@@ -45,7 +45,7 @@ module Decidim
             end
 
             context 'when actions are completed' do
-              let!(:completed_edition_actions) { create_list(:participative_action, 3, :completed) }
+              let!(:completed_edition_actions) { create_list(:participative_action, 3, :completed, organization: organization) }
 
               it 'returns the edition actions in a tree of participative actions' do
                 expect(subject.list_of_participative_actions).to eq({
@@ -59,10 +59,10 @@ module Decidim
           end
 
           context 'when there is multiples actions' do
-            let!(:uncompleted_edition_actions) { create_list(:participative_action, 3) }
-            let!(:uncompleted_interact_actions) { create_list(:participative_action, 3, :interact) }
-            let!(:completed_edition_actions) { create_list(:participative_action, 3, :completed) }
-            let!(:completed_interact_actions) { create_list(:participative_action, 3, :completed, :interact) }
+            let!(:uncompleted_edition_actions) { create_list(:participative_action, 3, organization: organization) }
+            let!(:uncompleted_interact_actions) { create_list(:participative_action, 3, :interact, organization: organization) }
+            let!(:completed_edition_actions) { create_list(:participative_action, 3, :completed, organization: organization) }
+            let!(:completed_interact_actions) { create_list(:participative_action, 3, :completed, :interact, organization: organization) }
 
             it 'returns the actions tree of participative actions' do
               expect(subject.list_of_participative_actions).to eq({

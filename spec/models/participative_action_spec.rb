@@ -8,7 +8,8 @@ module Decidim
       subject { described_class }
 
       describe ".recommendations" do
-        let!(:participative_actions) { create_list(:participative_action, 5) }
+        let!(:organization) { create(:organization) }
+        let!(:participative_actions) { create_list(:participative_action, 5, organization: organization) }
 
         it "returns 3 participative actions ordered by points number" do
           expect(subject.recommendations.size).to eq(3)
@@ -17,7 +18,7 @@ module Decidim
         end
 
         context "when participative actions are completed" do
-          let!(:participative_actions) { create_list(:participative_action, 5, :completed, points: 0) }
+          let!(:participative_actions) { create_list(:participative_action, 5, :completed, points: 0, organization: organization) }
 
           it "is not included in the query" do
             expect(subject.recommendations.size).to eq(0)
@@ -27,7 +28,7 @@ module Decidim
 
       describe ".lastDoneRecommendations" do
         let!(:organization) { create(:organization) }
-        let!(:participative_action) { create(:participative_action) }
+        let!(:participative_action) { create(:participative_action, organization: organization) }
 
         before do
           organization.assistant["last"] = participative_action.id
@@ -40,17 +41,43 @@ module Decidim
       end
 
       describe ".palierScores" do
+        let!(:organization) { create(:organization) }
         let!(:participative_actions) do
-          create_list(:participative_action, 2, :completed, points: 1)
-          create_list(:participative_action, 3, :completed, points: 2)
-          create_list(:participative_action, 5, :completed, points: 3)
-          create_list(:participative_action, 1, :completed, points: 4)
-          create_list(:participative_action, 4, :completed, points: 5)
+          create_list(:participative_action, 2, :completed, points: 1, organization: organization)
+          create_list(:participative_action, 3, :completed, points: 2, organization: organization)
+          create_list(:participative_action, 5, :completed, points: 3, organization: organization)
+          create_list(:participative_action, 1, :completed, points: 4, organization: organization)
+          create_list(:participative_action, 4, :completed, points: 5, organization: organization)
         end
 
         it "returns palierScores" do
           expect(subject.palierScores).to eq([2, 8, 23, 27, 47])
         end
+      end
+
+      describe "plusieurs organisations" do
+        let!(:organization1) {create(:organization)}
+        let!(:organization2) {create(:organization)}
+        let!(:participative_actions1) do
+          create_list(:participative_action, 2, :completed, points: 1, organization: organization1)
+          create_list(:participative_action, 3, :completed, points: 2, organization: organization1)
+          create_list(:participative_action, 5, :completed, points: 3, organization: organization1)
+          create_list(:participative_action, 1, :completed, points: 4, organization: organization1)
+          create_list(:participative_action, 4, :completed, points: 5, organization: organization1)
+        end
+        let!(:participative_actions2) do
+          create_list(:participative_action, 4, :completed, points: 1, organization: organization2)
+          create_list(:participative_action, 1, :completed, points: 2, organization: organization2)
+          create_list(:participative_action, 2, :completed, points: 3, organization: organization2)
+          create_list(:participative_action, 5, :completed, points: 4, organization: organization2)
+          create_list(:participative_action, 3, :completed, points: 5, organization: organization2)
+        end
+
+        it "returns the good palierScores" do
+          expect(participative_actions1.first.palierScores).to eq([2, 8, 23, 27, 47])
+          expect(participative_actions2.first.palierScores).to eq([4, 2, 12, 32, 47])
+        end
+
       end
     end
   end
