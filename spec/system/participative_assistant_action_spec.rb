@@ -5,7 +5,7 @@ require "spec_helper"
 describe "Participative assistant action", type: :system do
   let(:organization) { create(:organization) }
   let(:user) { create(:user, :admin, :confirmed, organization: organization) }
-  let!(:participative_action) { create(:participative_action, organization: organization) }
+  let!(:participative_action) { create(:participative_action, organization: organization, points: 1) }
 
   before do
     switch_to_host(organization.host)

@@ -152,5 +152,20 @@ module Decidim
         expect(subject.increase_score(4)).to eq(4)
       end
     end
+
+    describe ".palierScores" do
+      let!(:organization) { create(:organization) }
+      let!(:participative_actions) do
+        create_list(:participative_action, 2, :completed, points: 1, organization: organization)
+        create_list(:participative_action, 3, :completed, points: 2, organization: organization)
+        create_list(:participative_action, 5, :completed, points: 3, organization: organization)
+        create_list(:participative_action, 1, :completed, points: 4, organization: organization)
+        create_list(:participative_action, 4, :completed, points: 5, organization: organization)
+      end
+
+      it "returns palierScores" do
+        expect(subject.palierScores).to eq([2, 8, 23, 27, 47])
+      end
+    end
   end
 end

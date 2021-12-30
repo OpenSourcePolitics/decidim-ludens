@@ -2,10 +2,10 @@
   <div class="assistant_values grid-y">
     <div class="grid-x assistant_container">
       <h3 class="assistant_level letter_spaced"><b> Niveau <%= current_organization.level %> </b></h3>
-      <h5 class="assistant_score"><%= current_organization.score %>/<%= Decidim::ParticipativeAssistant::ParticipativeAction.palierScores[current_organization.level-1] %></h5>
+      <h5 class="assistant_score"><%= current_organization.score %>/<%= current_organization.palierScores[current_organization.level-1] %></h5>
     </div>
     <div class="progress">
-      <input class="paliers" type="hidden" value="<%= Decidim::ParticipativeAssistant::ParticipativeAction.palierScores %>"/>
+      <input class="paliers" type="hidden" value="<%= current_organization.palierScores %>"/>
       <div class="color progress_bar"></div>
     </div>
   </div>

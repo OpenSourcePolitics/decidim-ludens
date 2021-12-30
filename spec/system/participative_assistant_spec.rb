@@ -6,6 +6,7 @@ describe 'Participative assistant', type: :system do
   let(:organization) { create(:organization) }
   let(:user) { create(:user, :admin, :confirmed, organization: organization) }
 
+
   before do
     switch_to_host(organization.host)
     login_as user, scope: :user
@@ -35,6 +36,7 @@ describe 'Participative assistant', type: :system do
   end
 
   context 'when there is multiple type of participative actions' do
+
     let!(:edition_participative_action) { create(:participative_action, organization: organization) }
     let!(:collaboration_participative_action) { create(:participative_action, :collab, organization: organization) }
     let!(:interaction_participative_action) { create(:participative_action, :interact, organization: organization) }
@@ -42,6 +44,7 @@ describe 'Participative assistant', type: :system do
 
     it 'returns a grid of actions' do
       # TODO: understand why current_path is needed
+
       visit current_path
 
       within '.actions-grid' do

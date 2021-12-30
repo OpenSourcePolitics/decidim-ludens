@@ -40,21 +40,6 @@ module Decidim
         end
       end
 
-      describe ".palierScores" do
-        let!(:organization) { create(:organization) }
-        let!(:participative_actions) do
-          create_list(:participative_action, 2, :completed, points: 1, organization: organization)
-          create_list(:participative_action, 3, :completed, points: 2, organization: organization)
-          create_list(:participative_action, 5, :completed, points: 3, organization: organization)
-          create_list(:participative_action, 1, :completed, points: 4, organization: organization)
-          create_list(:participative_action, 4, :completed, points: 5, organization: organization)
-        end
-
-        it "returns palierScores" do
-          expect(subject.palierScores).to eq([2, 8, 23, 27, 47])
-        end
-      end
-
       describe "plusieurs organisations" do
         let!(:organization1) {create(:organization)}
         let!(:organization2) {create(:organization)}
@@ -74,8 +59,8 @@ module Decidim
         end
 
         it "returns the good palierScores" do
-          expect(participative_actions1.first.palierScores).to eq([2, 8, 23, 27, 47])
-          expect(participative_actions2.first.palierScores).to eq([4, 2, 12, 32, 47])
+          expect(organization1.palierScores).to eq([2, 8, 23, 27, 47])
+          expect(organization2.palierScores).to eq([4, 6, 12, 32, 47])
         end
 
       end
