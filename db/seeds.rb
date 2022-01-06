@@ -27,7 +27,8 @@ Decidim::Organization.all.each do |organization|
     action: "publish",
     category: "Edition",
     recommendation: "Publish an Assembly",
-    organization: organization
+    organization: organization,
+    documentation: "#"
   )
 
   Decidim::ParticipativeAssistant::ParticipativeAction.create!(
@@ -37,7 +38,8 @@ Decidim::Organization.all.each do |organization|
     action: "unpublish",
     category: "Edition",
     recommendation: "Unublish an Assembly",
-    organization: organization
+    organization: organization,
+    documentation: "#"
   )
 
   Decidim::ParticipativeAssistant::ParticipativeAction.create!(
@@ -47,7 +49,8 @@ Decidim::Organization.all.each do |organization|
     action: "create",
     category: "Edition",
     recommendation: "Create an Assembly",
-    organization: organization
+    organization: organization,
+    documentation: "https://en.docs-decidim.opensourcepolitics.eu/article/94-lespace-assemblees"
   )
 
   Decidim::ParticipativeAssistant::ParticipativeAction.create!(
@@ -57,7 +60,8 @@ Decidim::Organization.all.each do |organization|
     action: "create",
     category: "Edition",
     recommendation: "Create a participatory process",
-    organization: organization
+    organization: organization,
+    documentation: "#"
   )
 
   Decidim::ParticipativeAssistant::ParticipativeAction.create!(
@@ -67,7 +71,8 @@ Decidim::Organization.all.each do |organization|
     action: "publish",
     category: "Edition",
     recommendation: "Publish a participatory process",
-    organization: organization
+    organization: organization,
+    documentation: "#"
   )
 
   Decidim::ParticipativeAssistant::ParticipativeAction.create!(
@@ -77,6 +82,7 @@ Decidim::Organization.all.each do |organization|
     action: "unpublish",
     category: "Edition",
     recommendation: "Unpublish a participatory process",
-    organization: organization
+    organization: organization,
+    documentation: "#"
   )
 end
