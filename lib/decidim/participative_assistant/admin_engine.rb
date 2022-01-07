@@ -38,6 +38,8 @@ module Decidim
         end
       end
 
+
+
       def load_seed
         nil
       end

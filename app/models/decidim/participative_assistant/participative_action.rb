@@ -11,7 +11,7 @@ module Decidim
       validates :organization, presence: true
 
 
-      scope :recommendations, ->{self.where(completed:false).order(:points).limit(3)}
+      scope :recommendations, ->{self.where(completed:[false,nil]).order(:points).limit(3)}
 
       def self.lastDoneRecommendations
         last = Decidim::Organization.first.assistant['last']

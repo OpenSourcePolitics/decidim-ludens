@@ -1,0 +1,11 @@
+actions:
+  Edition:
+    Decidim::Assembly:
+      publish:
+        points: 1
+        recommendation: "Publish an assembly"
+        documentation: "https://www.notion.so/opensourcepolitics/publish-unpublish-update-assembly-72dd8f7474b747719be52035438b4160"
+      unpublish:
+        points: 1
+        recommendation: "Unpublish an assembly"
+        documentation: "https://www.notion.so/opensourcepolitics/publish-unpublish-update-assembly-72dd8f7474b747719be52035438b4160"
