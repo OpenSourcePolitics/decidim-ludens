@@ -5,7 +5,7 @@ module Decidim
     class ManagePoints
       def initialize(action, user, resource)
         @user = user
-        @action = action
+        @action = action.to_s
         @resource = resource
       end
 
@@ -36,7 +36,7 @@ module Decidim
       end
 
       def participative_action
-        ParticipativeAction.find_by(action: @action, resource: @resource.class.to_s, completed: false)
+        ParticipativeAction.find_by(action: @action, resource: @resource.class.to_s, completed: [false,nil])
       end
 
       def current_organization
