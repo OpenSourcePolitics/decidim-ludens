@@ -40,9 +40,9 @@ module Decidim
 
 
 
-      def load_seed
-        nil
-      end
+      # def load_seed
+      #   nil
+      # end
     end
   end
 end

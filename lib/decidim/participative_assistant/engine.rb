@@ -20,9 +20,9 @@ module Decidim
         # root to: "participative_assistant#index"
       end
 
-      def load_seed
-        super
-      end
+      # def load_seed
+      #   super
+      # end
 
       initializer "ParticipativeAssistant.webpacker.assets_path" do
         Decidim.register_assets_path File.expand_path("app/packs", root)
