@@ -18,26 +18,28 @@ module Decidim
       def create_assistant
         return self if @organization.assistant != nil
 
-        @organization.update!(assistant: {
-          score: 0,
-          flash: "",
-          last: -1
-        })
+        send('assistant') do
+          @organization.update!(assistant: {
+            score: 0,
+            flash: '',
+            last: -1
+          })
+        end
 
         self
       end
 
       def create_actions
-        Decidim::ParticipativeAssistant::SetupService::ACTIONS.each do |category,resources|
+        Decidim::ParticipativeAssistant::SetupService::ACTIONS['actions'].each do |category,resources|
           resources.each do |resource,actions|
             actions.each do |action,infos|
               create_action(
-                infos["points"],
+                infos['points'],
                 resource,
                 action,
                 category,
-                infos["recommendation"],
-                infos["documentation"]
+                infos['recommendation'],
+                infos['documentation']
               )
             end
           end
@@ -47,15 +49,29 @@ module Decidim
       private
 
       def create_action(points, resource, action, category, recommendation, documentation)
-        Decidim::ParticipativeAssistant::ParticipativeAction.find_or_create_by!(
-          points: points,
-          resource: resource,
-          action: action,
-          category: category,
-          organization: @organization,
-          recommendation: recommendation,
-          documentation: documentation
-        )
+        send(recommendation) do
+          Decidim::ParticipativeAssistant::ParticipativeAction.find_or_create_by!(
+            points: points,
+            resource: resource,
+            action: action,
+            category: category,
+            organization: @organization,
+            recommendation: recommendation,
+            documentation: documentation
+          )
+        end
+      end
+
+      def send(information)
+        Decidim::ApplicationRecord.transaction do
+          result = block_given? ? yield : nil
+          if information == 'assistant'
+            puts 'Initializing the assistant'
+          else
+            puts 'Adding the action "' + information + '" unless it is already installed'
+          end
+          return result
+        end
       end
 
       def self.tables_exists?
@@ -63,7 +79,7 @@ module Decidim
       end
 
       def self.missing_tables_message
-        "Unknown table Organization or Participative action, please run migration first"
+        'Unknown table Organization or Participative action, please run migration first'
       end
     end
   end
