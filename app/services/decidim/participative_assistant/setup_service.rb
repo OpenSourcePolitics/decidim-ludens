@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Decidim
   module ParticipativeAssistant
     class SetupService
-      ACTIONS = YAML.load(File.read(Rails.root.join('config', 'participative_actions.yaml')))
+      ACTIONS = YAML.safe_load(File.read(Rails.root.join("config", "participative_actions.yaml")))
 
       def initialize(organization)
         @organization = organization
@@ -16,30 +18,30 @@ module Decidim
       end
 
       def create_assistant
-        return self if @organization.assistant != nil
+        return self unless @organization.assistant.nil?
 
-        send('assistant') do
+        send("assistant") do
           @organization.update!(assistant: {
-            score: 0,
-            flash: '',
-            last: -1
-          })
+                                  score: 0,
+                                  flash: "",
+                                  last: -1
+                                })
         end
 
         self
       end
 
       def create_actions
-        Decidim::ParticipativeAssistant::SetupService::ACTIONS['actions'].each do |category,resources|
-          resources.each do |resource,actions|
-            actions.each do |action,infos|
+        Decidim::ParticipativeAssistant::SetupService::ACTIONS["actions"].each do |category, resources|
+          resources.each do |resource, actions|
+            actions.each do |action, infos|
               create_action(
-                infos['points'],
+                infos["points"],
                 resource,
                 action,
                 category,
-                infos['recommendation'],
-                infos['documentation']
+                infos["recommendation"],
+                infos["documentation"]
               )
             end
           end
@@ -65,10 +67,10 @@ module Decidim
       def send(information)
         Decidim::ApplicationRecord.transaction do
           result = block_given? ? yield : nil
-          if information == 'assistant'
-            puts 'Initializing the assistant'
+          if information == "assistant"
+            puts "Initializing the assistant"
           else
-            puts 'Adding the action "' + information + '" unless it is already installed'
+            puts "Adding the action " # {information}" unless it is already installed"
           end
           return result
         end
@@ -79,7 +81,7 @@ module Decidim
       end
 
       def self.missing_tables_message
-        'Unknown table Organization or Participative action, please run migration first'
+        "Unknown table Organization or Participative action, please run migration first"
       end
     end
   end

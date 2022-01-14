@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 require "decidim/dev/common_rake"
 
 def install_module(path)

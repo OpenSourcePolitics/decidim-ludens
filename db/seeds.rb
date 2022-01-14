@@ -85,4 +85,4 @@ end.compact.each(&:reset_column_information)
 #     organization: organization,
 #     documentation: "#"
 # )
-#end
+# end

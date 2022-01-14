@@ -14,7 +14,7 @@ module Decidim
       end
 
       def call
-        return unless participative_action.present?
+        return if participative_action.blank?
 
         ActiveRecord::Base.transaction do
           increase_score_by!(participative_action.points)
@@ -26,7 +26,7 @@ module Decidim
 
       def increase_score_by!(points)
         old_data = current_organization.assistant.dup
-        flash_message = "Congratulations ! You just completed the action '" + participative_action.recommendation + "' !"
+        flash_message = "Congratulations ! You just completed the action '#{participative_action.recommendation}' !"
         new_data = old_data.merge({
                                     score: @user.organization.increase_score(points),
                                     flash: flash_message,
@@ -36,7 +36,7 @@ module Decidim
       end
 
       def participative_action
-        ParticipativeAction.find_by(action: @action, resource: @resource.class.to_s, completed: [false,nil])
+        ParticipativeAction.find_by(action: @action, resource: @resource.class.to_s, completed: [false, nil])
       end
 
       def current_organization

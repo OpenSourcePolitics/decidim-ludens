@@ -1,6 +1,6 @@
-#frozen_string_literal: true
+# frozen_string_literal: true
 
-require 'spec_helper'
+require "spec_helper"
 
 module Decidim
   module ParticipativeAssistant
@@ -8,34 +8,33 @@ module Decidim
       subject { described_class }
 
       let(:organization) { create :organization }
-      let(:user) { create :user, organization: organization, current_sign_in_ip: '127.0.0.1' }
+      let(:user) { create :user, organization: organization, current_sign_in_ip: "127.0.0.1" }
       let(:participatory_space) { create :participatory_process, organization: organization }
       let(:component) { create :component, participatory_space: participatory_space }
       let(:resource) { create :dummy_resource, component: component }
-      let(:action) { 'create' }
+      let(:action) { "create" }
       let(:subject_run) { subject.run(action, user, resource) }
 
-      describe '.run' do
-        context 'when participative action is not present' do
+      describe ".run" do
+        context "when participative action is not present" do
           let!(:participative_action) { nil }
 
-          it 'returns nil' do
+          it "returns nil" do
             expect(subject_run).to eq(nil)
           end
         end
 
-        context 'when participative action is present' do
+        context "when participative action is present" do
           before do
             ParticipativeAction.find_or_create_by!(action: action,
-                                                  resource: resource.class.to_s,
-                                                  completed: false,
-                                                  recommendation: 'My recommendation',
-                                                  points: 1,
-                                                  organization: organization
-            )
+                                                   resource: resource.class.to_s,
+                                                   completed: false,
+                                                   recommendation: "My recommendation",
+                                                   points: 1,
+                                                   organization: organization)
           end
 
-          it 'updates organization' do
+          it "updates organization" do
             subject_run
             expect(organization.assistant).to eq(JSON.parse(JSON.generate({
                                                                             score: 1,
@@ -44,7 +43,7 @@ module Decidim
                                                                           })))
           end
 
-          it 'updates participative_action' do
+          it "updates participative_action" do
             subject_run
             expect(ParticipativeAction.find_by(action: action, resource: resource.class.to_s).completed).to be_truthy
           end
@@ -53,5 +52,3 @@ module Decidim
     end
   end
 end
-
-

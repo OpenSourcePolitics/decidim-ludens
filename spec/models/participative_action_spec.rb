@@ -36,13 +36,13 @@ module Decidim
         end
 
         it "returns participative action id" do
-          expect(subject.lastDoneRecommendations).to eq(participative_action)
+          expect(subject.last_done_recommendation).to eq(participative_action)
         end
       end
 
       describe "plusieurs organisations" do
-        let!(:organization1) {create(:organization)}
-        let!(:organization2) {create(:organization)}
+        let!(:organization1) { create(:organization) }
+        let!(:organization2) { create(:organization) }
         let!(:participative_actions1) do
           create_list(:participative_action, 2, :completed, points: 1, organization: organization1)
           create_list(:participative_action, 3, :completed, points: 2, organization: organization1)
@@ -59,12 +59,10 @@ module Decidim
         end
 
         it "returns the good palierScores" do
-          expect(organization1.palierScores).to eq([2, 8, 23, 27, 47])
-          expect(organization2.palierScores).to eq([4, 6, 12, 32, 47])
+          expect(organization1.step_scores).to eq([2, 8, 23, 27, 47])
+          expect(organization2.step_scores).to eq([4, 6, 12, 32, 47])
         end
-
       end
     end
   end
 end
-

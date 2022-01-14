@@ -17,6 +17,4 @@ module Decidim
   end
 end
 
-Decidim::ActionLogger.send(:include, Decidim::ParticipativeAssistant::ActionLoggerServiceExtend)
-
-
+Decidim::ActionLogger.include Decidim::ParticipativeAssistant::ActionLoggerServiceExtend

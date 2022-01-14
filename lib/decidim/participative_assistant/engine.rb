@@ -11,7 +11,7 @@ module Decidim
 
       config.to_prepare do
         Decidim::Organization.include Decidim::ParticipativeAssistant::OrganizationModelExtend
-        require "extends/action_logger_service_extend"  #TODO : refactor
+        require "extends/action_logger_service_extend" # TODO : refactor
       end
 
       routes do

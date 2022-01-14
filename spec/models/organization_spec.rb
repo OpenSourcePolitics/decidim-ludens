@@ -133,17 +133,16 @@ module Decidim
       end
 
       it "returns the level" do
-        subject.assistant["score"]=1
+        subject.assistant["score"] = 1
         expect(subject.level).to eq(1)
-        subject.assistant["score"]=4
+        subject.assistant["score"] = 4
         expect(subject.level).to eq(2)
-        subject.assistant["score"]=10
+        subject.assistant["score"] = 10
         expect(subject.level).to eq(3)
-        subject.assistant["score"]=26
+        subject.assistant["score"] = 26
         expect(subject.level).to eq(4)
-        subject.assistant["score"]=30
+        subject.assistant["score"] = 30
         expect(subject.level).to eq(5)
-
       end
     end
 
@@ -164,7 +163,7 @@ module Decidim
       end
 
       it "returns palierScores" do
-        expect(subject.palierScores).to eq([2, 8, 23, 27, 47])
+        expect(subject.step_scores).to eq([2, 8, 23, 27, 47])
       end
     end
   end

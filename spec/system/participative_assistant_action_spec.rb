@@ -13,20 +13,19 @@ describe "Participative assistant action", type: :system do
     visit decidim_admin_participative_assistant.root_path
   end
 
-  context 'there is one participative action' do
+  context "when there is one participative action" do
     it "can be completed" do
-
-      within '.recap_assistant' do
+      within ".recap_assistant" do
         expect(page).to have_content("Niveau 1")
         expect(page).to have_content("0/1")
       end
 
-      within '.assistant_recommendations' do
+      within ".assistant_recommendations" do
         expect(page).to have_content("1 pts")
         expect(page).to have_content(participative_action.recommendation)
       end
 
-      within 'nav' do
+      within "nav" do
         click_link "Assemblies"
       end
 
@@ -51,20 +50,19 @@ describe "Participative assistant action", type: :system do
 
       click_link "Publish"
 
-      expect(page).to have_content("Congratulations ! You just completed the action '"+participative_action.recommendation+"' !")
+      expect(page).to have_content("Congratulations ! You just completed the action '#{participative_action.recommendation}' !")
 
       click_link "Dashboard"
 
-      within '.recap_assistant' do
+      within ".recap_assistant" do
         expect(page).to have_content("Niveau 5")
         expect(page).to have_content("1/1")
       end
 
-      within '.assistant_recommendations .no-bullet' do
+      within ".assistant_recommendations .no-bullet" do
         expect(page).to have_content("1 pts")
         expect(page).to have_content(participative_action.recommendation)
       end
-
     end
   end
 end
