@@ -9,33 +9,21 @@ describe Decidim::ParticipativeAssistant::SetupService do
   subject { described_class.new(organization) }
   let(:subject_class) { described_class }
 
-  let(:actions) {
-    [
-      {
-        points: 3,
-        resource: "Decidim::Assembly",
-        action: "publish",
-        category: "Edition",
-        recommendation: "Publish an assembly",
-        organization: organization,
-        documentation: "#"
-      }
-    ]
-  }
+
+  def get_em(h)
+    h.each_with_object([]) do |(k,v),keys|
+      keys << k
+      keys.concat(get_em(v)) if v.is_a? Hash
+    end
+  end
+
 
   describe "ACTIONS" do
     it "contains all keys for each entry" do
-      count = Decidim::ParticipativeAssistant::SetupService::ACTIONS.count
-      keys = Decidim::ParticipativeAssistant::SetupService::ACTIONS.map(&:keys).flatten
+      keys=get_em(Decidim::ParticipativeAssistant::SetupService::ACTIONS["actions"])
+      expect(keys.tally["recommendation"]).to eq(keys.tally["points"])
+      expect(keys.tally["documentation"]).to eq(keys.tally["points"])
 
-      expect(keys.tally).to eq({
-                                 points: count,
-                                 resource: count,
-                                 action: count,
-                                 category: count,
-                                 recommendation: count,
-                                 documentation: count
-                               })
     end
   end
 
@@ -76,24 +64,24 @@ describe Decidim::ParticipativeAssistant::SetupService do
 
   describe "#create_actions" do
     it "creates an action" do
-      expect { subject.create_actions }.to change(Decidim::ParticipativeAssistant::ParticipativeAction, :count).by(1)
+      expect { subject.create_actions }.to change(Decidim::ParticipativeAssistant::ParticipativeAction, :count).by(2)
     end
 
     context "when participative action already exists" do
       before do
         Decidim::ParticipativeAssistant::ParticipativeAction.find_or_create_by!(
-          points: 3,
+          points: 1,
           resource: "Decidim::Assembly",
           action: "publish",
           category: "Edition",
           organization: organization,
           recommendation: "Publish an assembly",
-          documentation: "#"
+          documentation: "https://docs-decidim.opensourcepolitics.eu/article/94-lespace-assemblees"
         )
       end
 
       it "doesn't create an action" do
-        expect { subject.create_actions }.not_to change(Decidim::ParticipativeAssistant::ParticipativeAction, :count)
+        expect { subject.create_actions }.to change(Decidim::ParticipativeAssistant::ParticipativeAction, :count).by(1)
       end
     end
   end
