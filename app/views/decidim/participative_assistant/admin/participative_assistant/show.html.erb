@@ -28,8 +28,8 @@
               partial: "list_actions",
               locals: {
                 title: t(".#{action_name}"),
-                recommendations: actions[:uncompleted]&.first(5),
-                recommendationsDone: actions[:completed]&.first(5),
+                recommendations: actions[:uncompleted]&.first(3),
+                recommendationsDone: actions[:completed]&.first(3),
                 recommendationsTotal: actions[:uncompleted],
                 recommendationsDoneTotal: actions[:completed]
               }
