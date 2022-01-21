@@ -6,7 +6,6 @@ def install_module(path)
   Dir.chdir(path) do
     system("bundle exec rake decidim_participative_assistant:install:migrations")
     system("bundle exec rake db:migrate")
-    system("cp ../config/participative_actions.yaml config")
     system("bundle exec rake decidim_participative_assistant:initialize")
   end
 end

@@ -3,7 +3,7 @@
 module Decidim
   module ParticipativeAssistant
     class SetupService
-      ACTIONS = YAML.safe_load(File.read(Rails.root.join("config", "participative_actions.yaml")))
+      ACTIONS = YAML.safe_load(File.read(Rails.root.join("config/participative_actions.yaml")))
 
       def initialize(organization)
         @organization = organization
@@ -20,7 +20,7 @@ module Decidim
       def create_assistant
         return self unless @organization.assistant.nil?
 
-        send("assistant") do
+        display("assistant") do
           @organization.update!(assistant: {
                                   score: 0,
                                   flash: "",
@@ -48,11 +48,20 @@ module Decidim
         end
       end
 
+      def self.tables_exists?
+        Decidim::Organization.table_exists? && Decidim::ParticipativeAssistant::ParticipativeAction.table_exists?
+      end
+
+      def self.missing_tables_message
+        "Unknown table Organization or Participative action, please run migration first"
+      end
+
       private
 
+      # rubocop:disable Metrics/ParameterLists
       def create_action(points, resource, action, category, recommendation, documentation)
-        send(recommendation) do
-          Decidim::ParticipativeAssistant::ParticipativeAction.find_or_create_by!(
+        display(recommendation) do
+          Decidim::ParticipativeAssistant::ParticipativeAction.find_or_initialize_by(
             points: points,
             resource: resource,
             action: action,
@@ -63,25 +72,23 @@ module Decidim
           )
         end
       end
+      # rubocop:enable Metrics/ParameterLists
 
-      def send(information)
+      def display(information)
         Decidim::ApplicationRecord.transaction do
           result = block_given? ? yield : nil
           if information == "assistant"
             puts "Initializing the assistant"
           else
-            puts "Adding the action " # {information}" unless it is already installed"
+            if result&.new_record?
+              puts "Adding the action '#{information}' "
+            else
+              puts "Action '#{information}' already installed"
+            end
+            result.save! if result&.new_record?
           end
           return result
         end
-      end
-
-      def self.tables_exists?
-        Decidim::Organization.table_exists? && Decidim::ParticipativeAssistant::ParticipativeAction.table_exists?
-      end
-
-      def self.missing_tables_message
-        "Unknown table Organization or Participative action, please run migration first"
       end
     end
   end
