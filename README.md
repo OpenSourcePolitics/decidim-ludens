@@ -4,8 +4,8 @@ Participative assistant for administrators.
 
 ## Usage
 
-ParticipativeAssistant will be available as a Component for a Participatory
-Space.
+The participative assistant is used to help administrators to administrate.
+It gives them a list of to-dos, rewarding them with points and levels when they succeed.
 
 ## Installation
 
@@ -19,6 +19,17 @@ And then execute:
 
 ```bash
 bundle
+```
+
+if migrations are not installed by themselves, execute
+
+```bash
+bundle exec rake decidim_participative_assistant:install:migrations
+```
+ 
+Initialize the module by executing
+```bash
+bundle exec rake decidim_participative_assistant:initialize
 ```
 
 ## Contributing

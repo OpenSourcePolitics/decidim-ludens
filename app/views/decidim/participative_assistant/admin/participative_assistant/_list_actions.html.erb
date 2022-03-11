@@ -8,13 +8,13 @@
     <div class="cell small-8 grid-x recommendation-container">
       <ul class="list-actions-uncompleted cell small-5">
         <% recommendations.each do |recommendation| %>
-          <li> <a href="<%=recommendation.documentation %>"><%= recommendation.recommendation %> </a></li>
+          <li> <a target="_blank" href="<%=recommendation.documentation %>"><%= recommendation.recommendation %> </a></li>
         <% end %>
       </ul>
 
       <ul class="list-actions-completed cell small-5">
         <% recommendationsDone.each do |recommendation| %>
-          <li class="no-bullet"> <a href="<%=recommendation.documentation %>"><%= recommendation.recommendation %> </a></li>
+          <li class="no-bullet"> <a target="_blank" href="<%=recommendation.documentation %>"><%= recommendation.recommendation %> </a></li>
         <% end %>
       </ul>
     </div>
@@ -24,13 +24,13 @@
     <div class="grid-x">
       <ul class="modal-actions-uncompleted">
         <% recommendationsTotal.each do |recommendation| %>
-          <li> <a href="<%=recommendation.documentation %>"><%= recommendation.recommendation %> </a> </li>
+          <li> <a target="_blank" href="<%=recommendation.documentation %>"><%= recommendation.recommendation %> </a> </li>
         <% end %>
       </ul>
 
       <ul class="modal-actions-completed">
         <% recommendationsDoneTotal.each do |recommendation| %>
-          <li class="no-bullet"> <a href="<%=recommendation.documentation %>"><%= recommendation.recommendation %> </a> </li>
+          <li class="no-bullet"> <a target="_blank" href="<%=recommendation.documentation %>"><%= recommendation.recommendation %> </a> </li>
         <% end %>
       </ul>
     </div>
