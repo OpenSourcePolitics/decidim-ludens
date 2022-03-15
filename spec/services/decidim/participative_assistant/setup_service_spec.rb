@@ -77,7 +77,7 @@ describe Decidim::ParticipativeAssistant::SetupService do
       end
 
       it "doesn't create an action" do
-        expect { subject.create_actions }.to change(Decidim::ParticipativeAssistant::ParticipativeAction, :count).by(get_em(Decidim::ParticipativeAssistant::SetupService::ACTIONS["actions"]).tally["recommendation"]-1)
+        expect { subject.create_actions }.to change(Decidim::ParticipativeAssistant::ParticipativeAction, :count).by(get_em(Decidim::ParticipativeAssistant::SetupService::ACTIONS["actions"]).tally["recommendation"] - 1)
       end
     end
   end
