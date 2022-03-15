@@ -1,15 +1,5 @@
 name: "[CI] Tests"
-on:
-  push:
-    branches:
-      - develop
-      - master
-      - release/*
-      - feature/*
-      - "*-stable"
-  pull_request:
-    branches:
-      - "*"
+on: [push]
 
 env:
   CI: "true"
