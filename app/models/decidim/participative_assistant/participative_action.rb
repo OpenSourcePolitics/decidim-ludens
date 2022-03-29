@@ -19,9 +19,9 @@ module Decidim
       end
 
       def self.recommendations
-        actions = ParticipativeAction.where(completed: [false,nil]).order(:points).group_by{ |action| action.points }
-        actions = actions.each{ |key,value| actions[key]=value.shuffle }
-        return actions.values.flatten[0,3]
+        actions = ParticipativeAction.where(completed: [false, nil]).order(:points).group_by(&:points)
+        actions = actions.each { |key, value| actions[key] = value.shuffle }
+        actions.values.flatten[0, 3]
       end
     end
   end

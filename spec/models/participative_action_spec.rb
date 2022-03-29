@@ -9,6 +9,7 @@ module Decidim
 
       describe ".recommendations" do
         let!(:organization) { create(:organization) }
+
         context "when there's just one of each points" do
           let!(:participative_actions) { create_list(:participative_action, 5, organization: organization) }
 
@@ -25,7 +26,6 @@ module Decidim
           let!(:participative_action3) { create(:participative_action, points: 2, organization: organization) }
           let!(:participative_action4) { create(:participative_action, points: 2, organization: organization) }
           let!(:participative_action5) { create(:participative_action, points: 2, organization: organization) }
-
 
           it "returns 3 random participative actions ordered by points number" do
             expect(subject.recommendations.size).to eq(3)
