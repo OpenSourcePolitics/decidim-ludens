@@ -9,16 +9,34 @@ module Decidim
 
       describe ".recommendations" do
         let!(:organization) { create(:organization) }
-        let!(:participative_actions) { create_list(:participative_action, 5, organization: organization) }
+        context "when there's just one of each points" do
+          let!(:participative_actions) { create_list(:participative_action, 5, organization: organization) }
 
-        it "returns 3 participative actions ordered by points number" do
-          expect(subject.recommendations.size).to eq(3)
-          expect(subject.recommendations.first).to eq(participative_actions.first)
-          expect(subject.recommendations.last).to eq(participative_actions[2])
+          it "returns 3 random participative actions ordered by points number" do
+            expect(subject.recommendations.size).to eq(3)
+            expect(subject.recommendations.first).to eq(participative_actions.first)
+            expect(subject.recommendations.last).to eq(participative_actions[2])
+          end
+        end
+
+        context "when there are multiple ones" do
+          let!(:participative_action1) { create(:participative_action, points: 1, organization: organization) }
+          let!(:participative_action2) { create(:participative_action, points: 1, organization: organization) }
+          let!(:participative_action3) { create(:participative_action, points: 2, organization: organization) }
+          let!(:participative_action4) { create(:participative_action, points: 2, organization: organization) }
+          let!(:participative_action5) { create(:participative_action, points: 2, organization: organization) }
+
+
+          it "returns 3 random participative actions ordered by points number" do
+            expect(subject.recommendations.size).to eq(3)
+            expect(subject.recommendations.first.points).to eq(1)
+            expect(subject.recommendations[1].points).to eq(1)
+            expect(subject.recommendations.last.points).to eq(2)
+          end
         end
 
         context "when participative actions are completed" do
-          let!(:participative_actions) { create_list(:participative_action, 5, :completed, points: 0, organization: organization) }
+          let!(:participative_actions) { create_list(:participative_action, 5, :completed, points: 1, organization: organization) }
 
           it "is not included in the query" do
             expect(subject.recommendations.size).to eq(0)
