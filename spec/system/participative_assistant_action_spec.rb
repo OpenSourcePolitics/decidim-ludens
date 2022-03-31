@@ -54,7 +54,7 @@ describe "Participative assistant action", type: :system do
 
       click_link "Dashboard"
 
-      find("#level-holder").click()
+      find("#level-holder").click
 
       within ".recap_assistant" do
         expect(page).to have_content("Niveau 5")
@@ -68,7 +68,7 @@ describe "Participative assistant action", type: :system do
     end
   end
 
-  context "When you're one point away from raising level" do
+  context "when you're one point away from raising level" do
     let!(:participative_action2) { create(:participative_action, action: "unpublish", organization: organization, points: 2) }
     let!(:participative_action3) { create(:participative_action, action: "create", organization: organization, points: 3) }
     let!(:participative_action4) { create(:participative_action, action: "update", organization: organization, points: 4) }
@@ -104,18 +104,18 @@ describe "Participative assistant action", type: :system do
 
       click_link "Dashboard"
 
-      expect(page).to have_selector("#confetti-holder");
-      expect(page).to have_selector("#level-holder");
+      expect(page).to have_selector("#confetti-holder")
+      expect(page).to have_selector("#level-holder")
 
-      find("#level-holder").click()
+      find("#level-holder").click
 
-      expect(page).not_to have_selector("#confetti-holder");
-      expect(page).not_to have_selector("#level-holder");
+      expect(page).not_to have_selector("#confetti-holder")
+      expect(page).not_to have_selector("#level-holder")
 
       click_link "Dashboard"
 
-      expect(page).not_to have_selector("#confetti-holder");
-      expect(page).not_to have_selector("#level-holder");
+      expect(page).not_to have_selector("#confetti-holder")
+      expect(page).not_to have_selector("#level-holder")
     end
   end
 end
