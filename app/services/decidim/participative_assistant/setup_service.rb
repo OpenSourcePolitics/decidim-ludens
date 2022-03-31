@@ -24,7 +24,8 @@ module Decidim
           @organization.update!(assistant: {
                                   score: 0,
                                   flash: "",
-                                  last: -1
+                                  last: -1,
+                                  level_up: "unreached"
                                 })
         end
 

@@ -27,12 +27,29 @@ module Decidim
       def increase_score_by!(points)
         old_data = current_organization.assistant.dup
         flash_message = "Congratulations ! You just completed the action '#{participative_action.recommendation}' !"
-        new_data = old_data.merge({
-                                    score: @user.organization.increase_score(points),
-                                    flash: flash_message,
-                                    last: participative_action.id
-                                  })
+        if(has_reached_level(points))
+          new_data = old_data.merge({
+                                      score: @user.organization.increase_score(points),
+                                      flash: flash_message,
+                                      last: participative_action.id,
+                                      level_up: "reached"
+                                    })
+        else
+          new_data = old_data.merge({
+                                      score: @user.organization.increase_score(points),
+                                      flash: flash_message,
+                                      last: participative_action.id,
+                                    })
+        end
         current_organization.update!(assistant: new_data)
+      end
+
+      def has_reached_level(points)
+        result = false
+        @user.organization.step_scores.each do |step|
+          result = true if @user.organization.increase_score(points) >= step and @user.organization.assistant["score"] < step
+        end
+        result
       end
 
       def participative_action

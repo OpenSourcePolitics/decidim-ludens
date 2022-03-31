@@ -30,6 +30,7 @@ module Decidim
       helper Decidim::SanitizeHelper
 
       before_action :flash_points
+      before_action :level_up
 
       default_form_builder Decidim::Admin::FormBuilder
 
@@ -62,6 +63,16 @@ module Decidim
         flash_message = ""
         new_data = old_data.merge({
                                     flash: flash_message
+                                  })
+        current_organization.update!(assistant: new_data)
+      end
+
+      def level_up
+        return unless current_organization.assistant["level_up"] == "displayed"
+
+        old_data = current_organization.assistant.dup
+        new_data = old_data.merge({
+                                    level_up: "unreached"
                                   })
         current_organization.update!(assistant: new_data)
       end
