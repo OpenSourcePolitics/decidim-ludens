@@ -11,7 +11,6 @@ module Decidim
 
       validates :organization, presence: true
 
-
       def self.last_done_recommendation
         last = Decidim::Organization.first.assistant["last"]
         ParticipativeAction.find_by(id: last)
