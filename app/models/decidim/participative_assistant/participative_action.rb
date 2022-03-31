@@ -11,7 +11,6 @@ module Decidim
 
       validates :organization, presence: true
 
-      # scope :recommendations, -> { where(completed: [false, nil]).order(:points).shuffle[0,3]}
 
       def self.last_done_recommendation
         last = Decidim::Organization.first.assistant["last"]
