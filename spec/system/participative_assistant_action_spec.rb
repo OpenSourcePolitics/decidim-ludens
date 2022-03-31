@@ -54,6 +54,8 @@ describe "Participative assistant action", type: :system do
 
       click_link "Dashboard"
 
+      find("#level-holder").click()
+
       within ".recap_assistant" do
         expect(page).to have_content("Niveau 5")
         expect(page).to have_content("1/1")
@@ -63,6 +65,57 @@ describe "Participative assistant action", type: :system do
         expect(page).to have_content("1 pts")
         expect(page).to have_content(participative_action.recommendation)
       end
+    end
+  end
+
+  context "When you're one point away from raising level" do
+    let!(:participative_action2) { create(:participative_action, action: "unpublish", organization: organization, points: 2) }
+    let!(:participative_action3) { create(:participative_action, action: "create", organization: organization, points: 3) }
+    let!(:participative_action4) { create(:participative_action, action: "update", organization: organization, points: 4) }
+    let!(:participative_action5) { create(:participative_action, action: "destroy", organization: organization, points: 5) }
+
+    it "shows an animation when completing an action" do
+      within "nav" do
+        click_link "Assemblies"
+      end
+
+      expect(page).to have_content("Assemblies type")
+
+      click_link "New assembly"
+
+      expect(page).to have_content("General Information")
+
+      find("#assembly_title_en").send_keys("Title_new_action")
+      find("#assembly_subtitle_en").send_keys("Subitle")
+      find("#assembly_weight").send_keys("2")
+      find("#assembly_slug").send_keys("sdfghjk")
+      find("#assembly-short_description-tabs-short_description-panel-0 .ql-editor").send_keys("Short description")
+      find("#assembly-description-tabs-description-panel-0 .ql-editor").send_keys("Really long description")
+
+      click_button "Create"
+
+      expect(page).to have_content("Assembly created successfully")
+
+      click_link "Title_new_action"
+
+      click_link "Publish"
+
+      expect(page).to have_content("Congratulations ! You just completed the action '#{participative_action.recommendation}' !")
+
+      click_link "Dashboard"
+
+      expect(page).to have_selector("#confetti-holder");
+      expect(page).to have_selector("#level-holder");
+
+      find("#level-holder").click()
+
+      expect(page).not_to have_selector("#confetti-holder");
+      expect(page).not_to have_selector("#level-holder");
+
+      click_link "Dashboard"
+
+      expect(page).not_to have_selector("#confetti-holder");
+      expect(page).not_to have_selector("#level-holder");
     end
   end
 end

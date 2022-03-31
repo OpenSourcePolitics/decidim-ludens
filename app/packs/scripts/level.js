@@ -1,7 +1,7 @@
 import ConfettiGenerator from "confetti-js";
 
 document.addEventListener('DOMContentLoaded', event => {
-    if(document.querySelector("#level-up").value){  // == "reached"
+    if(document.querySelector("#level-up").value== "reached"){
         createCanvasOverlay("confetti-holder");
         var confettiSettings = {
             "target": "confetti-holder",
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', event => {
         let heightMessage1 = context.measureText(message1).actualBoundingBoxAscent + context.measureText(message1).actualBoundingBoxDescent;
         context.font = "bold 1.4vw Arial";
         context.fillStyle = "white";
-        let message2 = "Level 2";
+        let message2 = "Level 3";
         context.fillText(message2, myCanvas.width/2-context.measureText(message2).width/2, myCanvas.height*7/12 + heightMessage1*1.5);
         var image = document.querySelector(".avatar");
         context.drawImage(image,myCanvas.width*11/24,myCanvas.height*9/24, myCanvas.width/12,myCanvas.width/12);

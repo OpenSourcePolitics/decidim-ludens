@@ -39,7 +39,8 @@ module Decidim
             expect(organization.assistant).to eq(JSON.parse(JSON.generate({
                                                                             score: 1,
                                                                             flash: "Congratulations ! You just completed the action \'My recommendation\' !",
-                                                                            last: ParticipativeAction.find_by(action: action, resource: resource.class.to_s).id
+                                                                            last: ParticipativeAction.find_by(action: action, resource: resource.class.to_s).id,
+                                                                            level_up: "reached"
                                                                           })))
           end
 
