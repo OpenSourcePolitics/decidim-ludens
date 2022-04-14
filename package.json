@@ -6,7 +6,7 @@
     "@decidim/core": "^0.25.2",
     "@decidim/elections": "^0.25.2",
     "@decidim/webpacker": "^0.25.2",
-    "confetti-js": "~0.0.18"
+    "confetti-js": "^0.0.18"
   },
   "version": "0.1.0",
   "devDependencies": {
