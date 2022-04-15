@@ -4,7 +4,6 @@ module Decidim
   module ParticipativeAssistant
     # This is the engine that runs on the public interface of `ParticipativeAssistant`.
     class AdminEngine < ::Rails::Engine
-
       isolate_namespace Decidim::ParticipativeAssistant::Admin
 
       paths["db/migrate"] = nil
@@ -31,16 +30,15 @@ module Decidim
         Decidim.menu :admin_menu do |menu|
           menu.add_item :participative_assistant,
                         t("decidim.admin.assistant.title"),
-                        "/admin/participative_assistant", #TODO remplacer par le nom de la route
+                        "/admin/participative_assistant", # TODO: remplacer par le nom de la route
                         icon_name: "dashboard",
                         position: 11
-
         end
       end
 
-      def load_seed
-        nil
-      end
+      # def load_seed
+      #   nil
+      # end
     end
   end
 end

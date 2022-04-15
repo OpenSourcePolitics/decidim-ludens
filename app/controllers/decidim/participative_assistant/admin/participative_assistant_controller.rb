@@ -1,24 +1,40 @@
+# frozen_string_literal: true
+
 module Decidim
   module ParticipativeAssistant
     module Admin
       class ParticipativeAssistantController < ParticipativeAssistant::Admin::ApplicationController
-        def show;
-          @recoEdition=ParticipativeAction.where(category:"Edition",completed:FALSE).limit(5)
-          @recoEditionTotal=ParticipativeAction.where(category:"Edition",completed:FALSE)
-          @recoEditionDone=ParticipativeAction.where(category:"Edition",completed:TRUE).limit(5)
-          @recoEditionDoneTotal=ParticipativeAction.where(category:"Edition",completed:TRUE)
-          @recoConfig=ParticipativeAction.where(category:"Configuration",completed:FALSE).limit(5)
-          @recoConfigTotal=ParticipativeAction.where(category:"Configuration",completed:FALSE)
-          @recoConfigDone=ParticipativeAction.where(category:"Configuration",completed:TRUE).limit(5)
-          @recoConfigDoneTotal=ParticipativeAction.where(category:"Configuration",completed:TRUE)
-          @recoCollab=ParticipativeAction.where(category:"Collaboration",completed:FALSE).limit(5)
-          @recoCollabTotal=ParticipativeAction.where(category:"Collaboration",completed:FALSE)
-          @recoCollabDone=ParticipativeAction.where(category:"Collaboration",completed:TRUE).limit(5)
-          @recoCollabDoneTotal=ParticipativeAction.where(category:"Collaboration",completed:TRUE)
-          @recoInteraction=ParticipativeAction.where(category:"Interaction",completed:FALSE).limit(5)
-          @recoInteractionTotal=ParticipativeAction.where(category:"Interaction",completed:FALSE)
-          @recoInteractionDone=ParticipativeAction.where(category:"Interaction",completed:TRUE).limit(5)
-          @recoInteractionDoneTotal=ParticipativeAction.where(category:"Interaction",completed:TRUE)
+        helper_method :list_of_participative_actions
+
+        def show; end
+
+        # Returns a list of participative actions
+        #
+        # {
+        #   action_name: {
+        #     completed: [Array of completed actions],
+        #     uncompleted: [Array of uncompleted actions]
+        #   },
+        #   another_action_name: {
+        #     completed: [Array of completed actions],
+        #     uncompleted: [Array of uncompleted actions]
+        #   }
+        # }
+        #
+        def list_of_participative_actions
+          participative_actions.group_by(&:category).each_with_object({}) do |actions_arr, hash|
+            hash[actions_arr[0].downcase.to_sym] = {
+              completed: actions_arr[1].select(&:completed?),
+              uncompleted: actions_arr[1].reject(&:completed?)
+            }
+          end
+        end
+
+        private
+
+        def participative_actions
+          # TODO: Add a scope for organization
+          @participative_actions ||= ParticipativeAction.all
         end
       end
     end

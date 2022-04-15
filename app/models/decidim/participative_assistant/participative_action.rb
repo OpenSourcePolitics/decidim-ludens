@@ -1,27 +1,26 @@
+# frozen_string_literal: true
+
 module Decidim
   module ParticipativeAssistant
     class ParticipativeAction < ApplicationRecord
-      self.table_name = 'decidim_participative_actions'
+      self.table_name = "decidim_participative_actions"
 
-      scope :recommendations, ->{ParticipativeAction.where(completed:false).order(:points).limit(3)}
+      belongs_to :organization,
+                 foreign_key: "decidim_organization_id",
+                 class_name: "Decidim::Organization"
 
-      def self.lastDoneRecommendations
-        last = Decidim::Organization.first.assistant['last']
+      validates :organization, presence: true
+
+      def self.last_done_recommendation
+        last = Decidim::Organization.first.assistant["last"]
         ParticipativeAction.find_by(id: last)
       end
 
-      def self.palierScores
-        paliers = []
-        (1..5).each do |i|
-          if i == 1
-            paliers.append(ParticipativeAction.where(points: i).size)
-          else
-            paliers.append(ParticipativeAction.where(points: i).size*i + paliers[i - 2])
-          end
-        end
-        return paliers
+      def self.recommendations
+        actions = ParticipativeAction.where(completed: [false, nil]).order(:points).group_by(&:points)
+        actions = actions.each { |key, value| actions[key] = value.shuffle }
+        actions.values.flatten[0, 3]
       end
-
     end
   end
 end

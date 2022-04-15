@@ -1,0 +1,350 @@
+actions:
+  Edition:
+    Decidim::Assembly:
+      publish:
+        points: 1
+        recommendation: "Publish an assembly"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/94-lespace-assemblees"
+      unpublish:
+        points: 1
+        recommendation: "Unpublish an assembly"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/94-lespace-assemblees"
+      update:
+        points: 1
+        recommendation: "Update an assembly"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/94-lespace-assemblees"
+      create:
+        points: 2
+        recommendation: "Create an assembly"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/94-lespace-assemblees"
+    Decidim::Accountability::Result:
+      create:
+        points: 3
+        recommendation: "Create an accountability result"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/72-suivi"
+    Decidim::Attachment:
+      create:
+        points: 2
+        recommendation: "Create an attachment"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/95-parametrer-son-espace-participatif"
+    Decidim::Blogs::Post:
+      create:
+        points: 4
+        recommendation: "Create a blog post"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/95-parametrer-son-espace-participatif"
+    Decidim::Budgets::Project:
+      create:
+        points: 2
+        recommendation: "Create a budget project"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/233-creer-un-projet-de-budget"
+      update:
+        points: 2
+        recommendation: "Update a budget project"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/233-creer-un-projet-de-budget"
+    Decidim::Category:
+      create:
+        points: 1
+        recommendation: "Create a category"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/95-parametrer-son-espace-participatif"
+    Decidim::Comments::Comment:
+      delete:
+        points: 2
+        recommendation: "Delete a comment"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/181-parametrage-globale-dune-proposition"
+      update:
+        points: 3
+        recommendation: "Update a comment"
+        documentation: "#"
+    Decidim::Component:
+      create:
+        points: 1
+        recommendation: "Create a component"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/96-introduction-fonctionnalites"
+      publish:
+        points: 1
+        recommendation: "Publish a component"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/96-introduction-fonctionnalites"
+      unpublish:
+        points: 1
+        recommendation: "Unpublish a component"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/96-introduction-fonctionnalites"
+    Decidim::Meetings::Agenda:
+      update:
+        points: 4
+        recommendation: "Update a meeting agenda"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/178-ordre-du-jour"
+    Decidim::Meetings::Meeting:
+      create:
+        points: 1
+        recommendation: "Create a meeting"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/188-creer-une-rencontre"
+      export_registrations:
+        points: 3
+        recommendation: "Export meeting registrations"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/188-creer-une-rencontre"
+    Decidim::ParticipatoryProcess:
+      create:
+        points: 1
+        recommendation: "Create a participatory process"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/93-lespace-concertation"
+      publish:
+        points: 1
+        recommendation: "Publish a participatory process"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/93-lespace-concertation"
+    Decidim::ParticipatoryProcessStep:
+      update:
+        points: 1
+        recommendation: "Update the steps of a participatory process"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/93-lespace-concertation"
+    Decidim::Proposals::Proposal:
+      update:
+        points: 2
+        recommendation: "Update a proposal"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/182-gerer-les-propositions"
+      publish_answer:
+        points: 3
+        recommendation: "Publish an answer to a proposal"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/182-gerer-les-propositions"
+    Decidim::Scope:
+      update:
+        points: 3
+        recommendation: "Update a scope"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/79-determiner-les-secteurs-ex-quartiers"
+    Decidim::Sortitions::Sortition:
+      update:
+        points: 5
+        recommendation: "Update a sortition"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/101-tirage-au-sort"
+    Decidim::StaticPage:
+      create:
+        points: 1
+        recommendation: "Create a page"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/81-creer-vos-pages-dinformation"
+      update:
+        points: 3
+        recommendation: "Update a page"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/81-creer-vos-pages-dinformation"
+    Decidim::StaticPageTopic:
+      create:
+        points: 2
+        recommendation: "Create a page topic"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/81-creer-vos-pages-dinformation"
+      update:
+        points: 2
+        recommendation: "Update a page topic"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/81-creer-vos-pages-dinformation"
+  Interaction:
+    Decidim::AssemblyMember:
+      create:
+        points: 3
+        recommendation: "Create the assembly member role"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/94-lespace-assemblees"
+      update:
+        points: 2
+        recommendation: "Update a user role to assembly member"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/94-lespace-assemblees"
+    Decidim::Comments::Comment:
+      create:
+        points: 2
+        recommendation: "Create a comment"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/181-parametrage-globale-dune-proposition"
+    Decidim::Debates::Debate:
+      create:
+        points: 3
+        recommendation: "Create a debate"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/100-debats"
+      update:
+        points: 4
+        recommendation: "Update a debate"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/100-debats"
+    Decidim::Newsletter:
+      create:
+        points: 2
+        recommendation: "Create a newsletter"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/32-envoyer-une-newsletter"
+      update:
+        points: 3
+        recommendation: "Update a newsletter"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/32-envoyer-une-newsletter"
+      deliver:
+        points: 4
+        recommendation: "Send a newsletter"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/32-envoyer-une-newsletter"
+    Decidim::Proposals::CollaborativeDraft:
+      create:
+        points: 3
+        recommendation: "Create a collaborative draft"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/184-les-brouillons-collaboratifs"
+      publish:
+        points: 4
+        recommendation: "Publish a collaborative draft"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/184-les-brouillons-collaboratifs"
+    Decidim::Proposals::Proposal:
+      answer:
+        points: 1
+        recommendation: "Answer a proposal"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/183-evaluer-une-proposition"
+    Decidim::Surveys::Survey:
+      create:
+        points: 3
+        recommendation: "Create a survey"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/97-enquete"
+    Decidim::User:
+      officialize:
+        points: 2
+        recommendation: "Officialize an user"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/61-valider-un-utilisateur"
+      unofficialize:
+        points: 3
+        recommendation: "Unofficialize an user"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/61-valider-un-utilisateur"
+      transfer:
+        points: 5
+        recommendation: "Transfer an user"
+        documentation: "#"
+  Collaboration:
+    Decidim::AssemblyUserRole:
+      create:
+        points: 2
+        recommendation: "Create an assembly role for an user"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/95-parametrer-son-espace-participatif"
+      delete:
+        points: 3
+        recommendation: "Delete an assembly role for an user"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/95-parametrer-son-espace-participatif"
+    Decidim::ParticipatoryProcessUserRole:
+      create:
+        points: 2
+        recommendation: "Create a participatory space role for an user"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/91-les-roles-utilisateurs-au-niveau-des-espaces"
+    Decidim::ParticipatorySpacePrivateUser:
+      create:
+        points: 1
+        recommendation: "Create a private user of a participatory process"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/94-lespace-assemblees"
+    Decidim::Proposals::ProposalNote:
+      create:
+        points: 3
+        recommendation: "Create a proposal note"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/182-gerer-les-propositions"
+    Decidim::Proposals::ValuationAssignment:
+      create:
+        points: 5
+        recommendation: "Create a valuation assignment of a proposal"
+        documentation: "#"
+    Decidim::ShareToken:
+      delete:
+        points: 5
+        recommendation: "Delete a share token"
+        documentation: "#"
+    Decidim::User:
+      invite:
+        points: 1
+        recommendation: "Invite an user to become administrator"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/56-inviter-un-administrateur"
+      remove_from_admin:
+        points: 2
+        recommendation: "Remove an user from administration"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/56-inviter-un-administrateur"
+      show_email:
+        points: 3
+        recommendation: "Show the email of an user"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/254-contacter-un-utilisateur"
+      promote:
+        points: 4
+        recommendation: "Promote an user"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/88-les-autorisations-et-les-verifications"
+      report:
+        points: 4
+        recommendation: "Report an user"
+        documentation: "#"
+      unreport:
+        points: 5
+        recommendation: "Unreport an user"
+        documentation: "#"
+    Decidim::UserGroup:
+      reject:
+        points: 4
+        recommendation: "Reject an user group"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/59-valider-un-groupe-dutilisateurs"
+      verify:
+        points: 4
+        recommendation: "Verify an user group"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/59-valider-un-groupe-dutilisateurs"
+  Configuration:
+    Decidim::Area:
+      create:
+        points: 2
+        recommendation: "Create an area"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/222-determiner-les-perimetres-dassemblee"
+      update:
+        points: 3
+        recommendation: "Update an area"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/222-determiner-les-perimetres-dassemblee"
+    Decidim::Assemblies::AssemblyType:
+      create:
+        points: 2
+        recommendation: "Create an assembly type"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/94-lespace-assemblees"
+      update:
+        points: 4
+        recommendation: "Update an assembly type"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/94-lespace-assemblees"
+    Decidim::Budgets::Budget:
+      create:
+        points: 1
+        recommendation: "Create a budget"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/234-parametrer-plusieurs-budgets-dans-un-meme-module"
+      update:
+        points: 2
+        recommendation: "Update a budget"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/234-parametrer-plusieurs-budgets-dans-un-meme-module"
+    Decidim::Debates::Debate:
+      close:
+        points: 3
+        recommendation: "Close a debate"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/100-debats"
+    Decidim::Organization:
+      update:
+        points: 1
+        recommendation: "Update an organization"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/77-renseigner-les-parametres-de-demarrage"
+    Decidim::ParticipatoryProcessStep:
+      create:
+        points: 1
+        recommendation: "Create steps for a participatory process"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/93-lespace-concertation"
+      activate:
+        points: 2
+        recommendation: "Activate steps for a participatory process"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/93-lespace-concertation"
+    Decidim::Scope:
+      create:
+        points: 2
+        recommendation: "Create a scope"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/79-determiner-les-secteurs-ex-quartiers"
+    Decidim::Sortitions::Sortition:
+      create:
+        points: 5
+        recommendation: "Create a sortition"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/101-tirage-au-sort"
+    Decidim::Templates::Template:
+      create:
+        points: 4
+        recommendation: "Create a template"
+        documentation: "#"
+      update:
+        points: 5
+        recommendation: "Update a template"
+        documentation: "#"
+    Decidim::User:
+      block:
+        points: 2
+        recommendation: "Block an user"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/258-bloquer-un-utilisateur"
+      unblock:
+        points: 3
+        recommendation: "Unblock an user"
+        documentation: "https://docs-decidim.opensourcepolitics.eu/article/258-bloquer-un-utilisateur"
+
+
