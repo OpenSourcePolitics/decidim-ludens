@@ -54,6 +54,8 @@ jobs:
             npm-
       - run: bundle exec rake test_app
         name: Create test app
+      - run: bundle exec rake decidim_participative_assistant:initialize
+        name: Initialize the assistant
       - run: mkdir -p ./spec/decidim_dummy_app/tmp/screenshots
         name: Create the screenshots folder
       - uses: nanasess/setup-chromedriver@v1.0.1
