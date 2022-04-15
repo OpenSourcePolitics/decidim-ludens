@@ -2,20 +2,31 @@ fr:
   decidim:
     admin:
       assistant:
-        seeMore: Voir tout
+        explication:
+          content: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Fusce orci quam, fringilla nec sollicitudin vitae, dapibus nec ligula.Vivamus mattis vulputate massa in pulvinar.Aenean viverra maximus sapien.Duis dictum, orci eu feugiat egestas, augue sem efficitur leo, nec consectetur velit sapien in risus.Fusce id porttitor nibh, quis interdum felis.Suspendisse pellentesque vestibulum risus in dapibus. Fusce quis facilisis mi.Ut quis lectus lorem. In id odio non nibh dapibus venenatis. Suspendisse potenti.
+          title: Comment ça marche ?
+        intro: À votre tour !
         knowMore: Voir plus
         level: Niveau
+        level1: Je découvre la plateforme
+        level2: J'ai correctement configuré la plateforme
+        level3: J'ai lancé ma première consultation
+        level4: Je sais comment interagir avec mes utilisateurs
+        level5: La plateforme est à moi !
         levelTitle: Niveaux disponibles
-        level1: I'm discovering the platform
-        level2: I've correctly configured the platform
-        level3: I've launched my first consultation
-        level4: I know how to interact with my users
-        level5: The platform is mine !
-        explication:
-          title: How does it works ?
-          content: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Fusce orci quam, fringilla nec sollicitudin vitae, dapibus nec ligula.Vivamus mattis vulputate massa in pulvinar.Aenean viverra maximus sapien.Duis dictum, orci eu feugiat egestas, augue sem efficitur leo, nec consectetur velit sapien in risus.Fusce id porttitor nibh, quis interdum felis.Suspendisse pellentesque vestibulum risus in dapibus. Fusce quis facilisis mi.Ut quis lectus lorem. In id odio non nibh dapibus venenatis. Suspendisse potenti.
-        title: Participative Assistant
-        intro: Your turn !
+        seeMore: Voir tout
+        title: Assistant à la participation
+      participative_assistant:
+        dashboard:
+          title: Participative assistant dashboard
     components:
       participative_assistant:
         name: ParticipativeAssistant
+    participative_assistant:
+      admin:
+        participative_assistant:
+          show:
+            collaboration: Collaboration
+            configuration: Configuration
+            edition: Edition
+            interaction: Interaction
