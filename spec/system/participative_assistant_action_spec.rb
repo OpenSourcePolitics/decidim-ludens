@@ -16,7 +16,7 @@ describe "Participative assistant action", type: :system do
   context "when there is one participative action" do
     it "can be completed" do
       within ".recap_assistant" do
-        expect(page).to have_content("Niveau 1")
+        expect(page).to have_content("Level 1")
         expect(page).to have_content("0/1")
       end
 
@@ -57,7 +57,7 @@ describe "Participative assistant action", type: :system do
       find("#level-holder").click
 
       within ".recap_assistant" do
-        expect(page).to have_content("Niveau 5")
+        expect(page).to have_content("Level 5")
         expect(page).to have_content("1/1")
       end
 
