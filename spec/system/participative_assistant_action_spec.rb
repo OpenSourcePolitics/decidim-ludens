@@ -21,7 +21,7 @@ describe "Participative assistant action", type: :system do
       end
 
       within ".assistant_recommendations" do
-        expect(page).to have_content("1 pts")
+        expect(page).to have_content("1 points")
         expect(page).to have_content(participative_action.recommendation)
       end
 
