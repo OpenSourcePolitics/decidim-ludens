@@ -3,7 +3,7 @@
 require "spec_helper"
 
 module Decidim
-  module ParticipativeAssistant
+  module Ludens
     describe ManagePoints do
       subject { described_class }
 
