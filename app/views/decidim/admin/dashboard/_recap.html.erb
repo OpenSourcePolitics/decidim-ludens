@@ -12,16 +12,16 @@
       <div>
         <h3 class="letter_spaced"> <b> <%= t("decidim.admin.assistant.recommendations") %> </b> </h3>
         <ul class="list-recommendations-uncompleted">
-          <% if Decidim::ParticipativeAssistant::ParticipativeAction.last_done_recommendation %>
-            <li class="recommendation no-bullet"> <a target="_blank" href="<%= Decidim::ParticipativeAssistant::ParticipativeAction.last_done_recommendation.documentation %>"><%= Decidim::ParticipativeAssistant::ParticipativeAction.last_done_recommendation.recommendation %></a> <span class="recommendation-points"> <%= Decidim::ParticipativeAssistant::ParticipativeAction.last_done_recommendation.points %> <%= t("decidim.admin.assistant.points") %></span></li>
+          <% if Decidim::Ludens::ParticipativeAction.last_done_recommendation %>
+            <li class="recommendation no-bullet"> <a target="_blank" href="<%= Decidim::Ludens::ParticipativeAction.last_done_recommendation.documentation %>"><%= Decidim::Ludens::ParticipativeAction.last_done_recommendation.recommendation %></a> <span class="recommendation-points"> <%= Decidim::Ludens::ParticipativeAction.last_done_recommendation.points %> <%= t("decidim.admin.assistant.points") %></span></li>
           <% end %>
-          <% Decidim::ParticipativeAssistant::ParticipativeAction.recommendations.each do |recommendation| %>
+          <% Decidim::Ludens::ParticipativeAction.recommendations.each do |recommendation| %>
             <li class="recommendation bulleted"> <a target="_blank" href="<%= recommendation.documentation %>"><%= recommendation.recommendation %></a><span class="recommendation-points"> <%= recommendation.points %> <%= t("decidim.admin.assistant.points") %></span></li>
           <% end %>
         </ul>
       </div>
       <% if withKnowMore %>
-        <a href="/admin/participative_assistant"> <%= t "decidim.admin.assistant.knowMore" %></a>
+        <a href="/admin/ludens"> <%= t "decidim.admin.assistant.knowMore" %></a>
       <% end %>
     </div>
   </div>

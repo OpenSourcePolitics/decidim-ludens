@@ -19,15 +19,15 @@ en:
         recommendations: Recommendations
         seeMore: See all
         title: Participative Assistant
-      participative_assistant:
+      ludens:
         dashboard:
           title: Participative assistant dashboard
     components:
-      participative_assistant:
+      ludens:
         name: ParticipativeAssistant
-    participative_assistant:
+    ludens:
       admin:
-        participative_assistant:
+        ludens:
           show:
             collaboration: Collaboration
             configuration: Configuration

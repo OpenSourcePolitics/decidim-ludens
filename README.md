@@ -1,4 +1,4 @@
-# Decidim::ParticipativeAssistant
+# Decidim::Ludens
 
 Participative assistant for administrators.
 
@@ -12,7 +12,7 @@ It gives them a list of to-dos, rewarding them with points and levels when they 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "decidim-participative_assistant"
+gem "decidim-ludens"
 ```
 
 And then execute:
@@ -24,17 +24,17 @@ bundle
 if migrations are not installed by themselves, execute
 
 ```bash
-bundle exec rake decidim_participative_assistant:install:migrations
+bundle exec rake decidim_ludens:install:migrations
 ```
  
 Initialize the module by executing
 ```bash
-bundle exec rake decidim_participative_assistant:initialize
+bundle exec rake decidim_ludens:initialize
 ```
 
 ## Contributing
 
-See [Decidim](https://github.com/decidim/decidim).
+See [Decidim](https://github.com/OpenSourcePolitics/decidim-ludens).
 
 ## License
 

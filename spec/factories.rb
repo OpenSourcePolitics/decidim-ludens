@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "decidim/participative_assistant/test/factories"
+require "decidim/ludens/test/factories"
 FactoryBot.define do
   sequence(:points) { |n| n }
 
-  factory :participative_action, class: "Decidim::ParticipativeAssistant::ParticipativeAction" do
+  factory :participative_action, class: "Decidim::Ludens::ParticipativeAction" do
     completed { false }
     points { generate(:points) }
     resource { "Decidim::Assembly" }

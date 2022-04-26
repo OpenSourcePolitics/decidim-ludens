@@ -4,9 +4,9 @@ require "decidim/dev/common_rake"
 
 def install_module(path)
   Dir.chdir(path) do
-    system("bundle exec rake decidim_participative_assistant:install:migrations")
+    system("bundle exec rake decidim_ludens:install:migrations")
     system("bundle exec rake db:migrate")
-    system("bundle exec rake decidim_participative_assistant:initialize")
+    system("bundle exec rake decidim_ludens:initialize")
   end
 end
 
