@@ -4,13 +4,7 @@ en:
     admin:
       assistant:
         explication:
-          content: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Fusce orci
-            quam, fringilla nec sollicitudin vitae, dapibus nec ligula.Vivamus mattis
-            vulputate massa in pulvinar.Aenean viverra maximus sapien.Duis dictum,
-            orci eu feugiat egestas, augue sem efficitur leo, nec consectetur velit
-            sapien in risus.Fusce id porttitor nibh, quis interdum felis.Suspendisse
-            pellentesque vestibulum risus in dapibus. Fusce quis facilisis mi.Ut quis
-            lectus lorem. In id odio non nibh dapibus venenatis. Suspendisse potenti.
+          content: This assistant is here to guide you through the administration of a Decidim instance. To improve your score and level up, you have to complete actions, that make you earn points. On this page, you can see every action you should complete to reach the highest level. The ones recommended are the easiests ones, but you can start with each and every one of these.
           title: How does it works ?
         intro: Your turn !
         knowMore: View more
@@ -21,6 +15,8 @@ en:
         level4: I know how to interact with my users
         level5: The platform is mine !
         levelTitle: Levels available
+        points: points
+        recommendations: Recommendations
         seeMore: See all
         title: Participative Assistant
       participative_assistant:

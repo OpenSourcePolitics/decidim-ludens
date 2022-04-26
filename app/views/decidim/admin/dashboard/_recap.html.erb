@@ -10,13 +10,13 @@
         ) %>
     <div class="assistant_recommendations">
       <div>
-        <h3 class="letter_spaced"> <b>Recommendations</b> </h3>
+        <h3 class="letter_spaced"> <b> <%= t("decidim.admin.assistant.recommendations") %> </b> </h3>
         <ul class="list-recommendations-uncompleted">
           <% if Decidim::ParticipativeAssistant::ParticipativeAction.last_done_recommendation %>
-            <li class="recommendation no-bullet"> <a target="_blank" href="<%= Decidim::ParticipativeAssistant::ParticipativeAction.last_done_recommendation.documentation %>"><%= Decidim::ParticipativeAssistant::ParticipativeAction.last_done_recommendation.recommendation %></a> <span class="recommendation-points"> <%= Decidim::ParticipativeAssistant::ParticipativeAction.last_done_recommendation.points %> pts</span></li>
+            <li class="recommendation no-bullet"> <a target="_blank" href="<%= Decidim::ParticipativeAssistant::ParticipativeAction.last_done_recommendation.documentation %>"><%= Decidim::ParticipativeAssistant::ParticipativeAction.last_done_recommendation.recommendation %></a> <span class="recommendation-points"> <%= Decidim::ParticipativeAssistant::ParticipativeAction.last_done_recommendation.points %> <%= t("decidim.admin.assistant.points") %></span></li>
           <% end %>
           <% Decidim::ParticipativeAssistant::ParticipativeAction.recommendations.each do |recommendation| %>
-            <li class="recommendation bulleted"> <a target="_blank" href="<%= recommendation.documentation %>"><%= recommendation.recommendation %></a><span class="recommendation-points"> <%= recommendation.points %> pts</span></li>
+            <li class="recommendation bulleted"> <a target="_blank" href="<%= recommendation.documentation %>"><%= recommendation.recommendation %></a><span class="recommendation-points"> <%= recommendation.points %> <%= t("decidim.admin.assistant.points") %></span></li>
           <% end %>
         </ul>
       </div>
