@@ -10,7 +10,7 @@ FactoryBot.define do
     resource { "Decidim::Assembly" }
     action { "publish" }
     category { "Edition" }
-    recommendation { Faker::Hipster.sentence(word_count: 3, random_words_to_add: 0) }
+    recommendation { assembly.publish }
     organization { nil }
 
     trait :completed do
