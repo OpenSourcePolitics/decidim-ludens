@@ -22,7 +22,7 @@ describe "Ludens action", type: :system do
 
       within ".assistant_recommendations" do
         expect(page).to have_content("1 points")
-        expect(page).to have_content(participative_action.recommendation)
+        expect(page).to have_content(participative_action.translated_recommendation)
       end
 
       within "nav" do
@@ -50,7 +50,7 @@ describe "Ludens action", type: :system do
 
       click_link "Publish"
 
-      expect(page).to have_content("Congratulations ! You just completed the action '#{participative_action.recommendation}' !")
+      expect(page).to have_content("Congratulations ! You just completed the action '#{participative_action.translated_recommendation}' !")
 
       click_link "Dashboard"
 
@@ -63,7 +63,7 @@ describe "Ludens action", type: :system do
 
       within ".assistant_recommendations .no-bullet" do
         expect(page).to have_content("1 points")
-        expect(page).to have_content(participative_action.recommendation)
+        expect(page).to have_content(participative_action.translated_recommendation)
       end
     end
   end
@@ -100,7 +100,7 @@ describe "Ludens action", type: :system do
 
       click_link "Publish"
 
-      expect(page).to have_content("Congratulations ! You just completed the action '#{participative_action.recommendation}' !")
+      expect(page).to have_content("Congratulations ! You just completed the action '#{participative_action.translated_recommendation}' !")
 
       click_link "Dashboard"
 

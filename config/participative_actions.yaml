@@ -66,7 +66,7 @@ actions:
         documentation: "https://docs-decidim.opensourcepolitics.eu/article/96-introduction-fonctionnalites"
       unpublish:
         points: 1
-        recommendation: "component.recommendation"
+        recommendation: "component.unpublish"
         documentation: "https://docs-decidim.opensourcepolitics.eu/article/96-introduction-fonctionnalites"
     Decidim::Meetings::Agenda:
       update:

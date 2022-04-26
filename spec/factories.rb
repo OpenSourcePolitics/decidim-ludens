@@ -10,7 +10,7 @@ FactoryBot.define do
     resource { "Decidim::Assembly" }
     action { "publish" }
     category { "Edition" }
-    recommendation { assembly.publish }
+    recommendation { "assembly.publish" }
     organization { nil }
 
     trait :completed do
