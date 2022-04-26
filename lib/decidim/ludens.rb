@@ -6,7 +6,7 @@ require "decidim/ludens/admin_engine"
 require "decidim/ludens/component"
 
 module Decidim
-  # This namespace holds the logic of the `ParticipativeAssistant` component. This component
+  # This namespace holds the logic of the `Ludens` component. This component
   # allows users to create ludens in a participatory space.
   module Ludens
   end

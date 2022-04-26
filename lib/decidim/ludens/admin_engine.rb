@@ -2,7 +2,7 @@
 
 module Decidim
   module Ludens
-    # This is the engine that runs on the public interface of `ParticipativeAssistant`.
+    # This is the engine that runs on the public interface of `Ludens`.
     class AdminEngine < ::Rails::Engine
       isolate_namespace Decidim::Ludens::Admin
 

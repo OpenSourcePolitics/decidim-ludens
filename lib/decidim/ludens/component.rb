@@ -26,7 +26,7 @@ Decidim.register_component(:ludens) do |component|
 
   # component.register_resource(:some_resource) do |resource|
   #   # Register a optional resource that can be references from other resources.
-  #   resource.model_class_name = "Decidim::ParticipativeAssistant::SomeResource"
+  #   resource.model_class_name = "Decidim::Ludens::SomeResource"
   #   resource.template = "decidim/ludens/some_resources/linked_some_resources"
   # end
 
