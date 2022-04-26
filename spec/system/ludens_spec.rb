@@ -28,7 +28,7 @@ describe "Ludens", type: :system do
 
     it "displays level 1" do
       within ".assistant_container" do
-        expect(page).to have_content("Niveau 5")
+        expect(page).to have_content("Level 5")
         expect(page).to have_content("0/0")
       end
     end
