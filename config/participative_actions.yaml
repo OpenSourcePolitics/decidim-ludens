@@ -200,7 +200,7 @@ actions:
         documentation: "https://docs-decidim.opensourcepolitics.eu/article/61-valider-un-utilisateur"
       transfer:
         points: 5
-        recommendation: "Tuser.transfer"
+        recommendation: "user.transfer"
         documentation: "#"
   Collaboration:
     Decidim::AssemblyUserRole:
@@ -240,7 +240,7 @@ actions:
     Decidim::User:
       invite:
         points: 1
-        recommendation: "user.inviter"
+        recommendation: "user.invite"
         documentation: "https://docs-decidim.opensourcepolitics.eu/article/56-inviter-un-administrateur"
       remove_from_admin:
         points: 2
