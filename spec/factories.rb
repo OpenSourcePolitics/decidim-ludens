@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require "decidim/participative_assistant/test/factories"
+require "decidim/ludens/test/factories"
 FactoryBot.define do
   sequence(:points) { |n| n }
 
-  factory :participative_action, class: "Decidim::ParticipativeAssistant::ParticipativeAction" do
+  factory :participative_action, class: "Decidim::Ludens::ParticipativeAction" do
     completed { false }
     points { generate(:points) }
     resource { "Decidim::Assembly" }
     action { "publish" }
     category { "Edition" }
-    recommendation { Faker::Hipster.sentence(word_count: 3, random_words_to_add: 0) }
+    recommendation { "assembly.publish" }
     organization { nil }
 
     trait :completed do

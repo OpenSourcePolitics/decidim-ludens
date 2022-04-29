@@ -3,7 +3,7 @@
 require "spec_helper"
 
 module Decidim
-  module ParticipativeAssistant
+  module Ludens
     describe ManagePoints do
       subject { described_class }
 
@@ -29,16 +29,18 @@ module Decidim
             ParticipativeAction.find_or_create_by!(action: action,
                                                    resource: resource.class.to_s,
                                                    completed: false,
-                                                   recommendation: "My recommendation",
+                                                   recommendation: "publish.componentTest",
                                                    points: 1,
                                                    organization: organization)
+            allow(I18n).to receive(:t).with(anything).and_return("Thanks for joining !")
+            allow(I18n).to receive(:t).with("decidim.ludens.actions.publish.componentTest").and_return("okay")
           end
 
           it "updates organization" do
             subject_run
             expect(organization.assistant).to eq(JSON.parse(JSON.generate({
                                                                             score: 1,
-                                                                            flash: "Congratulations ! You just completed the action \'My recommendation\' !",
+                                                                            flash: "Congratulations ! You just completed the action \'okay\' !",
                                                                             last: ParticipativeAction.find_by(action: action, resource: resource.class.to_s).id,
                                                                             level_up: "reached"
                                                                           })))

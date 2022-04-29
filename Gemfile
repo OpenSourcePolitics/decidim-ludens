@@ -5,7 +5,7 @@ source "https://rubygems.org"
 ruby RUBY_VERSION
 
 gem "decidim", "0.25.2"
-gem "decidim-participative_assistant", path: "."
+gem "decidim-ludens", path: "."
 
 gem "bootsnap", "~> 1.4"
 gem "puma", ">= 4.3"
