@@ -22,11 +22,6 @@ actions:
         points: 3
         recommendation: "result.create"
         documentation: "https://docs-decidim.opensourcepolitics.eu/article/72-suivi"
-    Decidim::Attachment:
-      create:
-        points: 2
-        recommendation: "attachment.create"
-        documentation: "https://docs-decidim.opensourcepolitics.eu/article/95-parametrer-son-espace-participatif"
     Decidim::Blogs::Post:
       create:
         points: 4
@@ -41,11 +36,6 @@ actions:
         points: 2
         recommendation: "project.update"
         documentation: "https://docs-decidim.opensourcepolitics.eu/article/233-creer-un-projet-de-budget"
-    Decidim::Category:
-      create:
-        points: 1
-        recommendation: "category.create"
-        documentation: "https://docs-decidim.opensourcepolitics.eu/article/95-parametrer-son-espace-participatif"
     Decidim::Comments::Comment:
       delete:
         points: 2
@@ -170,25 +160,11 @@ actions:
         points: 4
         recommendation: "newsletter.deliver"
         documentation: "https://docs-decidim.opensourcepolitics.eu/article/32-envoyer-une-newsletter"
-    Decidim::Proposals::CollaborativeDraft:
-      create:
-        points: 3
-        recommendation: "collaborative_draft.create"
-        documentation: "https://docs-decidim.opensourcepolitics.eu/article/184-les-brouillons-collaboratifs"
-      publish:
-        points: 4
-        recommendation: "collaborative_draft.publish"
-        documentation: "https://docs-decidim.opensourcepolitics.eu/article/184-les-brouillons-collaboratifs"
     Decidim::Proposals::Proposal:
       answer:
         points: 1
         recommendation: "proposal.answer"
         documentation: "https://docs-decidim.opensourcepolitics.eu/article/183-evaluer-une-proposition"
-    Decidim::Surveys::Survey:
-      create:
-        points: 3
-        recommendation: "survey.create"
-        documentation: "https://docs-decidim.opensourcepolitics.eu/article/97-enquete"
     Decidim::User:
       officialize:
         points: 2
@@ -232,11 +208,6 @@ actions:
         points: 5
         recommendation: "valuation_assignment.create"
         documentation: "#"
-    Decidim::ShareToken:
-      delete:
-        points: 5
-        recommendation: "share_token.delete"
-        documentation: "#"
     Decidim::User:
       invite:
         points: 1
@@ -254,13 +225,10 @@ actions:
         points: 4
         recommendation: "user.promote"
         documentation: "https://docs-decidim.opensourcepolitics.eu/article/88-les-autorisations-et-les-verifications"
-      report:
-        points: 4
-        recommendation: "user.report"
-        documentation: "#"
+    Decidim::UserModeration:
       unreport:
         points: 5
-        recommendation: "user.unreport"
+        recommendation: "user_moderation.unreport"
         documentation: "#"
     Decidim::UserGroup:
       reject:
@@ -281,7 +249,7 @@ actions:
         points: 3
         recommendation: "area.update"
         documentation: "https://docs-decidim.opensourcepolitics.eu/article/222-determiner-les-perimetres-dassemblee"
-    Decidim::Assemblies::AssemblyType:
+    Decidim::AssembliesType:
       create:
         points: 2
         recommendation: "assembly_type.create"
