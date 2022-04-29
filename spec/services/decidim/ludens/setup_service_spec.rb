@@ -77,7 +77,7 @@ describe Decidim::Ludens::SetupService do
       end
 
       it "doesn't create an action" do
-        expect { subject.create_actions }.to change(Decidim::Ludens::ParticipativeAction, :count).by(get_em(Decidim::Ludens::SetupService::ACTIONS["actions"]).tally["recommendation"] - 1)
+        expect { subject.create_actions }.to change(Decidim::Ludens::ParticipativeAction, :count).by(get_em(Decidim::Ludens::SetupService::ACTIONS["actions"]).tally["recommendation"])
       end
     end
   end

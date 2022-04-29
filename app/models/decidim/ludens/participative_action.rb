@@ -21,6 +21,10 @@ module Decidim
         actions = actions.each { |key, value| actions[key] = value.shuffle }
         actions.values.flatten[0, 3]
       end
+
+      def translated_recommendation
+        I18n.t("decidim.ludens.actions.#{recommendation}")
+      end
     end
   end
 end

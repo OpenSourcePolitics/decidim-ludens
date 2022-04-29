@@ -8,13 +8,13 @@
     <div class="cell small-12 grid-x recommendation-container">
       <ul class="list-actions-uncompleted cell small-4">
         <% recommendations.each do |recommendation| %>
-            <li> <a target="_blank" href="<%=recommendation.documentation %>"><%= recommendation.recommendation %> </a></li>
+            <li> <a target="_blank" href="<%=recommendation.documentation %>"><%= recommendation.translated_recommendation %> </a></li>
         <% end %>
       </ul>
 
       <ul class="list-actions-completed cell small-4"p>
         <% recommendationsDone.each do |recommendation| %>
-          <li class="no-bullet"> <a target="_blank" href="<%=recommendation.documentation %>"><%= recommendation.recommendation %> </a></li>
+          <li class="no-bullet"> <a target="_blank" href="<%=recommendation.documentation %>"><%= recommendation.translated_recommendation %> </a></li>
         <% end %>
       </ul>
       <a class="cell small-1" id="openModal<%= title %>" data-open="exampleModal<%= title %>"><%= t "decidim.admin.assistant.seeMore" %></a>
@@ -24,13 +24,13 @@
     <div class="grid-x">
       <ul class="modal-actions-uncompleted">
         <% recommendationsTotal.each do |recommendation| %>
-          <li> <a target="_blank" href="<%=recommendation.documentation %>"><%= recommendation.recommendation %> </a> </li>
+          <li> <a target="_blank" href="<%=recommendation.documentation %>"><%= recommendation.translated_recommendation %> </a> </li>
         <% end %>
       </ul>
 
       <ul class="modal-actions-completed">
         <% recommendationsDoneTotal.each do |recommendation| %>
-          <li class="no-bullet"> <a target="_blank" href="<%=recommendation.documentation %>"><%= recommendation.recommendation %> </a> </li>
+          <li class="no-bullet"> <a target="_blank" href="<%=recommendation.documentation %>"><%= recommendation.translated_recommendation %> </a> </li>
         <% end %>
       </ul>
     </div>
