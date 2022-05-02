@@ -3,7 +3,7 @@ fr:
     admin:
       assistant:
         explication:
-          content: This assistant is here to guide you through the administration of a Decidim instance. To improve your score and level up, you have to complete actions, that make you earn points. On this page, you can see every action you should complete to reach the highest level. The ones recommended are the easiests ones, but you can start with each and every one of these.
+          content: Cet assistant est là pour vous guider à travers l'administration d'une instance Decidim. Pour améliorer votre score et votre niveau, vous devez effectuer des actions qui vous permettent de gagner des points. Sur cette page, vous pouvez voir toutes les actions que vous devrez effectuer pour atteindre le plus haut niveau. Celles qui sont recommandées sont les plus faciles, mais vous pouvez commencer avec chacune d'entre elles.
           title: Comment ça marche ?
         intro: À votre tour !
         knowMore: Voir plus
@@ -15,96 +15,96 @@ fr:
         level5: La plateforme est à moi !
         levelTitle: Niveaux disponibles
         points: points
-        recommendations: Recommendations
+        recommendations: Suggestions
         seeMore: Voir tout
         title: Assistant à la participation
       ludens:
         dashboard:
-          title: Participative assistant dashboard
+          title: Tableau de bord de l'assistant participatif
     components:
       ludens:
-        name: ParticipativeAssistant
+        name: Assistant participatif
     ludens:
       actions:
         agenda:
-          update: Update a meeting agenda
+          update: Mettre à jour l'ordre du jour d'une réunion
         area:
-          create: Create an area
-          update: Update an area
+          create: Créer une zone d'application
+          update: Mettre à jour une zone d'application
         assembly:
-          create: Create an assembly
-          publish: Publish an assembly
-          unpublish: Unpublish an assembly
-          update: Update an assembly
+          create: Créer une assemblée
+          publish: Publier une assemblée
+          unpublish: Dépublier une assemblée
+          update: Mettre à jour une assemblée
         assembly_member:
-          create: Create the assembly member role
-          update: Update the role of an assembly member
+          create: Créer un rôle de membre de l'assemblée
+          update: Mettre à jour le rôle d'un membre de l'assemblée
         assembly_type:
-          create: Create an assembly type
-          update: Update an assembly type
+          create: Créer un type d'assemblée
+          update: Mettre à jour un type d'assemblée
         assembly_user_role:
-          create: Create an admin role for an user in an assembly
-          delete: Delete an admin role for an user in an assembly
+          create: Créer un rôle administrateur pour un utilisateur dans une assemblée
+          delete: Supprimer un rôle administrateur pour un utilisateur dans une assemblée
         budget:
-          create: Create a budget
-          update: Update a budget
+          create: Créer un budget
+          update: Mettre à jour un budget
         comment:
-          create: Create a comment
-          delete: Delete a comment
-          update: Update a comment
+          create: Ajouter un commentaire
+          delete: Supprimer un commentaire
+          update: Modifier un commentaire
         component:
-          create: Create a component
-          publish: Publish a component
-          unpublish: Unpublish a component
+          create: Ajouter une fonctionnalité
+          publish: Publier une fonctionnalité
+          unpublish: Dépublier une fonctionnalité
         debate:
-          close: Close a debate
-          create: Create a debate
-          update: Update a debate
+          close: Fermer un débat
+          create: Créer un débat
+          update: Modifier un débat
         meeting:
-          create: Create a meeting
-          export_registrations: Exposrt meeting registrations
+          create: Créer une rencontre
+          export_registrations: Exporter les inscriptions à une rencontre
         newsletter:
-          create: Create a newsletter
-          deliver: Deliver a newsletter
-          update: Update a newsletter
+          create: Créer une newsletter
+          deliver: Envoyer une newsletter
+          update: Modifier une newsletter
         organization:
-          update: Update an organization
+          update: Modifier une organisation
         participatory_process:
-          create: Create a participatory process
-          publish: Publish a participatory process
+          create: Créer une concertation
+          publish: Publier une concertation
         participatory_process_step:
-          activate: Activate steps for a participatory process
-          create: Create steps for a participatory process
-          update: Update the steps of a participatory process
+          activate: Activer les étapes d'une concertation
+          create: Créer des étapes pour une concertation
+          update: Modifier une étape d'une concertation
         participatory_process_user_role:
-          create: Create an admin role of a participatory process
+          create: Créer un rôle administrateur d'une concertation
         participatory_space_private_user:
-          create: Create a private user of a participatory space
+          create: Créer un utilisateur privé d'un espace participatif
         post:
-          create: Create a blog post
+          create: Créer un article
         project:
-          create: Create a budget project
-          update: Update a budget project
+          create: Créer un projet d'un budget
+          update: Modifier un projet d'un budget
         proposal:
-          answer: Answer a proposal
-          publish_answer: Publish an answer to a proposal
-          update: Update a proposal
+          answer: Répondre à une proposition
+          publish_answer: Publier une réponse à une proposition
+          update: Modifier une proposition
         proposal_note:
-          create: Create a proposal note
+          create: Créer une note privée pour une proposition
         result:
-          create: Create an accountability result
+          create: Créer une réalisation
         scope:
-          create: Create a scope
-          update: Update a scope
+          create: Créer un périmètre d'application
+          update: Modifier un périmètre d'application
         sortition:
-          create: Create a sortition
-          update: Update a sortition
+          create: Créer un tirage au sort
+          update: Modifier un tirage au sort
         static_page:
-          create: Create a page
-          update: Update a page
+          create: Créer une page
+          update: Mettre à jour une page
         static_page_topic:
-          create: Create a page topic
-          update: Update a page topic
+          create: Créer un sujet
+          update: Modifier un sujet
         template:
           create: Create a template
           update: Update a template
