@@ -27,27 +27,27 @@ fr:
     ludens:
       actions:
         agenda:
-          update: Mettre à jour l'ordre du jour d'une réunion
+          update: Modifier l'ordre du jour d'une réunion
         area:
           create: Créer une zone d'application
-          update: Mettre à jour une zone d'application
+          update: Modifier une zone d'application
         assembly:
           create: Créer une assemblée
           publish: Publier une assemblée
           unpublish: Dépublier une assemblée
-          update: Mettre à jour une assemblée
+          update: Modifier une assemblée
         assembly_member:
           create: Créer un rôle de membre de l'assemblée
-          update: Mettre à jour le rôle d'un membre de l'assemblée
+          update: Modifier le rôle d'un membre de l'assemblée
         assembly_type:
           create: Créer un type d'assemblée
-          update: Mettre à jour un type d'assemblée
+          update: Modifier un type d'assemblée
         assembly_user_role:
           create: Créer un rôle administrateur pour un utilisateur dans une assemblée
           delete: Supprimer un rôle administrateur pour un utilisateur dans une assemblée
         budget:
           create: Créer un budget
-          update: Mettre à jour un budget
+          update: Modifier un budget
         comment:
           create: Ajouter un commentaire
           delete: Supprimer un commentaire
@@ -83,7 +83,7 @@ fr:
         post:
           create: Créer un article
         project:
-          create: Créer un projet d'un budget
+          create: Créer un projet pour un budget
           update: Modifier un projet d'un budget
         proposal:
           answer: Répondre à une proposition
@@ -101,34 +101,34 @@ fr:
           update: Modifier un tirage au sort
         static_page:
           create: Créer une page
-          update: Mettre à jour une page
+          update: Modifier une page
         static_page_topic:
           create: Créer un sujet
           update: Modifier un sujet
         template:
-          create: Create a template
-          update: Update a template
+          create: Créer un modèle
+          update: Modifier un modèle
         user:
-          block: Block an user
-          invite: Invite an user to become administrator
-          officialize: Officialize an user
-          promote: Promote an user
-          remove_from_admin: Remove an user from administration
-          show_email: Show the email of an user
-          transfer: Transfer an user
-          unblock: Unblock an user
-          unofficialize: Unofficialize an user
+          block: Bloquer un utilisateur
+          invite: Inviter un utilisateur à devenir administrateur
+          officialize: Valider un utilisateur
+          promote: Promouvoir un utilisateur
+          remove_from_admin: Supprimer un utilisateur de l'administration
+          show_email: Afficher l'email d'un utilisateur
+          transfer: Transférer un utilisateur après un conflit de vérification
+          unblock: Débloquer un utilisateur
+          unofficialize: Invalider un utilisateur
         user_group:
-          reject: Reject an user group
-          verify: Verify an user group
+          reject: Rejeter un groupe d'utilisateurs
+          verify: Vérifier un groupe d'utilisateurs
         user_moderation:
-          unreport: Unreport an user
+          unreport: Annuler le signalement d'un utilisateur
         valuation_assignment:
-          create: Create a valuation assignement of a proposal
+          create: Assigner une proposition à un évaluateur
       admin:
         ludens:
           show:
             collaboration: Collaboration
             configuration: Configuration
-            edition: Edition
+            edition: Édition
             interaction: Interaction
