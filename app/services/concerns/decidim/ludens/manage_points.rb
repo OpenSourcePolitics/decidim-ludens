@@ -26,7 +26,7 @@ module Decidim
 
       def increase_score_by!(points)
         old_data = current_organization.assistant.dup
-        flash_message = "Congratulations ! You just completed the action '#{participative_action.recommendation}' !"
+        flash_message = "Congratulations ! You just completed the action '#{participative_action.translated_recommendation}' !"
         new_data = if has_reached_level?(points)
                      old_data.merge({
                                       score: @user.organization.increase_score(points),
