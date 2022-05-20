@@ -1,0 +1,134 @@
+ca:
+  decidim:
+    admin:
+      assistant:
+        explication:
+          content: This assistant is here to guide you through the administration of a Decidim instance. To improve your score and level up, you have to complete actions, that make you earn points. On this page, you can see every action you should complete to reach the highest level. The ones recommended are the easiests ones, but you can start with each and every one of these.
+          title: How does it works ?
+        intro: Your turn !
+        knowMore: View more
+        level: Level
+        level1: I'm discovering the platform
+        level2: I've correctly configured the platform
+        level3: I've launched my first consultation
+        level4: I know how to interact with my users
+        level5: The platform is mine !
+        levelTitle: Levels available
+        points: points
+        recommendations: Recommendations
+        seeMore: See all
+        title: Participative Assistant
+      ludens:
+        dashboard:
+          title: Participative assistant dashboard
+    components:
+      ludens:
+        name: ParticipativeAssistant
+    ludens:
+      actions:
+        agenda:
+          update: Update a meeting agenda
+        area:
+          create: Create an area
+          update: Update an area
+        assembly:
+          create: Create an assembly
+          publish: Publish an assembly
+          unpublish: Unpublish an assembly
+          update: Update an assembly
+        assembly_member:
+          create: Create the assembly member role
+          update: Update the role of an assembly member
+        assembly_type:
+          create: Create an assembly type
+          update: Update an assembly type
+        assembly_user_role:
+          create: Create an admin role for an user in an assembly
+          delete: Delete an admin role for an user in an assembly
+        budget:
+          create: Create a budget
+          update: Update a budget
+        comment:
+          create: Create a comment
+          delete: Delete a comment
+          update: Update a comment
+        component:
+          create: Create a component
+          publish: Publish a component
+          unpublish: Unpublish a component
+        debate:
+          close: Close a debate
+          create: Create a debate
+          update: Update a debate
+        meeting:
+          create: Create a meeting
+          export_registrations: Exposrt meeting registrations
+        newsletter:
+          create: Create a newsletter
+          deliver: Deliver a newsletter
+          update: Update a newsletter
+        organization:
+          update: Update an organization
+        participatory_process:
+          create: Create a participatory process
+          publish: Publish a participatory process
+        participatory_process_step:
+          activate: Activate steps for a participatory process
+          create: Create steps for a participatory process
+          update: Update the steps of a participatory process
+        participatory_process_user_role:
+          create: Create an admin role of a participatory process
+        participatory_space_private_user:
+          create: Create a private user of a participatory space
+        post:
+          create: Create a blog post
+        project:
+          create: Create a budget project
+          update: Update a budget project
+        proposal:
+          answer: Answer a proposal
+          publish_answer: Publish an answer to a proposal
+          update: Update a proposal
+        proposal_note:
+          create: Create a proposal note
+        result:
+          create: Create an accountability result
+        scope:
+          create: Create a scope
+          update: Update a scope
+        sortition:
+          create: Create a sortition
+          update: Update a sortition
+        static_page:
+          create: Create a page
+          update: Update a page
+        static_page_topic:
+          create: Create a page topic
+          update: Update a page topic
+        template:
+          create: Create a template
+          update: Update a template
+        user:
+          block: Block an user
+          invite: Invite an user to become administrator
+          officialize: Officialize an user
+          promote: Promote an user
+          remove_from_admin: Remove an user from administration
+          show_email: Show the email of an user
+          transfer: Transfer an user
+          unblock: Unblock an user
+          unofficialize: Unofficialize an user
+        user_group:
+          reject: Reject an user group
+          verify: Verify an user group
+        user_moderation:
+          unreport: Unreport an user
+        valuation_assignment:
+          create: Create a valuation assignement of a proposal
+      admin:
+        ludens:
+          show:
+            collaboration: Collaboration
+            configuration: Configuration
+            edition: Edition
+            interaction: Interaction
