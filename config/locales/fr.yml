@@ -1,0 +1,134 @@
+fr:
+  decidim:
+    admin:
+      assistant:
+        explication:
+          content: Cet assistant est là pour vous guider à travers l'administration d'une instance Decidim. Pour améliorer votre score et votre niveau, vous devez effectuer des actions qui vous permettent de gagner des points. Sur cette page, vous pouvez voir toutes les actions que vous devrez effectuer pour atteindre le plus haut niveau. Celles qui sont recommandées sont les plus faciles, mais vous pouvez commencer avec chacune d'entre elles.
+          title: Comment ça marche ?
+        intro: À votre tour !
+        knowMore: Voir plus
+        level: Niveau
+        level1: Je découvre la plateforme
+        level2: J'ai correctement configuré la plateforme
+        level3: J'ai lancé ma première consultation
+        level4: Je sais comment interagir avec mes utilisateurs
+        level5: La plateforme est à moi !
+        levelTitle: Niveaux disponibles
+        points: points
+        recommendations: Suggestions
+        seeMore: Voir tout
+        title: Assistant à la participation
+      ludens:
+        dashboard:
+          title: Tableau de bord de l'assistant participatif
+    components:
+      ludens:
+        name: Assistant participatif
+    ludens:
+      actions:
+        agenda:
+          update: Modifier l'ordre du jour d'une réunion
+        area:
+          create: Créer une zone d'application
+          update: Modifier une zone d'application
+        assembly:
+          create: Créer une assemblée
+          publish: Publier une assemblée
+          unpublish: Dépublier une assemblée
+          update: Modifier une assemblée
+        assembly_member:
+          create: Créer un rôle de membre de l'assemblée
+          update: Modifier le rôle d'un membre de l'assemblée
+        assembly_type:
+          create: Créer un type d'assemblée
+          update: Modifier un type d'assemblée
+        assembly_user_role:
+          create: Créer un rôle administrateur pour un utilisateur dans une assemblée
+          delete: Supprimer un rôle administrateur pour un utilisateur dans une assemblée
+        budget:
+          create: Créer un budget
+          update: Modifier un budget
+        comment:
+          create: Ajouter un commentaire
+          delete: Supprimer un commentaire
+          update: Modifier un commentaire
+        component:
+          create: Ajouter une fonctionnalité
+          publish: Publier une fonctionnalité
+          unpublish: Dépublier une fonctionnalité
+        debate:
+          close: Fermer un débat
+          create: Créer un débat
+          update: Modifier un débat
+        meeting:
+          create: Créer une rencontre
+          export_registrations: Exporter les inscriptions à une rencontre
+        newsletter:
+          create: Créer une newsletter
+          deliver: Envoyer une newsletter
+          update: Modifier une newsletter
+        organization:
+          update: Modifier une organisation
+        participatory_process:
+          create: Créer une concertation
+          publish: Publier une concertation
+        participatory_process_step:
+          activate: Activer les étapes d'une concertation
+          create: Créer des étapes pour une concertation
+          update: Modifier une étape d'une concertation
+        participatory_process_user_role:
+          create: Créer un rôle administrateur d'une concertation
+        participatory_space_private_user:
+          create: Créer un utilisateur privé d'un espace participatif
+        post:
+          create: Créer un article
+        project:
+          create: Créer un projet pour un budget
+          update: Modifier un projet d'un budget
+        proposal:
+          answer: Répondre à une proposition
+          publish_answer: Publier une réponse à une proposition
+          update: Modifier une proposition
+        proposal_note:
+          create: Créer une note privée pour une proposition
+        result:
+          create: Créer une réalisation
+        scope:
+          create: Créer un périmètre d'application
+          update: Modifier un périmètre d'application
+        sortition:
+          create: Créer un tirage au sort
+          update: Modifier un tirage au sort
+        static_page:
+          create: Créer une page
+          update: Modifier une page
+        static_page_topic:
+          create: Créer un sujet
+          update: Modifier un sujet
+        template:
+          create: Créer un modèle
+          update: Modifier un modèle
+        user:
+          block: Bloquer un utilisateur
+          invite: Inviter un utilisateur à devenir administrateur
+          officialize: Valider un utilisateur
+          promote: Promouvoir un utilisateur
+          remove_from_admin: Supprimer un utilisateur de l'administration
+          show_email: Afficher l'email d'un utilisateur
+          transfer: Transférer un utilisateur après un conflit de vérification
+          unblock: Débloquer un utilisateur
+          unofficialize: Invalider un utilisateur
+        user_group:
+          reject: Rejeter un groupe d'utilisateurs
+          verify: Vérifier un groupe d'utilisateurs
+        user_moderation:
+          unreport: Annuler le signalement d'un utilisateur
+        valuation_assignment:
+          create: Assigner une proposition à un évaluateur
+      admin:
+        ludens:
+          show:
+            collaboration: Collaboration
+            configuration: Configuration
+            edition: Édition
+            interaction: Interaction
