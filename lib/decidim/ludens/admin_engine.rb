@@ -31,7 +31,7 @@ module Decidim
           menu.add_item :ludens,
                         t("decidim.admin.assistant.title"),
                         "/admin/ludens", # TODO: remplacer par le nom de la route
-                        icon_name: "dashboard",
+                        icon_name: "badge",
                         position: 11
         end
       end
