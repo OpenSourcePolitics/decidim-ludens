@@ -2,6 +2,13 @@ import ConfettiGenerator from "confetti-js";
 
 document.addEventListener('DOMContentLoaded', event => {
     if(document.querySelector("#level-up").value== "reached"){
+        createCanvasOverlay("grey-holder");
+        let grey_holder = document.querySelector("#grey-holder");
+        var ctx=grey_holder.getContext('2d');
+        ctx.fillStyle = "grey";
+        ctx.globalAlpha = 0.3;
+        ctx.fillRect(0, 0, grey_holder.width, grey_holder.height);
+        ctx.globalAlpha = 1;
         createCanvasOverlay("confetti-holder");
         var confettiSettings = {
             "target": "confetti-holder",
@@ -22,23 +29,35 @@ document.addEventListener('DOMContentLoaded', event => {
         createCanvasOverlay("level-holder");
         let myCanvas = document.querySelector("#level-holder");
         var context=myCanvas.getContext('2d');
-        context.fillStyle = "lightgrey";
-        roundRect(context,myCanvas.width*2/5,myCanvas.height/3, myCanvas.width/5, myCanvas.height/3, 10, true, false);
-        context.font = "bold 1.2vw Arial";
         context.fillStyle = "white";
+        roundRect(context,myCanvas.width*2/5-5,myCanvas.height/3-5, myCanvas.width/5+10, myCanvas.height/3+10, 0, true, false);
+        roundRect(context,myCanvas.width*2/5,myCanvas.height/3, myCanvas.width/5, myCanvas.height/3, 0, true, true);
+        context.font = "bold 1.2vw Arial";
+        context.fillStyle = "black";
         let message1 = "Congratulations, you are now";
         context.fillText(message1, myCanvas.width/2-context.measureText(message1).width/2, myCanvas.height*7/12);
         let heightMessage1 = context.measureText(message1).actualBoundingBoxAscent + context.measureText(message1).actualBoundingBoxDescent;
         context.font = "bold 1.4vw Arial";
-        context.fillStyle = "white";
+        context.fillStyle = "black";
         let message2 = document.querySelector(".assistant_level").textContent;
         context.fillText(message2, myCanvas.width/2-context.measureText(message2).width/2, myCanvas.height*7/12 + heightMessage1*1.5);
+        let message3 = "x";
+        let heightMessage3 = context.measureText(message3).actualBoundingBoxAscent + context.measureText(message3).actualBoundingBoxDescent;
+        context.fillText(message3, myCanvas.width*3/5-context.measureText(message3).width-10, myCanvas.height/3+heightMessage3+10);
         var image = document.querySelector(".avatar");
         context.drawImage(image,myCanvas.width*11/24,myCanvas.height*9/24, myCanvas.width/12,myCanvas.width/12);
         document.querySelector("#level-holder").addEventListener("click", event => {
             document.querySelector("#level-holder").parentElement.remove();
             document.querySelector("#confetti-holder").parentElement.remove();
+            document.querySelector("#grey-holder").parentElement.remove();
         })
+        document.addEventListener('keydown', function(event){
+            if(event.key === "Escape"){
+                document.querySelector("#level-holder").parentElement.remove();
+                document.querySelector("#confetti-holder").parentElement.remove();
+                document.querySelector("#grey-holder").parentElement.remove();
+            }
+        });
     }
 });
 
