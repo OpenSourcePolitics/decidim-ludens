@@ -1,7 +1,7 @@
 import ConfettiGenerator from "confetti-js";
 
 document.addEventListener('DOMContentLoaded', event => {
-    if(document.querySelector("#level-up").value== "reached"){
+    if(document.querySelector("#level-up").value!= "reached"){
         createCanvasOverlay("grey-holder");
         let grey_holder = document.querySelector("#grey-holder");
         var ctx=grey_holder.getContext('2d');
@@ -29,9 +29,8 @@ document.addEventListener('DOMContentLoaded', event => {
         createCanvasOverlay("level-holder");
         let myCanvas = document.querySelector("#level-holder");
         var context=myCanvas.getContext('2d');
-        context.fillStyle = "white";
-        roundRect(context,myCanvas.width*2/5-5,myCanvas.height/3-5, myCanvas.width/5+10, myCanvas.height/3+10, 0, true, false);
-        roundRect(context,myCanvas.width*2/5,myCanvas.height/3, myCanvas.width/5, myCanvas.height/3, 0, true, true);
+        context.fillStyle = "#eee";
+        roundRect(context,myCanvas.width*2/5,myCanvas.height/3, myCanvas.width/5, myCanvas.height/3, 0, true, false);
         context.font = "bold 1.2vw Arial";
         context.fillStyle = "black";
         let message1 = "Congratulations, you are now";
@@ -41,7 +40,7 @@ document.addEventListener('DOMContentLoaded', event => {
         context.fillStyle = "black";
         let message2 = document.querySelector(".assistant_level").textContent;
         context.fillText(message2, myCanvas.width/2-context.measureText(message2).width/2, myCanvas.height*7/12 + heightMessage1*1.5);
-        let message3 = "x";
+        let message3 = "×";
         let heightMessage3 = context.measureText(message3).actualBoundingBoxAscent + context.measureText(message3).actualBoundingBoxDescent;
         context.fillText(message3, myCanvas.width*3/5-context.measureText(message3).width-10, myCanvas.height/3+heightMessage3+10);
         var image = document.querySelector(".avatar");
