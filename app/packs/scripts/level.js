@@ -1,7 +1,7 @@
 import ConfettiGenerator from "confetti-js";
 
 document.addEventListener('DOMContentLoaded', event => {
-    if(document.querySelector("#level-up").value== "reached"){
+    if(document.querySelector("#level-up").value== "unreached"){
         createCanvasOverlay("grey-holder");
         let grey_holder = document.querySelector("#grey-holder");
         var ctx=grey_holder.getContext('2d');
@@ -30,25 +30,62 @@ document.addEventListener('DOMContentLoaded', event => {
         let myCanvas = document.querySelector("#level-holder");
         var context=myCanvas.getContext('2d');
         context.fillStyle = "#eee";
-        roundRect(context,myCanvas.width*2/5,myCanvas.height/3, myCanvas.width/5, myCanvas.height/3, 0, true, false);
-        context.font = "bold 1.2vw Arial";
+        roundRect(context,myCanvas.width/3,myCanvas.height/3, myCanvas.width/3, myCanvas.height/3, 4, true, false);
+        context.font = "600 1.5vw Source Sans Pro";
         context.fillStyle = "black";
         let message1 = "Congratulations, you are now";
-        context.fillText(message1, myCanvas.width/2-context.measureText(message1).width/2, myCanvas.height*7/12);
+        context.fillText(message1, myCanvas.width/2-context.measureText(message1).width/2, myCanvas.height*4.9/12);
         let heightMessage1 = context.measureText(message1).actualBoundingBoxAscent + context.measureText(message1).actualBoundingBoxDescent;
-        context.font = "bold 1.4vw Arial";
-        context.fillStyle = "black";
+        context.font = "600 2vw Source Sans Pro";
+        switch(document.querySelector(".assistant_level").textContent){
+            case ' Level 1 ':
+                context.fillStyle = "#97FAE8";
+                break;
+            case ' Level 2 ':
+                context.fillStyle = "#9A4C00";
+                break;
+            case ' Level 3 ':
+                context.fillStyle = "#737373";
+                break;
+            case ' Level 4 ':
+                context.fillStyle = "#BF9B30";
+                break;
+            case ' Level 5 ':
+                context.fillStyle = "#0092A8";
+                break;
+        }
         let message2 = document.querySelector(".assistant_level").textContent;
         context.fillText(message2, myCanvas.width/2-context.measureText(message2).width/2, myCanvas.height*7/12 + heightMessage1*1.5);
+        context.fillStyle = "#303030";
+        context.font = "100 1.7vw Source Sans Pro";
         let message3 = "×";
         let heightMessage3 = context.measureText(message3).actualBoundingBoxAscent + context.measureText(message3).actualBoundingBoxDescent;
-        context.fillText(message3, myCanvas.width*3/5-context.measureText(message3).width-10, myCanvas.height/3+heightMessage3+10);
+        context.fillText(message3, myCanvas.width*2/3-context.measureText(message3).width-15, myCanvas.height/3+heightMessage3+15);
         var image = document.querySelector(".avatar");
-        context.drawImage(image,myCanvas.width*11/24,myCanvas.height*9/24, myCanvas.width/12,myCanvas.width/12);
+        context.drawImage(image,myCanvas.width*11/24,myCanvas.height*10.5/24, myCanvas.width/12,myCanvas.width/12);
         document.querySelector("#level-holder").addEventListener("click", event => {
             document.querySelector("#level-holder").parentElement.remove();
             document.querySelector("#confetti-holder").parentElement.remove();
             document.querySelector("#grey-holder").parentElement.remove();
+        })
+        document.querySelector("#level-holder").addEventListener("mousemove", event => {
+            var xlow = myCanvas.width*2/3-context.measureText(message3).width-20;
+            var xhigh = myCanvas.width*2/3;
+            var yhigh = myCanvas.height/3+heightMessage3+20
+            var ylow = myCanvas.height/3;
+            if(event.pageX>xlow && event.pageX<xhigh && event.pageY>ylow && event.pageY<yhigh){
+                context.fillStyle = "#eee";
+                roundRect(context,xlow,ylow, xhigh-xlow, yhigh-ylow, 4, true, false);
+                context.fillStyle = "#4488DD";
+                context.font = "100 1.7vw Source Sans Pro";
+                context.fillText(message3, myCanvas.width*2/3-context.measureText(message3).width-15, myCanvas.height/3+heightMessage3+15);
+            } else {
+                context.fillStyle = "#eee";
+                roundRect(context,xlow,ylow, xhigh-xlow, yhigh-ylow, 4, true, false);
+                context.fillStyle = "#303030";
+                context.font = "100 1.7vw Source Sans Pro";
+                context.fillText(message3, myCanvas.width*2/3-context.measureText(message3).width-15, myCanvas.height/3+heightMessage3+15);
+            }
         })
         document.addEventListener('keydown', function(event){
             if(event.key === "Escape"){
