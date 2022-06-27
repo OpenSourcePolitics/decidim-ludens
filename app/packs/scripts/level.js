@@ -1,7 +1,7 @@
 import ConfettiGenerator from "confetti-js";
 
 document.addEventListener('DOMContentLoaded', event => {
-    if(document.querySelector("#level-up").value== "unreached"){
+    if(document.querySelector("#level-up").value== "reached"){
         createCanvasOverlay("grey-holder");
         let grey_holder = document.querySelector("#grey-holder");
         var ctx=grey_holder.getContext('2d');
