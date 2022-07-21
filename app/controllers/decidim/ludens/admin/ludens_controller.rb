@@ -8,6 +8,11 @@ module Decidim
 
         def show; end
 
+        def toggle
+          current_organization.toggle_ludens
+          redirect_to action: "show"
+        end
+
         # Returns a list of participative actions
         #
         # {

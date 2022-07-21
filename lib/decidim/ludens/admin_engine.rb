@@ -17,6 +17,7 @@ module Decidim
         #   end
         # end
         # root to: "ludens#index"
+        get "ludens/toggle" => "ludens#toggle", :as => :toggle_ludens
         root to: "ludens#show"
       end
 
