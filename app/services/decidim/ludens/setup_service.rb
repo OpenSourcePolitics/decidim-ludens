@@ -57,6 +57,16 @@ module Decidim
         "Unknown table Organization or Participative action, please run migration first"
       end
 
+      def self.retrieve_actions
+        raise missing_tables_message unless tables_exists?
+
+        Decidim::Organization.all.find_each do |organization|
+          Decidim::ActionLog.where(organization: organization).find_each do |log|
+            puts "Action added : #{log.action} - #{log.resource.class}" if Decidim::Ludens::ManagePoints.run(log.action, log.user, log.resource)
+          end
+        end
+      end
+
       private
 
       # rubocop:disable Metrics/ParameterLists

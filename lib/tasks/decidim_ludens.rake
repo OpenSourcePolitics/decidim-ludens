@@ -7,4 +7,10 @@ namespace :decidim_ludens do
     system("npm install confetti-js --save")
     Decidim::Ludens::SetupService.initialize_assistant
   end
+
+  desc "Retrieve old actions"
+  task retrieve: :environment do
+    Decidim::Ludens::SetupService.initialize_assistant
+    Decidim::Ludens::SetupService.retrieve_actions
+  end
 end
