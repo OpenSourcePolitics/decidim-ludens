@@ -62,9 +62,7 @@ module Decidim
 
         Decidim::Organization.all.find_each do |organization|
           Decidim::ActionLog.where(organization: organization).find_each do |log|
-            if Decidim::Ludens::ManagePoints.run(log.action, log.user, log.resource)
-              puts "Action added : #{log.action.to_s} - #{log.resource.class.to_s}"
-            end
+            puts "Action added : #{log.action} - #{log.resource.class}" if Decidim::Ludens::ManagePoints.run(log.action, log.user, log.resource)
           end
         end
       end
