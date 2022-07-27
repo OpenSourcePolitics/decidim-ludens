@@ -3,6 +3,9 @@ en:
   decidim:
     admin:
       assistant:
+        deactivated_title: This personal assistant is deactivated
+        disable: Disable the assistant
+        enable: Enable the assistant
         explication:
           content: This assistant is here to guide you through the administration
             of a Decidim instance. To improve your score and level up, you have to
@@ -133,7 +136,7 @@ en:
           create: Create a valuation assignement of a proposal
       admin:
         ludens:
-          show:
+          ludens:
             collaboration: Collaboration
             configuration: Configuration
             edition: Edition

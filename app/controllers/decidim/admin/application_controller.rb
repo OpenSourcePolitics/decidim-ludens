@@ -58,7 +58,7 @@ module Decidim
       def flash_points
         return unless current_organization.assistant["flash"] != ""
 
-        flash[:info] = current_organization.assistant["flash"]
+        flash[:info] = current_organization.assistant["flash"] if current_organization.enable_ludens
         old_data = current_organization.assistant.dup
         flash_message = ""
         new_data = old_data.merge({

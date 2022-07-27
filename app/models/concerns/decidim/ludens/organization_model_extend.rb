@@ -48,6 +48,10 @@ module Decidim
 
           paliers
         end
+
+        def toggle_ludens
+          update!(enable_ludens: !enable_ludens)
+        end
       end
     end
   end

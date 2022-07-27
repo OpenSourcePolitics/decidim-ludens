@@ -1,40 +1,5 @@
-<% add_decidim_page_title(t("decidim.admin.ludens.dashboard.title")) %>
-<%= stylesheet_pack_tag "decidim_ludens", media: "all" %> <!--TODO Move to head-->
-<%= javascript_pack_tag "decidim_ludens", media: "all" %> <!-- TODO Move to head -->
-<h1 class="card-title">
-  <%= t "decidim.admin.assistant.title" %>
-</h1>
-<h3>
-  <%= t "decidim.admin.assistant.intro" %>
-</h3>
-
-<div class="content">
-  <div class="grid-x grid-margin-x">
-    <div class="cell small-6">
-      <%= render(partial: "decidim/admin/dashboard/recap",
-                 locals: {
-                   withKnowMore: false
-                 }) %>
-    </div>
-    <div class="cell small-6">
-      <%= render(partial: "decidim/ludens/admin/ludens/levelsGrid") %>
-    </div>
-  </div>
-
-  <div class="grid-x grid-margin-x actions-grid">
-    <% list_of_participative_actions.each do |action_name , actions| %>
-      <div class="cell small-6">
-        <%= render(
-              partial: "list_actions",
-              locals: {
-                title: t(".#{action_name}"),
-                recommendations: actions[:uncompleted]&.first(3),
-                recommendationsDone: actions[:completed]&.first(3),
-                recommendationsTotal: actions[:uncompleted],
-                recommendationsDoneTotal: actions[:completed]
-              }
-            ) %>
-      </div>
-    <% end %>
-  </div>
-</div>
+<% if current_organization.enable_ludens %>
+  <%= render partial: "ludens" %>
+<% else %>
+  <%= render partial: "disabled" %>
+<% end %>

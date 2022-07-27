@@ -1,0 +1,12 @@
+<% add_decidim_page_title(t("decidim.admin.ludens.dashboard.title")) %>
+<div class="grid-x">
+  <div class="cell small-12">
+    <h1 class="card-title">
+      <%= t "decidim.admin.assistant.deactivated_title" %>
+    </h1>
+    <h3>
+      <%= t "decidim.admin.assistant.explication.content" %>
+    </h3>
+  </div>
+  <%= link_to t("decidim.admin.assistant.enable"), :toggle_ludens, class: "cell small-2 button" %>
+</div>

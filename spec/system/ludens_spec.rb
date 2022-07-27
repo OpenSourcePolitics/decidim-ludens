@@ -211,4 +211,12 @@ describe "Ludens", type: :system do
       end
     end
   end
+
+  context "when you want to deactivate ludens" do
+    it "deactivate ludens" do
+      click_link "Disable the assistant"
+
+      expect(page).to have_content("Enable the assistant")
+    end
+  end
 end

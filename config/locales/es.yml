@@ -127,7 +127,7 @@ es:
           create: Create a valuation assignement of a proposal
       admin:
         ludens:
-          show:
+          ludens:
             collaboration: Collaboration
             configuration: Configuration
             edition: Edition
