@@ -38,8 +38,7 @@ module Decidim
         private
 
         def participative_actions
-          # TODO: Add a scope for organization
-          @participative_actions ||= ParticipativeAction.all.order(:points)
+          @participative_actions ||= ParticipativeAction.where(organization: current_organization).order(:points)
         end
       end
     end
