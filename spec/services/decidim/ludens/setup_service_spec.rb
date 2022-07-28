@@ -16,9 +16,9 @@ describe Decidim::Ludens::SetupService do
     end
   end
 
-  describe "ACTIONS" do
+  describe "actions" do
     it "contains all keys for each entry" do
-      keys = get_em(Decidim::Ludens::SetupService::ACTIONS["actions"])
+      keys = get_em(Decidim::Ludens::SetupService.actions["actions"])
       expect(keys.tally["recommendation"]).to eq(keys.tally["points"])
       expect(keys.tally["documentation"]).to eq(keys.tally["points"])
     end
@@ -61,25 +61,7 @@ describe Decidim::Ludens::SetupService do
 
   describe "#create_actions" do
     it "creates actions" do
-      expect { subject.create_actions }.to change(Decidim::Ludens::ParticipativeAction, :count).by(get_em(Decidim::Ludens::SetupService::ACTIONS["actions"]).tally["recommendation"])
-    end
-
-    context "when participative action already exists" do
-      before do
-        Decidim::Ludens::ParticipativeAction.find_or_create_by!(
-          points: 1,
-          resource: "Decidim::Assembly",
-          action: "publish",
-          category: "Edition",
-          organization: organization,
-          recommendation: "Publish an assembly",
-          documentation: "https://docs-decidim.opensourcepolitics.eu/article/94-lespace-assemblees"
-        )
-      end
-
-      it "doesn't create an action" do
-        expect { subject.create_actions }.to change(Decidim::Ludens::ParticipativeAction, :count).by(get_em(Decidim::Ludens::SetupService::ACTIONS["actions"]).tally["recommendation"])
-      end
+      expect { subject.create_actions }.to change(Decidim::Ludens::ParticipativeAction, :count).by(get_em(Decidim::Ludens::SetupService.actions["actions"]).tally["recommendation"])
     end
   end
 

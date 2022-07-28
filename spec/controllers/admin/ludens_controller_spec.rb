@@ -9,6 +9,7 @@ module Decidim
         routes { Decidim::Ludens::AdminEngine.routes }
 
         let(:organization) { create(:organization) }
+        let(:organization2) { create(:organization) }
         let(:current_user) { create(:user, :admin, :confirmed, organization: organization) }
 
         before do
@@ -34,6 +35,7 @@ module Decidim
 
           context "when there is edition actions" do
             let!(:uncompleted_edition_actions) { create_list(:participative_action, 3, organization: organization) }
+            let!(:other_org_actions) { create_list(:participative_action, 3, organization: organization2) }
 
             it "returns the edition actions in a tree of participative actions" do
               expect(subject.list_of_participative_actions).to eq({
@@ -63,6 +65,7 @@ module Decidim
             let!(:uncompleted_interact_actions) { create_list(:participative_action, 3, :interact, organization: organization) }
             let!(:completed_edition_actions) { create_list(:participative_action, 3, :completed, organization: organization) }
             let!(:completed_interact_actions) { create_list(:participative_action, 3, :completed, :interact, organization: organization) }
+            let!(:other_org_actions) { create_list(:participative_action, 3, organization: organization2) }
 
             it "returns the actions tree of participative actions" do
               expect(subject.list_of_participative_actions).to eq({

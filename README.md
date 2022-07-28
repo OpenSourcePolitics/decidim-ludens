@@ -27,10 +27,17 @@ if migrations are not installed by themselves, execute
 bundle exec rake decidim_ludens:install:migrations
 ```
  
-Initialize the module by executing
+When organizations are created, initialize the module by executing
 ```bash
 bundle exec rake decidim_ludens:initialize
 ```
+
+If you need to customize the actions, you can copy the yaml file by executing
+```bash
+bundle exec rake decidim_ludens:get_file
+```
+
+You can then customize it, removing and adding action as you want, and rerun the initialize rake task
 
 ## Contributing
 

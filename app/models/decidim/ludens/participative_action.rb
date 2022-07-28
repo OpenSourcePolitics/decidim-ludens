@@ -11,17 +11,6 @@ module Decidim
 
       validates :organization, presence: true
 
-      def self.last_done_recommendation
-        last = Decidim::Organization.first.assistant["last"]
-        ParticipativeAction.find_by(id: last)
-      end
-
-      def self.recommendations
-        actions = ParticipativeAction.where(completed: [false, nil]).order(:points).group_by(&:points)
-        actions = actions.each { |key, value| actions[key] = value.shuffle }
-        actions.values.flatten[0, 3]
-      end
-
       def translated_recommendation
         I18n.t("decidim.ludens.actions.#{recommendation}")
       end
