@@ -54,12 +54,12 @@ module Decidim
         end
 
         def last_done_recommendation
-          last = self.assistant["last"]
+          last = assistant["last"]
           ParticipativeAction.find_by(id: last)
         end
 
         def recommendations
-          actions = ParticipativeAction.where({completed: [false, nil],organization: self}).order(:points).group_by(&:points)
+          actions = ParticipativeAction.where({ completed: [false, nil], organization: self }).order(:points).group_by(&:points)
           actions = actions.each { |key, value| actions[key] = value.shuffle }
           actions.values.flatten[0, 3]
         end

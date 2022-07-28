@@ -5,6 +5,7 @@ require "spec_helper"
 module Decidim
   describe Organization do
     subject(:organization) { build(:organization) }
+
     let(:organization2) { create(:organization) }
 
     let(:omniauth_secrets) do
@@ -131,7 +132,7 @@ module Decidim
         create_list(:participative_action, 5, :completed, points: 3, organization: subject)
         create_list(:participative_action, 1, :completed, points: 4, organization: subject)
         create_list(:participative_action, 4, :completed, points: 5, organization: subject)
-        create_list(:participative_action, 1, :completed, points:1, organization: organization2)
+        create_list(:participative_action, 1, :completed, points: 1, organization: organization2)
       end
 
       it "returns the level" do
@@ -181,10 +182,9 @@ module Decidim
     end
 
     describe ".recommendations" do
-
       context "when there's just one of each points" do
         let!(:participative_actions) { create_list(:participative_action, 5, organization: subject) }
-        let!(:participative_actions_2) { create_list(:participative_action, 1, points:1, organization: organization2) }
+        let!(:participative_actions_2) { create_list(:participative_action, 1, points: 1, organization: organization2) }
 
         it "returns 3 random participative actions ordered by points number" do
           expect(subject.recommendations.size).to eq(3)
@@ -199,8 +199,7 @@ module Decidim
         let!(:participative_action3) { create(:participative_action, points: 2, organization: subject) }
         let!(:participative_action4) { create(:participative_action, points: 2, organization: subject) }
         let!(:participative_action5) { create(:participative_action, points: 2, organization: subject) }
-        let!(:participative_actions_2) { create_list(:participative_action, 1, points:1, organization: organization2) }
-
+        let!(:participative_actions_2) { create_list(:participative_action, 1, points: 1, organization: organization2) }
 
         it "returns 3 random participative actions ordered by points number" do
           expect(subject.recommendations.size).to eq(3)
