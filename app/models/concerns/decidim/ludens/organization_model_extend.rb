@@ -54,7 +54,6 @@ module Decidim
         end
 
         def last_done_recommendation
-          last = assistant["last"]
           ParticipativeAction.find_by(id: assistant["last"])
         end
 
