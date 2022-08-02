@@ -2,6 +2,9 @@ fr:
   decidim:
     admin:
       assistant:
+        deactivated_title: L'assistant participatif est désactivé
+        disable: Désactiver l'assistant
+        enable: Activer l'assistant
         explication:
           content: Cet assistant est là pour vous guider à travers l'administration d'une instance Decidim. Pour améliorer votre score et votre niveau, vous devez effectuer des actions qui vous permettent de gagner des points. Sur cette page, vous pouvez voir toutes les actions que vous devrez effectuer pour atteindre le plus haut niveau. Celles qui sont recommandées sont les plus faciles, mais vous pouvez commencer avec chacune d'entre elles.
           title: Comment ça marche ?
