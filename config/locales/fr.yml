@@ -2,6 +2,7 @@ fr:
   decidim:
     admin:
       assistant:
+        cannot_activate: Le module ludens c'a pas été initialisé, vous ne pouvez donc pas l'utiliser pour l'instant. Plus d'informations <a href='https://github.com/OpenSourcePolitics/decidim-ludens/blob/master/README.md'> ici </a>
         deactivated_title: L'assistant participatif est désactivé
         disable: Désactiver l'assistant
         enable: Activer l'assistant
@@ -16,10 +17,12 @@ fr:
         level3: J'ai lancé ma première consultation
         level4: Je sais comment interagir avec mes utilisateurs
         level5: La plateforme est à moi !
+        levelMessage: Bravo, vous êtes maintenant niveau
         levelTitle: Niveaux disponibles
         points: points
         recommendations: Suggestions
         seeMore: Voir tout
+        success: Bravo ! Vous avez validé l'action
         title: Assistant à la participation
       ludens:
         dashboard:

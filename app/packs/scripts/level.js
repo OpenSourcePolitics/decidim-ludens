@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', event => {
         roundRect(context,myCanvas.width/3,myCanvas.height/3, myCanvas.width/3, myCanvas.height/3, 4, true, false);
         context.font = "600 1.5vw Source Sans Pro";
         context.fillStyle = "black";
-        let message1 = "Congratulations, you are now";
+        let message1 = document.querySelector("#level-up-message").value
         context.fillText(message1, myCanvas.width/2-context.measureText(message1).width/2, myCanvas.height*4.9/12);
         let heightMessage1 = context.measureText(message1).actualBoundingBoxAscent + context.measureText(message1).actualBoundingBoxDescent;
         context.font = "600 2vw Source Sans Pro";
