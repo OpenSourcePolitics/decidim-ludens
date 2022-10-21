@@ -56,7 +56,7 @@ module Decidim
       end
 
       def flash_points
-        return if current_organization.assistant.empty?
+        return unless current_organization.assistant
         return unless current_organization.assistant["flash"] != ""
 
         flash[:info] = current_organization.assistant["flash"] if current_organization.enable_ludens
@@ -69,7 +69,7 @@ module Decidim
       end
 
       def level_up
-        return if current_organization.assistant.empty?
+        return unless current_organization.assistant
         return unless current_organization.assistant["level_up"] == "displayed"
 
         old_data = current_organization.assistant.dup
