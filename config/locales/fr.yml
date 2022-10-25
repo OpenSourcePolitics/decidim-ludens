@@ -2,7 +2,7 @@ fr:
   decidim:
     admin:
       assistant:
-        cannot_activate: Le module ludens c'a pas été initialisé, vous ne pouvez donc pas l'utiliser pour l'instant. Plus d'informations <a href='https://github.com/OpenSourcePolitics/decidim-ludens/blob/master/README.md'> ici </a>
+        cannot_activate: L'assistant à la participation n'a pas été initialisé, vous ne pouvez donc pas l'utiliser pour l'instant. Pour l'initialiser, nous vous recommandons de consulter <a href='https://github.com/OpenSourcePolitics/decidim-ludens/blob/master/README.md'>cette notice</a>.
         deactivated_title: L'assistant participatif est désactivé
         disable: Désactiver l'assistant
         enable: Activer l'assistant
