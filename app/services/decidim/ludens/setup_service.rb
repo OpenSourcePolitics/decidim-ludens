@@ -3,10 +3,16 @@
 module Decidim
   module Ludens
     class SetupService
-      ACTIONS = YAML.safe_load(File.read(Rails.root.join("config/participative_actions.yaml")))
-
       def initialize(organization)
         @organization = organization
+      end
+
+      def self.actions
+        if File.exist?(Rails.root.join("config/participative_actions.yaml"))
+          YAML.safe_load(File.read(Rails.root.join("config/participative_actions.yaml")))
+        else
+          YAML.safe_load(File.read("#{`bundle info decidim-ludens --path`.delete!("\n")}/config/participative_actions.yaml"))
+        end
       end
 
       def self.initialize_assistant
@@ -33,7 +39,8 @@ module Decidim
       end
 
       def create_actions
-        Decidim::Ludens::SetupService::ACTIONS["actions"].each do |category, resources|
+        Decidim::Ludens::ParticipativeAction.delete_all
+        Decidim::Ludens::SetupService.actions["actions"].each do |category, resources|
           resources.each do |resource, actions|
             actions.each do |action, infos|
               create_action(
@@ -55,6 +62,16 @@ module Decidim
 
       def self.missing_tables_message
         "Unknown table Organization or Participative action, please run migration first"
+      end
+
+      def self.retrieve_actions
+        raise missing_tables_message unless tables_exists?
+
+        Decidim::Organization.all.find_each do |organization|
+          Decidim::ActionLog.where(organization: organization).find_each do |log|
+            puts "Action added : #{log.action} - #{log.resource.class}" if Decidim::Ludens::ManagePoints.run(log.action, log.user, log.resource)
+          end
+        end
       end
 
       private

@@ -76,6 +76,7 @@ FactoryBot.modify do
     file_upload_settings { Decidim::OrganizationSettings.default(:upload) }
     enable_participatory_space_filters { true }
     assistant { { last: -1, flash: "", score: 0 } }
+    enable_ludens { true }
 
     trait :secure_context do
       host { "localhost" }

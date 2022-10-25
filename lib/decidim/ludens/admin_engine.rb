@@ -17,6 +17,7 @@ module Decidim
         #   end
         # end
         # root to: "ludens#index"
+        get "ludens/toggle" => "ludens#toggle", :as => :toggle_ludens
         root to: "ludens#show"
       end
 
@@ -30,15 +31,11 @@ module Decidim
         Decidim.menu :admin_menu do |menu|
           menu.add_item :ludens,
                         t("decidim.admin.assistant.title"),
-                        "/admin/ludens", # TODO: remplacer par le nom de la route
-                        icon_name: "dashboard",
+                        "/admin/ludens",
+                        icon_name: "badge",
                         position: 11
         end
       end
-
-      # def load_seed
-      #   nil
-      # end
     end
   end
 end

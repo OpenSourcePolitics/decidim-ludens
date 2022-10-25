@@ -26,17 +26,17 @@ module Decidim
 
       def increase_score_by!(points)
         old_data = current_organization.assistant.dup
-        flash_message = "Congratulations ! You just completed the action '#{participative_action.translated_recommendation}' !"
+        flash_message = "#{I18n.t("decidim.admin.assistant.success")} '#{participative_action.translated_recommendation}' !"
         new_data = if has_reached_level?(points)
                      old_data.merge({
-                                      score: @user.organization.increase_score(points),
+                                      score: current_organization.increase_score(points),
                                       flash: flash_message,
                                       last: participative_action.id,
                                       level_up: "reached"
                                     })
                    else
                      old_data.merge({
-                                      score: @user.organization.increase_score(points),
+                                      score: current_organization.increase_score(points),
                                       flash: flash_message,
                                       last: participative_action.id
                                     })
@@ -46,14 +46,14 @@ module Decidim
 
       def has_reached_level?(points)
         result = false
-        @user.organization.step_scores.each do |step|
-          result = true if (@user.organization.increase_score(points) >= step) && (@user.organization.assistant["score"] < step)
+        current_organization.step_scores.each do |step|
+          result = true if (current_organization.increase_score(points) >= step) && (current_organization.assistant["score"] < step)
         end
         result
       end
 
       def participative_action
-        ParticipativeAction.find_by(action: @action, resource: @resource.class.to_s, completed: [false, nil])
+        ParticipativeAction.find_by(action: @action, resource: @resource.class.to_s, completed: [false, nil], organization: current_organization)
       end
 
       def current_organization

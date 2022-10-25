@@ -2,6 +2,10 @@ fr:
   decidim:
     admin:
       assistant:
+        cannot_activate: L'assistant à la participation n'a pas été initialisé, vous ne pouvez donc pas l'utiliser pour l'instant. Pour l'initialiser, nous vous recommandons de consulter <a href='https://github.com/OpenSourcePolitics/decidim-ludens/blob/master/README.md'>cette notice</a>.
+        deactivated_title: L'assistant participatif est désactivé
+        disable: Désactiver l'assistant
+        enable: Activer l'assistant
         explication:
           content: Cet assistant est là pour vous guider à travers l'administration d'une instance Decidim. Pour améliorer votre score et votre niveau, vous devez effectuer des actions qui vous permettent de gagner des points. Sur cette page, vous pouvez voir toutes les actions que vous devrez effectuer pour atteindre le plus haut niveau. Celles qui sont recommandées sont les plus faciles, mais vous pouvez commencer avec chacune d'entre elles.
           title: Comment ça marche ?
@@ -13,10 +17,12 @@ fr:
         level3: J'ai lancé ma première consultation
         level4: Je sais comment interagir avec mes utilisateurs
         level5: La plateforme est à moi !
+        levelMessage: Bravo, vous êtes maintenant niveau
         levelTitle: Niveaux disponibles
         points: points
         recommendations: Suggestions
         seeMore: Voir tout
+        success: Bravo ! Vous avez validé l'action
         title: Assistant à la participation
       ludens:
         dashboard:
@@ -127,7 +133,7 @@ fr:
           create: Assigner une proposition à un évaluateur
       admin:
         ludens:
-          show:
+          ludens:
             collaboration: Collaboration
             configuration: Configuration
             edition: Édition

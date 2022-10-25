@@ -7,6 +7,7 @@ describe Decidim::Ludens::SetupService do
 
   let(:organization) { create(:organization, assistant: nil) }
   let(:subject_class) { described_class }
+  let(:user) { create(:user, organization: organization) }
 
   def get_em(hash)
     hash.each_with_object([]) do |(k, v), keys|
@@ -15,9 +16,9 @@ describe Decidim::Ludens::SetupService do
     end
   end
 
-  describe "ACTIONS" do
+  describe "actions" do
     it "contains all keys for each entry" do
-      keys = get_em(Decidim::Ludens::SetupService::ACTIONS["actions"])
+      keys = get_em(Decidim::Ludens::SetupService.actions["actions"])
       expect(keys.tally["recommendation"]).to eq(keys.tally["points"])
       expect(keys.tally["documentation"]).to eq(keys.tally["points"])
     end
@@ -60,25 +61,28 @@ describe Decidim::Ludens::SetupService do
 
   describe "#create_actions" do
     it "creates actions" do
-      expect { subject.create_actions }.to change(Decidim::Ludens::ParticipativeAction, :count).by(get_em(Decidim::Ludens::SetupService::ACTIONS["actions"]).tally["recommendation"])
+      expect { subject.create_actions }.to change(Decidim::Ludens::ParticipativeAction, :count).by(get_em(Decidim::Ludens::SetupService.actions["actions"]).tally["recommendation"])
+    end
+  end
+
+  describe "#retrieve_actions" do
+    before do
+      subject.create_assistant
+      subject.create_actions
+      Decidim::ActionLog.create!(
+        organization: organization,
+        action: "update",
+        resource: organization,
+        user: user,
+        version_id: 1000
+      )
     end
 
-    context "when participative action already exists" do
-      before do
-        Decidim::Ludens::ParticipativeAction.find_or_create_by!(
-          points: 1,
-          resource: "Decidim::Assembly",
-          action: "publish",
-          category: "Edition",
-          organization: organization,
-          recommendation: "Publish an assembly",
-          documentation: "https://docs-decidim.opensourcepolitics.eu/article/94-lespace-assemblees"
-        )
-      end
-
-      it "doesn't create an action" do
-        expect { subject.create_actions }.to change(Decidim::Ludens::ParticipativeAction, :count).by(get_em(Decidim::Ludens::SetupService::ACTIONS["actions"]).tally["recommendation"])
-      end
+    it "retrieve actions" do
+      subject_class.retrieve_actions
+      organization.reload
+      expect(organization.assistant["flash"]).to eq("Congratulations ! You just completed the action 'Update an organization' !")
+      expect(organization.assistant["score"]).to eq(1)
     end
   end
 end

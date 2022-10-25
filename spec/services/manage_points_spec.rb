@@ -33,6 +33,7 @@ module Decidim
                                                    points: 1,
                                                    organization: organization)
             allow(I18n).to receive(:t).with(anything).and_return("Thanks for joining !")
+            allow(I18n).to receive(:t).with("decidim.admin.assistant.success").and_return("Congratulations ! You just completed the action")
             allow(I18n).to receive(:t).with("decidim.ludens.actions.publish.componentTest").and_return("okay")
           end
 

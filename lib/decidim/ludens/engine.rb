@@ -20,10 +20,6 @@ module Decidim
         # root to: "ludens#index"
       end
 
-      # def load_seed
-      #   super
-      # end
-
       initializer "Ludens.webpacker.assets_path" do
         Decidim.register_assets_path File.expand_path("app/packs", root)
       end
