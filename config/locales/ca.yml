@@ -2,6 +2,7 @@ ca:
   decidim:
     admin:
       assistant:
+        cannot_activate: The ludens module has not been initialized, you cannot use it for now. More information <a href='https://github.com/OpenSourcePolitics/decidim-ludens/blob/master/README.md'> here </a>
         deactivated_title: This personal assistant is deactivated
         disable: Disable the assistant
         enable: Enable the assistant
@@ -16,10 +17,12 @@ ca:
         level3: I've launched my first consultation
         level4: I know how to interact with my users
         level5: The platform is mine !
+        levelMessage: Congratulations, you are now level
         levelTitle: Levels available
         points: points
         recommendations: Recommendations
         seeMore: See all
+        success: Congratulations ! You just completed the action
         title: Participative Assistant
       ludens:
         dashboard:
