@@ -105,7 +105,7 @@ module Decidim
             end
             result.save! if result&.new_record?
           end
-          return result
+          result
         end
       end
     end
