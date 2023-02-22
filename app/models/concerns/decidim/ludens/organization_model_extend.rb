@@ -12,7 +12,9 @@ module Decidim
         end
 
         def level
-          if !ParticipativeAction.find_by(organization: self).nil?
+          if ParticipativeAction.find_by(organization: self).nil?
+            5
+          else
             paliers = step_scores
             case score
             when 0..paliers[0] - 1
@@ -26,8 +28,6 @@ module Decidim
             else
               5
             end
-          else
-            5
           end
         end
 
@@ -42,7 +42,7 @@ module Decidim
             if i == 1
               paliers.append(ParticipativeAction.where(points: i, organization: self).size)
             else
-              paliers.append(ParticipativeAction.where(points: i, organization: self).size * i + paliers[i - 2])
+              paliers.append((ParticipativeAction.where(points: i, organization: self).size * i) + paliers[i - 2])
             end
           end
 

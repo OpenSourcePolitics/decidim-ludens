@@ -20,7 +20,7 @@ module Decidim
           let!(:participative_action) { nil }
 
           it "returns nil" do
-            expect(subject_run).to eq(nil)
+            expect(subject_run).to be_nil
           end
         end
 

@@ -9,8 +9,6 @@ module Decidim
                  foreign_key: "decidim_organization_id",
                  class_name: "Decidim::Organization"
 
-      validates :organization, presence: true
-
       def translated_recommendation
         I18n.t("decidim.ludens.actions.#{recommendation}")
       end
