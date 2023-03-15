@@ -29,8 +29,8 @@ module Decidim
       helper Decidim::ComponentPathHelper
       helper Decidim::SanitizeHelper
 
-      before_action :flash_points
-      before_action :level_up
+      after_action :flash_points
+      #before_action :level_up
 
       default_form_builder Decidim::Admin::FormBuilder
 
@@ -56,16 +56,10 @@ module Decidim
       end
 
       def flash_points
-        return unless current_organization.assistant
-        return unless current_organization.assistant["flash"] != ""
+        return unless Rails.cache.exist?("flash_message_#{current_user.id}")
 
-        flash[:info] = current_organization.assistant["flash"] if current_organization.enable_ludens
-        old_data = current_organization.assistant.dup
-        flash_message = ""
-        new_data = old_data.merge({
-                                    flash: flash_message
-                                  })
-        current_organization.update!(assistant: new_data)
+        flash[:info] = Rails.cache.read("flash_message_#{current_user.id}")
+        Rails.cache.delete("flash_message_#{current_user.id}")
       end
 
       def level_up

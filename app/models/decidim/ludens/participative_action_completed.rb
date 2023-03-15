@@ -14,9 +14,10 @@ module Decidim
       delegate :points, :recommandation, to: :decidim_participative_action
 
       def participative_action
-        @participative_action ||= Decidim::Ludens::ParticipativeActions.instance.actions.find {
-          |p_action| p_action.action == decidim_participative_action.split(".").first && p_action.resource == decidim_participative_action.split(".").last
-        }
+        @participative_action ||= Decidim::Ludens::ParticipativeActions.find(
+          decidim_participative_action.split(".").first,
+          decidim_participative_action.split(".").last
+        )
       end
     end
   end

@@ -4,7 +4,7 @@ module Decidim
   module Ludens
     class ParticipativeActions
       include Singleton
-      
+
       attr_accessor :actions
 
       def initialize
@@ -24,6 +24,10 @@ module Decidim
             end
           end
         end
+      end
+
+      def find(action, resource)
+        @actions.find { |a| a.build_id == "#{action}.#{resource}" }
       end
 
       def level_points
@@ -62,6 +66,10 @@ module Decidim
 
         def build_id
           "#{@action}.#{@resource}"
+        end
+
+        def completed?(user)
+          ParticipativeActionCompleted.exists?(decidim_user_id: user.id, decidim_participative_action: build_id)
         end
       end
 

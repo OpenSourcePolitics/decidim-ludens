@@ -13,7 +13,9 @@ module Decidim
         Decidim::User.class_eval do
           include(UserExtends)
         end
-        require "extends/action_logger_service_extend" # TODO : refactor
+        Decidim::ActionLogger.class_eval do
+          include ActionLoggerServiceExtend
+        end
       end
 
       routes do
