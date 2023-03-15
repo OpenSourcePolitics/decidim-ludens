@@ -59,6 +59,10 @@ module Decidim
         def translated_recommendation
           I18n.t("decidim.ludens.actions.#{recommendation}")
         end
+
+        def build_id
+          "#{@action}.#{@resource}"
+        end
       end
 
       private

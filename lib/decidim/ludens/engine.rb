@@ -10,7 +10,9 @@ module Decidim
       isolate_namespace Decidim::Ludens
 
       config.to_prepare do
-        Decidim::Organization.include Decidim::Ludens::OrganizationModelExtend
+        Decidim::User.class_eval do
+          include(UserExtends)
+        end
         require "extends/action_logger_service_extend" # TODO : refactor
       end
 
