@@ -10,11 +10,12 @@ module Decidim
       attribute :decidim_participative_action, :string
 
       validates :user, uniqueness: { scope: :decidim_participative_action }
+      validates :decidim_participative_action, presence: true
 
-      delegate :points, :recommandation, to: :decidim_participative_action
+      delegate :points, :recommandation, to: :participative_action
 
       def participative_action
-        @participative_action ||= Decidim::Ludens::ParticipativeActions.find(
+        @participative_action ||= Decidim::Ludens::ParticipativeActions.instance.find(
           decidim_participative_action.split(".").first,
           decidim_participative_action.split(".").last
         )

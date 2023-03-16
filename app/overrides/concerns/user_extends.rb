@@ -11,6 +11,30 @@ module UserExtends
 
       participative_actions_completed.sum(&:points)
     end
+
+    def level
+      return 1 if Decidim::Ludens::ParticipativeActions.instance.actions.blank?
+
+      levels = Decidim::Ludens::ParticipativeActions.instance.level_points
+      levels.each_with_index do |level, index|
+        return index + 1 if score < level
+      end
+      levels.size
+    end
+
+    def ludens_enabled?
+      enable_ludens || Decidim::Ludens.enable_ludens
+    end
+
+    def toggle_ludens
+      update!(enable_ludens: !ludens_enabled?)
+    end
+
+    def recommendations
+      actions = Decidim::Ludens::ParticipativeActions.instance.actions.reject { |a| a.completed?(self) }.sort_by(&:points).group_by(&:points)
+      actions = actions.each { |key, value| actions[key] = value.shuffle }
+      actions.values.flatten[0, 3]
+    end
   end
 end
 

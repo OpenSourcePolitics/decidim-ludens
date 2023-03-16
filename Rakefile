@@ -6,7 +6,6 @@ def install_module(path)
   Dir.chdir(path) do
     system("bundle exec rake decidim_ludens:install:migrations")
     system("bundle exec rake db:migrate")
-    system("bundle exec rake decidim_ludens:initialize")
   end
 end
 

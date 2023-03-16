@@ -35,7 +35,7 @@ module Decidim
       end
 
       def participative_action
-        ParticipativeActions.instance.find(@action, @resource.class.to_s)
+        @participative_action ||= ParticipativeActions.instance.find(@action, @resource.class.to_s)
       end
     end
   end

@@ -18,6 +18,12 @@ module Decidim
         end
       end
 
+      config.after_initialize do
+        Decidim::Admin::ApplicationController.class_eval do
+          include AdminControllerExtends
+        end
+      end
+
       routes do
         # Add engine routes here
         # resources :ludens

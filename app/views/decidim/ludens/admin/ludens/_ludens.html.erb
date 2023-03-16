@@ -27,7 +27,7 @@
   </div>
 
   <div class="grid-x grid-margin-x actions-grid">
-    <% list_of_participative_actions.each do |action_name , actions| %>
+    <% Decidim::Ludens::ParticipativeActions.instance.list_of_participative_actions(current_user).each do |action_name , actions| %>
       <div class="cell small-6">
         <%= render(
               partial: "list_actions",
