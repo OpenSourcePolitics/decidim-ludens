@@ -13,6 +13,7 @@ module Decidim
         Decidim::User.class_eval do
           include(UserExtends)
         end
+
         Decidim::ActionLogger.class_eval do
           include ActionLoggerServiceExtend
         end
@@ -21,6 +22,10 @@ module Decidim
       config.after_initialize do
         Decidim::Admin::ApplicationController.class_eval do
           include AdminControllerExtends
+        end
+
+        Decidim::Admin::DashboardController.class_eval do
+          include DashboardControllerExtends
         end
       end
 
