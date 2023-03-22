@@ -7,14 +7,14 @@
       <input type=hidden
              name="level_up_message"
              id="level-up-message"
-             value="<%= t("decidim.admin.assistant.levelMessage", level: participative_actions_level(current_user)) %>"
-        />
-      <input type=hidden name="level_up" id="level-up" value="<%= "TODO : Handle level up" %>"/>
-      <h5 class="assistant_score"><%= participative_actions_score(current_user) %>
-        /<%= participative_actions_level_points(current_user) %></h5>
+             value="<%= t("decidim.admin.assistant.levelMessage", level: participative_actions_level(current_user)) %>">
+      <input type=hidden name="level_up" id="level-up" value="<%= "TODO : Handle level up" %>">
+      <h5 class="assistant_score">
+        <%= participative_actions_score(current_user) %>/<%= participative_actions_level_points(current_user) %>
+      </h5>
     </div>
     <div class="progress">
-      <input class="paliers" type="hidden" value="<%= participative_actions_level_points %>"/>
+      <input class="paliers" type="hidden" value="<%= participative_actions_level_points %>">
       <div class="color progress_bar"></div>
     </div>
   </div>

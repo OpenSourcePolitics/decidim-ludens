@@ -35,6 +35,8 @@ jobs:
         name: Install Ruby deps
       - run: bundle exec rubocop -P
         name: Lint ruby files
+      - run: bundle exec erblint 'app/{cells,views}/**/*.erb'
+        name: Lint ERB files
   tests:
     name: Tests
     runs-on: ubuntu-latest

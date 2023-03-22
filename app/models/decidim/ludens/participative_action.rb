@@ -54,10 +54,9 @@ module Decidim
         actions.map(&:points).max
       end
 
-      # Calculate level points
-      # returns an array of points for each level
-      # [12, 14, 34, 56, 12] -> 12 points level 1, 14 points level 2, 34 points level 3, 56 points level 4, 12 points level 5
       def self.level_points
+        return [0] if maximum_level.nil?
+
         (1..maximum_level).to_a.map do |i|
           points_for_level(i)
         end
