@@ -424,7 +424,7 @@ module Decidim
 
     describe "#toggle_ludens" do
       it "toggles the ludens_enabled attribute" do
-        expect { subject.toggle_ludens }.to change { subject.ludens_enabled? }
+        expect { subject.toggle_ludens }.to change(subject, :ludens_enabled?)
       end
     end
 

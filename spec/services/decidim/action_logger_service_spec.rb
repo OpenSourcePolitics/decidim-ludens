@@ -179,4 +179,3 @@ describe Decidim::ActionLogger do
     end
   end
 end
-

@@ -22,7 +22,7 @@ it:
         points: points
         recommendations: Recommendations
         seeMore: Mostra tutto
-        success: Congratulations ! You just completed the action
+        success: Congratulations ! You just completed the action '%{recommendation}' !
         title: Participative Assistant
       ludens:
         dashboard:

@@ -44,7 +44,7 @@ module Decidim
 
           it "completes organization" do
             subject_run
-            expect(ParticipativeActionCompleted.last.participative_action.build_id).to eq("create.Decidim::ParticipatoryProcess")
+            expect(ParticipativeActionCompleted.last.participative_action.global_id).to eq("create.Decidim::ParticipatoryProcess")
             expect(Rails.cache.read("flash_message_#{user.id}")).to eq("Congratulations ! You just completed the action 'Create a participatory process' !")
           end
         end
@@ -52,4 +52,3 @@ module Decidim
     end
   end
 end
-

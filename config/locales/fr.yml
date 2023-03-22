@@ -22,7 +22,7 @@ fr:
         points: points
         recommendations: Suggestions
         seeMore: Voir tout
-        success: Bravo ! Vous avez validé l'action
+        success: Bravo ! Vous avez validé l'action '%{recommendation}' !
         title: Assistant à la participation
       ludens:
         dashboard:

@@ -6,7 +6,7 @@ module Decidim::Ludens
   describe ParticipativeActionCompleted do
     subject { pac }
 
-    let(:p_action) { Decidim::Ludens::ParticipativeActions.instance.actions.first }
+    let(:p_action) { Decidim::Ludens::ParticipativeAction.actions.first }
     let(:p_action_id) { p_action.build_id }
     let(:user) { create :user }
     let(:pac) { build :participative_action_completed, decidim_participative_action: p_action_id, user: user }

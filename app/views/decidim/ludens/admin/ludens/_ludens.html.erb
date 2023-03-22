@@ -10,7 +10,7 @@
       <%= t "decidim.admin.assistant.intro" %>
     </h3>
   </div>
-  <%= link_to t("decidim.admin.assistant.disable"), :toggle_ludens, class: "cell small-2 button" %>
+  <%= link_to t("decidim.admin.assistant.disable"), :toggle_ludens, method: :post, class: "cell small-2 button" %>
 </div>
 
 <div class="content">
@@ -27,7 +27,7 @@
   </div>
 
   <div class="grid-x grid-margin-x actions-grid">
-    <% Decidim::Ludens::ParticipativeActions.instance.list_of_participative_actions(current_user).each do |action_name , actions| %>
+    <% Decidim::Ludens::ParticipativeAction.list_of_participative_actions(current_user).each do |action_name , actions| %>
       <div class="cell small-6">
         <%= render(
               partial: "list_actions",

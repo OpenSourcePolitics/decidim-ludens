@@ -5,7 +5,7 @@ require "spec_helper"
 describe "Ludens action", type: :system do
   let(:organization) { create(:organization) }
   let(:user) { create(:user, :admin, :confirmed, organization: organization) }
-  let!(:participative_action) { Decidim::Ludens::ParticipativeActions.instance.find("create","Decidim::Assembly") }
+  let!(:participative_action) { Decidim::Ludens::ParticipativeActions.instance.find("create", "Decidim::Assembly") }
 
   before do
     switch_to_host(organization.host)

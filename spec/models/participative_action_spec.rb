@@ -3,22 +3,22 @@
 require "spec_helper"
 
 module Decidim::Ludens
-  describe ParticipativeActions do
-    subject { Decidim::Ludens::ParticipativeActions.instance }
+  describe ParticipativeAction do
+    subject { described_class }
 
-    describe "#initialize" do
+    describe ".actions" do
       it "returns the participative action" do
         expect(subject.actions).not_to be_empty
       end
 
       it "is stored successfully" do
-        expect(subject.actions.first).to be_a(Decidim::Ludens::ParticipativeActions::ParticipativeAction)
+        expect(subject.actions.first).to be_a(Decidim::Ludens::ParticipativeAction)
       end
     end
 
     describe "#find" do
       it "returns the participative action" do
-        expect(subject.find("answer", "Decidim::Proposals::Proposal")).to be_a(Decidim::Ludens::ParticipativeActions::ParticipativeAction)
+        expect(subject.find("answer", "Decidim::Proposals::Proposal")).to be_a(Decidim::Ludens::ParticipativeAction)
         expect(subject.find("answer", "Decidim::Proposals::Proposal").build_id).to eq("answer.Decidim::Proposals::Proposal")
       end
     end

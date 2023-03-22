@@ -90,7 +90,7 @@ describe "Ludens", type: :system do
       end
 
       within "#exampleModalEdition .modal-actions-uncompleted" do
-        expect(page).to have_content(Decidim::Ludens::ParticipativeActions.instance.find("create","Decidim::StaticPage").translated_recommendation)
+        expect(page).to have_content(Decidim::Ludens::ParticipativeActions.instance.find("create", "Decidim::StaticPage").translated_recommendation)
       end
     end
   end
