@@ -20,14 +20,14 @@ module Decidim
                                 category: category,
                                 recommendation: infos["recommendation"],
                                 documentation: infos["documentation"]
-                             ))
+                              ))
             end
           end
         end
       end
 
       def find(action, resource)
-        @actions.find { |a| a.build_id == "#{action}.#{resource}" }
+        actions.find { |a| a.build_id == "#{action}.#{resource}" }
       end
 
       def level_points
@@ -35,9 +35,9 @@ module Decidim
 
         (1..5).each do |i|
           if i == 1
-            paliers.append(@actions.select{ |a| a.points == i }.size)
+            paliers.append(actions.select { |a| a.points == i }.size)
           else
-            paliers.append(@actions.select{ |a| a.points == i }.size * i + paliers[i - 2])
+            paliers.append(actions.select { |a| a.points == i }.size * i + paliers[i - 2])
           end
         end
 
@@ -45,7 +45,7 @@ module Decidim
       end
 
       def list_of_participative_actions(user)
-        @actions.sort_by(&:points).group_by(&:category).each_with_object({}) do |actions_arr, hash|
+        actions.sort_by(&:points).group_by(&:category).each_with_object({}) do |actions_arr, hash|
           hash[actions_arr[0].downcase.to_sym] = {
             completed: actions_arr[1].select { |a| a.completed?(user) },
             uncompleted: actions_arr[1].reject { |a| a.completed?(user) }

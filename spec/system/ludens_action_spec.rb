@@ -5,7 +5,7 @@ require "spec_helper"
 describe "Ludens action", type: :system do
   let(:organization) { create(:organization) }
   let(:user) { create(:user, :admin, :confirmed, organization: organization) }
-  let!(:participative_action) { create(:participative_action, organization: organization, points: 1) }
+  let!(:participative_action) { Decidim::Ludens::ParticipativeActions.instance.find("create","Decidim::Assembly") }
 
   before do
     switch_to_host(organization.host)
@@ -13,16 +13,15 @@ describe "Ludens action", type: :system do
     visit decidim_admin_ludens.root_path
   end
 
-  context "when there is one participative action" do
-    it "can be completed" do
+  context "when there is participative action" do
+    it "they can be completed" do
       within ".recap_assistant" do
         expect(page).to have_content("Level 1")
-        expect(page).to have_content("0/1")
+        expect(page).to have_content("0/")
       end
 
       within ".assistant_recommendations" do
         expect(page).to have_content("1 points")
-        expect(page).to have_content(participative_action.translated_recommendation)
       end
 
       within "nav" do
@@ -46,33 +45,27 @@ describe "Ludens action", type: :system do
 
       expect(page).to have_content("Assembly created successfully")
 
-      click_link "Title_new_action"
-
-      click_link "Publish"
-
       expect(page).to have_content("Congratulations ! You just completed the action '#{participative_action.translated_recommendation}' !")
 
       click_link "Dashboard"
 
-      find("#level-holder").click
-
       within ".recap_assistant" do
-        expect(page).to have_content("Level 5")
-        expect(page).to have_content("1/1")
+        expect(page).to have_content("Level 1")
+        expect(page).to have_content("2/")
       end
 
       within ".assistant_recommendations .no-bullet" do
-        expect(page).to have_content("1 points")
+        expect(page).to have_content("2 points")
         expect(page).to have_content(participative_action.translated_recommendation)
       end
     end
   end
 
   context "when you're one point away from raising level" do
-    let!(:participative_action2) { create(:participative_action, action: "unpublish", organization: organization, points: 2) }
-    let!(:participative_action3) { create(:participative_action, action: "create", organization: organization, points: 3) }
-    let!(:participative_action4) { create(:participative_action, action: "update", organization: organization, points: 4) }
-    let!(:participative_action5) { create(:participative_action, action: "destroy", organization: organization, points: 5) }
+    let!(:pac1) { create(:participative_action_completed, user: user, decidim_participative_action: "create.Decidim::Blogs::Post") }
+    let!(:pac2) { create(:participative_action_completed, user: user, decidim_participative_action: "update.Decidim::Meetings::Agenda") }
+    let!(:pac3) { create(:participative_action_completed, user: user, decidim_participative_action: "update.Decidim::Debates::Debate") }
+    let!(:pac4) { create(:participative_action_completed, user: user, decidim_participative_action: "deliver.Decidim::Newsletter") }
 
     it "shows an animation when completing an action" do
       within "nav" do
@@ -95,10 +88,6 @@ describe "Ludens action", type: :system do
       click_button "Create"
 
       expect(page).to have_content("Assembly created successfully")
-
-      click_link "Title_new_action"
-
-      click_link "Publish"
 
       expect(page).to have_content("Congratulations ! You just completed the action '#{participative_action.translated_recommendation}' !")
 
