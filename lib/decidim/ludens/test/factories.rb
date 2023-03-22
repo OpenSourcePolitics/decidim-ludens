@@ -3,11 +3,8 @@
 require "decidim/core/test/factories"
 
 FactoryBot.define do
-  factory :participative_assistant_component, parent: :component do
-    name { Decidim::Components::Namer.new(participatory_space.organization.available_locales, :participative_assistant).i18n_name }
-    manifest_name { :participative_assistant }
-    participatory_space { create(:participatory_process, :with_steps) }
+  factory :participative_action_completed, class: "Decidim::Ludens::ParticipativeActionCompleted" do
+    decidim_participative_action { "publish.Decidim::Assembly" }
+    user { create(:user) }
   end
-
-  # Add engine factories here
 end

@@ -24,7 +24,7 @@ describe Decidim::ActionLogger do
     end
 
     it "calls manage_points" do
-      expect(Decidim::Ludens::ManagePoints).to receive(:run).with(action, user, resource)
+      expect(Decidim::Ludens::ManagePoints).to receive(:new).with(action, user, resource).and_return(double(run: nil))
 
       subject
     end
@@ -179,3 +179,4 @@ describe Decidim::ActionLogger do
     end
   end
 end
+

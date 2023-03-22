@@ -23,7 +23,9 @@ module UserExtends
     end
 
     def ludens_enabled?
-      enable_ludens || Decidim::Ludens.enable_ludens
+      return enable_ludens unless enable_ludens.nil?
+
+      Decidim::Ludens.enable_ludens
     end
 
     def toggle_ludens
