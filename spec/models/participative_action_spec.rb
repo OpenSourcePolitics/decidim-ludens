@@ -6,6 +6,11 @@ module Decidim::Ludens
   describe ParticipativeAction do
     subject { described_class }
 
+    let(:p_action) { Decidim::Ludens::ParticipativeAction.actions.first }
+    let(:p_action_id) { p_action.global_id }
+    let(:user) { create :user }
+    let(:pac) { [build(:participative_action_completed, decidim_participative_action: p_action_id, user: user)] }
+
     describe ".actions" do
       it "returns the participative action" do
         expect(subject.actions).not_to be_empty
@@ -18,8 +23,8 @@ module Decidim::Ludens
 
     describe "#find" do
       it "returns the participative action" do
-        expect(subject.find("answer", "Decidim::Proposals::Proposal")).to be_a(Decidim::Ludens::ParticipativeAction)
-        expect(subject.find("answer", "Decidim::Proposals::Proposal").build_id).to eq("answer.Decidim::Proposals::Proposal")
+        expect(subject.find("answer.Decidim::Proposals::Proposal")).to be_a(Decidim::Ludens::ParticipativeAction)
+        expect(subject.find("answer.Decidim::Proposals::Proposal").global_id).to eq("answer.Decidim::Proposals::Proposal")
       end
     end
 
@@ -48,41 +53,29 @@ module Decidim::Ludens
       end
     end
 
-    describe "ParticipativeAction" do
-      describe "#initialize" do
-        it "fill the fields correctly" do
-          expect(subject.actions.first.points).to be_a(Integer)
-          expect(subject.actions.first.action).to be_a(String)
-          expect(subject.actions.first.resource.constantize).to be_a(Class)
-          expect(subject.actions.first.category).to be_a(String)
-          expect(subject.actions.first.recommendation).to be_a(String)
-          expect(subject.actions.first.documentation).to be_a(String)
-        end
+    describe "#global_id" do
+      it "returns a unique id based on the action and the resource" do
+        expect(subject.actions.first.global_id).to eq("publish.Decidim::Assembly")
       end
+    end
 
-      describe "#build_id" do
-        it "returns a unique id based on the action and the resource" do
-          expect(subject.actions.first.build_id).to eq("publish.Decidim::Assembly")
-        end
+    describe "#translated_recommendation" do
+      it "returns the translated recommendation" do
+        expect(subject.actions.first.translated_recommendation).to be_a(String)
       end
+    end
 
-      describe "#completed?" do
-        let!(:user) { create(:user) }
-        let!(:action) { create(:participative_action_completed, decidim_participative_action: "publish.Decidim::Assembly", user: user) }
-
-        it "returns true if the action is completed" do
-          expect(subject.find("publish", "Decidim::Assembly")).to be_completed(user)
-        end
-
-        it "returns false if the action is not completed" do
-          expect(subject.find("publish", "Decidim::Assembly")).not_to be_completed(create(:user))
-        end
+    describe ".recommendations" do
+      it "returns the recommendations" do
+        expect(subject.recommendations(pac).size).to eq(3)
+        expect(subject.recommendations(pac).first.points).to eq(1)
       end
+    end
 
-      describe "#translated_recommendation" do
-        it "returns the translated recommendation" do
-          expect(subject.actions.first.translated_recommendation).to be_a(String)
-        end
+    describe ".remaining_actions" do
+      it "returns the remaining_actions" do
+        expect(subject.remaining_actions(pac).size).to eq(67)
+        expect(subject.remaining_actions(pac).first.points).to eq(1)
       end
     end
   end

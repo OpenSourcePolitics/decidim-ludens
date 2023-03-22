@@ -6,7 +6,7 @@ module Decidim
       class LudensController < Ludens::Admin::ApplicationController
         def toggle
           # TODO: Add permission check
-          current_user.toggle_ludens
+          current_user.update!(enable_ludens: !current_user.ludens_enabled?)
 
           redirect_to action: "show"
         end

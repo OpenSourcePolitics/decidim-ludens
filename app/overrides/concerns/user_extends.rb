@@ -6,18 +6,18 @@ module UserExtends
   included do
     has_many :participative_actions_completed, class_name: "Decidim::Ludens::ParticipativeActionCompleted", foreign_key: "decidim_user_id", dependent: :destroy
 
-    def score
+    def participative_actions_score
       return 0 if participative_actions_completed.blank?
 
       participative_actions_completed.sum(&:points)
     end
 
-    def level
-      return 1 if Decidim::Ludens::ParticipativeActions.instance.actions.blank?
+    def participative_actions_level
+      return 1 if Decidim::Ludens::ParticipativeAction.actions.blank?
 
-      levels = Decidim::Ludens::ParticipativeActions.instance.level_points
+      levels = Decidim::Ludens::ParticipativeAction.level_points
       levels.each_with_index do |level, index|
-        return index + 1 if score < level
+        return index + 1 if participative_actions_score < level
       end
       levels.size
     end
@@ -26,16 +26,6 @@ module UserExtends
       return enable_ludens unless enable_ludens.nil?
 
       Decidim::Ludens.enable_ludens
-    end
-
-    def toggle_ludens
-      update!(enable_ludens: !ludens_enabled?)
-    end
-
-    def recommendations
-      actions = Decidim::Ludens::ParticipativeActions.instance.actions.reject { |a| a.completed?(self) }.sort_by(&:points).group_by(&:points)
-      actions = actions.each { |key, value| actions[key] = value.shuffle }
-      actions.values.flatten[0, 3]
     end
   end
 end

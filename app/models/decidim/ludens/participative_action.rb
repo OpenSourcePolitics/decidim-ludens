@@ -14,6 +14,7 @@ module Decidim
         @recommendation = recommendation
         @documentation = documentation
       end
+
       # rubocop:enable Metrics/ParameterLists
 
       def self.actions_file
@@ -69,12 +70,27 @@ module Decidim
       end
 
       def self.list_of_participative_actions(user)
-        actions.sort_by(&:points).group_by(&:category).each_with_object({}) do |actions_arr, hash|
-          hash[actions_arr[0].downcase.to_sym] = {
-            completed: actions_arr[1].select { |a| a.completed?(user) },
-            uncompleted: actions_arr[1].reject { |a| a.completed?(user) }
+        completed_actions = Decidim::Ludens::ParticipativeActionCompleted.where(user: user).map(&:participative_action)
+
+        actions.sort_by(&:points).group_by(&:category).each_with_object({}) do |(category, actions), hash|
+          hash[category.downcase.to_sym] = {
+            completed: actions & completed_actions,
+            uncompleted: actions - completed_actions
           }
         end
+      end
+
+      def self.recommendations(completed_actions)
+        remaining_actions(completed_actions).sort_by(&:points)
+                                            .group_by(&:points)
+                                            .transform_values(&:shuffle)
+                                            .values
+                                            .flatten
+                                            .first(3)
+      end
+
+      def self.remaining_actions(completed_actions)
+        Decidim::Ludens::ParticipativeAction.actions - completed_actions.map(&:participative_action)
       end
 
       def translated_recommendation
