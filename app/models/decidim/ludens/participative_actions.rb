@@ -9,7 +9,7 @@ module Decidim
 
       def initialize
         @actions = []
-        file = actions_from_file()
+        file = actions_from_file
         file["actions"].each do |category, resources|
           resources.each do |resource, all_actions|
             all_actions.each do |action, infos|
