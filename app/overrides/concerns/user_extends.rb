@@ -15,11 +15,9 @@ module UserExtends
     def participative_actions_level
       return 1 if Decidim::Ludens::ParticipativeAction.actions.blank?
 
-      levels = Decidim::Ludens::ParticipativeAction.level_points
-      levels.each_with_index do |level, index|
-        return index + 1 if participative_actions_score < level
-      end
-      levels.size
+      Decidim::Ludens::ParticipativeAction.level_points
+                                          .reject { |level| participative_actions_score < level }
+                                          .size + 1
     end
 
     def ludens_enabled?
