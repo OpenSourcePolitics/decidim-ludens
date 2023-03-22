@@ -12,14 +12,14 @@ it:
         intro: Your turn !
         knowMore: Mostra di più
         level: Livello
-        level1: Sto scoprendo la piattaforma
-        level2: Ho configurato correttamente la piattaforma
-        level3: Ho lanciato la mia prima consultazione
-        level4: I know how to interact with my users
-        level5: The platform is mine !
-        levelMessage: Congratulations, you are now level
+        level_1: Sto scoprendo la piattaforma
+        level_2: Ho configurato correttamente la piattaforma
+        level_3: Ho lanciato la mia prima consultazione
+        level_4: I know how to interact with my users
+        level_5: The platform is mine !
+        levelMessage: Congratulations, you are now level %{level}
         levelTitle: Livelli disponibili
-        points: points
+        points: '%{points} points'
         recommendations: Recommendations
         seeMore: Mostra tutto
         success: Congratulations ! You just completed the action '%{recommendation}' !

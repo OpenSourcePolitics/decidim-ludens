@@ -11,15 +11,15 @@ fr:
           title: Comment ça marche ?
         intro: À votre tour !
         knowMore: Voir plus
-        level: Niveau
-        level1: Je découvre la plateforme
-        level2: J'ai correctement configuré la plateforme
-        level3: J'ai lancé ma première consultation
-        level4: Je sais comment interagir avec mes utilisateurs
-        level5: La plateforme est à moi !
-        levelMessage: Bravo, vous êtes maintenant niveau
+        level: Niveau %{level}
+        level_1: Je découvre la plateforme
+        level_2: J'ai correctement configuré la plateforme
+        level_3: J'ai lancé ma première consultation
+        level_4: Je sais comment interagir avec mes utilisateurs
+        level_5: La plateforme est à moi !
+        levelMessage: Bravo, vous êtes maintenant niveau %{level}
         levelTitle: Niveaux disponibles
-        points: points
+        points: '%{points} points'
         recommendations: Suggestions
         seeMore: Voir tout
         success: Bravo ! Vous avez validé l'action '%{recommendation}' !

@@ -11,15 +11,15 @@ es:
           title: How does it works ?
         intro: Your turn !
         knowMore: View more
-        level: Level
-        level1: I'm discovering the platform
-        level2: I've correctly configured the platform
-        level3: I've launched my first consultation
-        level4: I know how to interact with my users
-        level5: The platform is mine !
-        levelMessage: Congratulations, you are now level
+        level: Level %{level}
+        level_1: I'm discovering the platform
+        level_2: I've correctly configured the platform
+        level_3: I've launched my first consultation
+        level_4: I know how to interact with my users
+        level_5: The platform is mine !
+        levelMessage: Congratulations, you are now level %{level}
         levelTitle: Levels available
-        points: points
+        points: '%{points} points'
         recommendations: Recommendations
         seeMore: See all
         success: Congratulations ! You just completed the action '%{recommendation}' !

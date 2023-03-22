@@ -6,11 +6,11 @@
   </div>
   <div class="grid-x desc_levels text-center">
     <% (1..5).each { |i| %>
-    <div class="grid-y desc_level">
-          <%=  image_tag ActionController::Base.helpers.asset_pack_path("media/images/badge#{i}.png"), class: "card__image levelsImage float-center", alt: "avatar"  %>
-      <h3 class="letter_spaced"><b><%=  t("decidim.admin.assistant.level") + i.to_s  %></b></h3>
-      <p class="levelDescription"> <%=  t("decidim.admin.assistant.level#{i}")  %> </p>
-    </div>
-    <%  } %>
+      <div class="grid-y desc_level">
+        <%= image_tag ActionController::Base.helpers.asset_pack_path("media/images/badge#{i}.png"), class: "card__image levelsImage float-center", alt: "avatar" %>
+        <h3 class="letter_spaced"><b><%= t("decidim.admin.assistant.level", level: "#{i}") %></b></h3>
+        <p class="levelDescription"> <%= t("decidim.admin.assistant.level_#{i}") %> </p>
+      </div>
+    <% } %>
   </div>
 </div>

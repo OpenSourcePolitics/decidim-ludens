@@ -10,7 +10,7 @@ module Decidim
       paths["lib/tasks"] = nil
 
       routes do
-        post "ludens/toggle" => "ludens#toggle", :as => :toggle_ludens
+        post "/toggle" => "ludens#toggle", :as => :toggle_ludens
         root to: "ludens#show"
       end
 
