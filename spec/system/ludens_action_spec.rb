@@ -6,8 +6,12 @@ describe "Ludens action", type: :system do
   let(:organization) { create(:organization) }
   let(:user) { create(:user, :admin, :confirmed, organization: organization) }
   let!(:participative_action) { Decidim::Ludens::ParticipativeAction.find("create.Decidim::Assembly") }
+  let!(:cache_store) { :memory_store }
 
   before do
+    allow(Rails).to receive(:cache).and_return(ActiveSupport::Cache.lookup_store(cache_store))
+    Rails.cache.clear
+
     switch_to_host(organization.host)
     login_as user, scope: :user
     visit decidim_admin_ludens.root_path

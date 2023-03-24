@@ -8,7 +8,7 @@ module Decidim
       subject { described_class }
 
       let(:organization) { create :organization }
-      let(:user) { create :user, organization: organization, current_sign_in_ip: "127.0.0.1" }
+      let(:user) { create :user, :admin, organization: organization, current_sign_in_ip: "127.0.0.1" }
       let(:participatory_space) { create :participatory_process, organization: organization }
       let(:component) { create :component, participatory_space: participatory_space }
       let(:resource) { create :dummy_resource, component: component }

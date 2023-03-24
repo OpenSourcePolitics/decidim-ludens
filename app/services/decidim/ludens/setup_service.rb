@@ -17,7 +17,7 @@ module Decidim
         raise "Please run migration first to initialize Ludens" unless Decidim::Ludens::ParticipativeActionCompleted.table_exists?
 
         Decidim::Ludens::ParticipativeActionCompleted.all.find_each do |action|
-          puts "Action removed : #{action.decidim_participative_action }" unless action.participative_action
+          puts "Action removed : #{action.decidim_participative_action}" unless action.participative_action
           action.destroy unless action.participative_action
         end
       end
