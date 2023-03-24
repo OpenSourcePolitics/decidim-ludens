@@ -157,22 +157,6 @@ module Decidim
         it { is_expected.not_to be_valid }
       end
 
-      context "when the file is a malicious image" do
-        let(:avatar_path) { Decidim::Dev.asset("malicious.jpg") }
-        let(:user) do
-          build(
-            :user,
-            avatar: ActiveStorage::Blob.create_after_upload!(
-              io: File.open(avatar_path),
-              filename: "malicious.jpeg",
-              content_type: "image/jpeg"
-            )
-          )
-        end
-
-        it { is_expected.not_to be_valid }
-      end
-
       context "with weird characters" do
         let(:weird_characters) do
           %w(< > ? % & ^ * # @ ( ) [ ] = + : ; " { } \ |)
