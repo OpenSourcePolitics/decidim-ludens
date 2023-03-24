@@ -3,7 +3,6 @@
 module Decidim
   module Ludens
     class ParticipativeActionCompleted < ApplicationRecord
-      # TODO: Serialize participative_action to avoid using map
       self.table_name = "participative_actions_completed"
 
       belongs_to :user, foreign_key: "decidim_user_id", class_name: "Decidim::User"

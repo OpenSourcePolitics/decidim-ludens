@@ -27,7 +27,3 @@ module UserExtends
     end
   end
 end
-
-Decidim::User.class_eval do
-  include(UserExtends)
-end

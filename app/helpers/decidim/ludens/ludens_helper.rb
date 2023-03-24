@@ -4,7 +4,7 @@ module Decidim
   module Ludens
     module LudensHelper
       def last_completed
-        @last_completed ||= Decidim::Ludens::ParticipativeActionCompleted.last
+         Decidim::Ludens::ParticipativeActionCompleted.last
       end
 
       def participative_actions_score(user)

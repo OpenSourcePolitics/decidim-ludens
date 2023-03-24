@@ -7,7 +7,7 @@ module Decidim
         helper Decidim::Ludens::LudensHelper
 
         def toggle
-          # TODO: Add permission check
+          enforce_permission_to :update, :admin_user, user: current_user
           current_user.update!(enable_ludens: !current_user.ludens_enabled?)
 
           redirect_to action: "show"
