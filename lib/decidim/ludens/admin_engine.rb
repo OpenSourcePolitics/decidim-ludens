@@ -11,6 +11,7 @@ module Decidim
 
       routes do
         post "/toggle" => "ludens#toggle", :as => :toggle_ludens
+        post "/reset" => "ludens#reset", :as => :reset_ludens
         root to: "ludens#show"
       end
 

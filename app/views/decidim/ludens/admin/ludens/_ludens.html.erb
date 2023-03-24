@@ -1,8 +1,8 @@
 <% add_decidim_page_title(t("decidim.admin.ludens.dashboard.title")) %>
 <%= stylesheet_pack_tag "decidim_ludens", media: "all" %> <!--TODO Move to head-->
 <%= javascript_pack_tag "decidim_ludens", media: "all" %> <!-- TODO Move to head -->
-<div class="grid-x">
-  <div class="cell small-10">
+<div class="grid-x grid-margin-x">
+  <div class="cell small-8">
     <h1 class="card-title">
       <%= t "decidim.admin.assistant.title" %>
     </h1>
@@ -11,6 +11,7 @@
     </h3>
   </div>
   <%= link_to t("decidim.admin.assistant.disable"), :toggle_ludens, method: :post, class: "cell small-2 button" %>
+  <%= link_to t("decidim.admin.assistant.reset"), :reset_ludens, method: :post, class: "cell small-2 button", data: { confirm: t("decidim.admin.assistant.confirm_reset")} %>
 </div>
 
 <div class="content">

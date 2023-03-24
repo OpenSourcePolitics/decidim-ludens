@@ -102,4 +102,23 @@ describe "Ludens", type: :system do
       expect(page).to have_content("Enable the assistant")
     end
   end
+
+  context "when you want to activate ludens" do
+    it "activate ludens" do
+      click_link "Disable the assistant"
+      click_link "Enable the assistant"
+
+      expect(page).to have_content("Disable the assistant")
+    end
+  end
+
+  context "when you want to reset ludens" do
+    it "reset ludens" do
+      click_link "Reset the assistant"
+      click_link "OK"
+
+      expect(page).to have_content("0/")
+      expect(page).to have_content("Level 1")
+    end
+  end
 end

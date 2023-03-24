@@ -12,6 +12,13 @@ module Decidim
 
           redirect_to action: "show"
         end
+
+        def reset
+          enforce_permission_to :update, :admin_user, user: current_user
+          Decidim::Ludens::ResetLudens.call(current_user)
+
+          redirect_to action: "show"
+        end
       end
     end
   end

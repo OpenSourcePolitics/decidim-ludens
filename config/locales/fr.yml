@@ -3,6 +3,7 @@ fr:
     admin:
       assistant:
         cannot_activate: L'assistant à la participation n'a pas été initialisé, vous ne pouvez donc pas l'utiliser pour l'instant. Pour l'initialiser, nous vous recommandons de consulter <a href='https://github.com/OpenSourcePolitics/decidim-ludens/blob/master/README.md'>cette notice</a>.
+        confirm_reset: Êtes-vous sûr de vouloir réinitialiser l'assistant à la participation ? Cela entraînera une remise à niveaux de vos points et de votre niveau.
         deactivated_title: L'assistant participatif est désactivé
         disable: Désactiver l'assistant
         enable: Activer l'assistant
@@ -21,6 +22,7 @@ fr:
         levelTitle: Niveaux disponibles
         points: '%{points} points'
         recommendations: Suggestions
+        reset: Réinitialiser l'assistant
         seeMore: Voir tout
         success: Bravo ! Vous avez validé l'action '%{recommendation}' !
         title: Assistant à la participation

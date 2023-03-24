@@ -4,6 +4,7 @@ en:
     admin:
       assistant:
         cannot_activate: The ludens module has not been initialized, you cannot use it for now. More information <a href='https://github.com/OpenSourcePolitics/decidim-ludens/blob/master/README.md'>here</a>.
+        confirm_reset: Are you sure you want to reset the assistant ? It will delete all your points and your level.
         deactivated_title: This personal assistant is deactivated
         disable: Disable the assistant
         enable: Enable the assistant
@@ -27,6 +28,7 @@ en:
         levelTitle: Levels available
         points: '%{points} points'
         recommendations: Recommendations
+        reset: Reset the assistant
         seeMore: See all
         success: Congratulations ! You just completed the action '%{recommendation}' !
         title: Participative Assistant
