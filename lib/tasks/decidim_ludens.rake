@@ -16,4 +16,9 @@ namespace :decidim_ludens do
   task retrieve: :environment do
     Decidim::Ludens::SetupService.retrieve_actions
   end
+
+  desc "Remove unregistered actions"
+  task remove_unregistered_actions: :environment do
+    Decidim::Ludens::SetupService.remove_unregistered_actions
+  end
 end

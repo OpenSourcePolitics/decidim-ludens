@@ -11,11 +11,13 @@ module Decidim
 
       def run
         return unless Decidim::Ludens::ParticipativeActionCompleted.table_exists?
+        return unless @user.admin?
         return if participative_action.blank?
         return if Decidim::Ludens::ParticipativeActionCompleted.exists?(user: @user, decidim_participative_action: participative_action.global_id)
 
         create_participative_action_completed
         send_flash_message_in_cache
+        true
         # TODO : handle level up
       end
 
