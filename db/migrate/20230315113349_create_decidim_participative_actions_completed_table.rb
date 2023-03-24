@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateDecidimParticipativeActionsCompletedTable < ActiveRecord::Migration[6.0]
   def change
     create_table :participative_actions_completed do |t|

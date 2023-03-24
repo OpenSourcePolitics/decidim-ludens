@@ -14,7 +14,7 @@ describe "Ludens", type: :system do
 
   context "when there is no participative action" do
     before do
-      allow(Decidim::Ludens::ParticipativeActions.instance).to receive(:actions).and_return([])
+      allow(Decidim::Ludens::ParticipativeAction).to receive(:actions).and_return([])
       visit current_path
     end
 
@@ -90,7 +90,7 @@ describe "Ludens", type: :system do
       end
 
       within "#exampleModalEdition .modal-actions-uncompleted" do
-        expect(page).to have_content(Decidim::Ludens::ParticipativeActions.instance.find("create","Decidim::StaticPage").translated_recommendation)
+        expect(page).to have_content(Decidim::Ludens::ParticipativeAction.find("create.Decidim::StaticPage").translated_recommendation)
       end
     end
   end

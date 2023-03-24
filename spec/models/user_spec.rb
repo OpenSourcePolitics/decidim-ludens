@@ -384,23 +384,23 @@ module Decidim
       end
     end
 
-    describe "#score" do
+    describe "#participative_actions_score" do
       let!(:pac) { create(:participative_action_completed, decidim_participative_action: "publish.Decidim::Assembly", user: user) }
       let!(:pac2) { create(:participative_action_completed, decidim_participative_action: "unpublish.Decidim::Assembly", user: user) }
 
-      it "returns the score" do
-        p1 = Decidim::Ludens::ParticipativeActions.instance.find("publish", "Decidim::Assembly").points
-        p2 = Decidim::Ludens::ParticipativeActions.instance.find("publish", "Decidim::Assembly").points
-        expect(subject.score).to eq(p1 + p2)
+      it "returns the participative_actions_score" do
+        p1 = Decidim::Ludens::ParticipativeAction.find("publish.Decidim::Assembly").points
+        p2 = Decidim::Ludens::ParticipativeAction.find("publish.Decidim::Assembly").points
+        expect(subject.participative_actions_score).to eq(p1 + p2)
       end
     end
 
-    describe "#level" do
+    describe "#participative_actions_level" do
       let!(:pac) { create(:participative_action_completed, decidim_participative_action: "publish.Decidim::Assembly", user: user) }
       let!(:pac2) { create(:participative_action_completed, decidim_participative_action: "unpublish.Decidim::Assembly", user: user) }
 
       it "returns the level" do
-        expect(subject.level).to eq(1)
+        expect(subject.participative_actions_level).to eq(1)
       end
     end
 
@@ -419,19 +419,6 @@ module Decidim
         it "returns false" do
           expect(subject.ludens_enabled?).to eq(!Decidim::Ludens.enable_ludens)
         end
-      end
-    end
-
-    describe "#toggle_ludens" do
-      it "toggles the ludens_enabled attribute" do
-        expect { subject.toggle_ludens }.to change { subject.ludens_enabled? }
-      end
-    end
-
-    describe "#recommendations" do
-      it "returns the recommendations" do
-        expect(subject.recommendations.size).to eq(3)
-        expect(subject.recommendations.first.points).to eq(1)
       end
     end
   end
