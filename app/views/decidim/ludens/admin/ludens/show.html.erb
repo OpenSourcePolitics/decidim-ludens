@@ -1,4 +1,4 @@
-<% if current_organization.enable_ludens %>
+<% if current_user.ludens_enabled? %>
   <%= render partial: "ludens" %>
 <% else %>
   <%= render partial: "disabled" %>

@@ -10,8 +10,23 @@ module Decidim
       isolate_namespace Decidim::Ludens
 
       config.to_prepare do
-        Decidim::Organization.include Decidim::Ludens::OrganizationModelExtend
-        require "extends/action_logger_service_extend" # TODO : refactor
+        Decidim::User.class_eval do
+          include(UserExtends)
+        end
+
+        Decidim::ActionLogger.class_eval do
+          include ActionLoggerServiceExtend
+        end
+      end
+
+      config.after_initialize do
+        Decidim::Admin::ApplicationController.class_eval do
+          include AdminControllerExtends
+        end
+
+        Decidim::Admin::DashboardController.class_eval do
+          include DashboardControllerExtends
+        end
       end
 
       routes do

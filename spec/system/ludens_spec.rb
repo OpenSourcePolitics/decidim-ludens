@@ -13,6 +13,11 @@ describe "Ludens", type: :system do
   end
 
   context "when there is no participative action" do
+    before do
+      allow(Decidim::Ludens::ParticipativeAction).to receive(:actions).and_return([])
+      visit current_path
+    end
+
     it "doesn't returns a grid of actions" do
       within ".actions-grid" do
         expect(page).not_to have_content("Edition")
@@ -28,23 +33,14 @@ describe "Ludens", type: :system do
 
     it "displays level 1" do
       within ".assistant_container" do
-        expect(page).to have_content("Level 5")
+        expect(page).to have_content("Level 1")
         expect(page).to have_content("0/0")
       end
     end
   end
 
   context "when there is multiple type of participative actions" do
-    let!(:edition_participative_action) { create(:participative_action, organization: organization) }
-    let!(:collaboration_participative_action) { create(:participative_action, :collab, organization: organization) }
-    let!(:interaction_participative_action) { create(:participative_action, :interact, organization: organization) }
-    let!(:configuration_participative_action) { create(:participative_action, :config, organization: organization) }
-
     it "returns a grid of actions" do
-      # TODO: understand why current_path is needed
-
-      visit current_path
-
       within ".actions-grid" do
         expect(page).to have_content("Edition")
         expect(page).to have_content("Collaboration")
@@ -54,160 +50,47 @@ describe "Ludens", type: :system do
     end
   end
 
-  context "when there is less than 5 participative action in each" do
-    context "when participative actions are all uncompleted" do
-      let!(:participative_actions) do
-        create_list(:participative_action, 4, :collab, organization: organization)
+  context "when participative actions are all uncompleted" do
+    it "displays actions uncompleted" do
+      visit current_path
+
+      expect(page).not_to have_css(".card-Collaboration .list-actions-completed li")
+
+      within ".card-Collaboration .list-actions-uncompleted" do
+        expect(page).to have_content(" ")
       end
 
-      it "displays actions uncompleted" do
-        visit current_path
+      find("#openModalCollaboration").click
 
-        expect(page).not_to have_css(".card-Collaboration .list-actions-completed li")
+      expect(page).not_to have_css("#exampleModalCollaboration .modal-actions-completed li")
 
-        within ".card-Collaboration .list-actions-uncompleted" do
-          expect(page).to have_content(" ")
-        end
-
-        find("#openModalCollaboration").click
-
-        expect(page).not_to have_css("#exampleModalCollaboration .modal-actions-completed li")
-
-        within "#exampleModalCollaboration .modal-actions-uncompleted" do
-          expect(page).to have_content(" ")
-        end
-      end
-    end
-
-    context "when some participative actions are completed" do
-      let!(:participative_actions) do
-        create_list(:participative_action, 4, :collab, organization: organization)
-        create_list(:participative_action, 3, :completed, :collab, organization: organization)
-      end
-
-      it "displays all actions" do
-        visit current_path
-
-        within ".card-Collaboration .list-actions-completed" do
-          expect(page).to have_content(" ")
-        end
-
-        within ".card-Collaboration .list-actions-uncompleted" do
-          expect(page).to have_content(" ")
-        end
-
-        find("#openModalCollaboration").click
-
-        within "#exampleModalCollaboration .modal-actions-completed" do
-          expect(page).to have_content(" ")
-        end
-
-        within "#exampleModalCollaboration .modal-actions-uncompleted" do
-          expect(page).to have_content(" ")
-        end
-      end
-    end
-
-    context "when participative actions are all completed" do
-      let!(:participative_actions) do
-        create_list(:participative_action, 3, :completed, :collab, organization: organization)
-      end
-
-      it "displays all actions" do
-        visit current_path
-
-        within ".card-Collaboration .list-actions-completed" do
-          expect(page).to have_content(" ")
-        end
-
-        expect(page).not_to have_css(".card-Collaboration .list-actions-uncompleted li")
-
-        find("#openModalCollaboration").click
-
-        within "#exampleModalCollaboration .modal-actions-completed" do
-          expect(page).to have_content(" ")
-        end
-
-        expect(page).not_to have_css("#exampleModalCollaboration .modal-actions-uncompleted li")
+      within "#exampleModalCollaboration .modal-actions-uncompleted" do
+        expect(page).to have_content(" ")
       end
     end
   end
 
-  context "when there is more than 5 participative action" do
-    context "when participative actions are all uncompleted" do
-      let!(:participative_actions) do
-        create_list(:participative_action, 7, :collab, organization: organization)
+  context "when some participative actions are completed" do
+    let!(:pac1) { create(:participative_action_completed, user: user, decidim_participative_action: "create.Decidim::Blogs::Post") }
+    let!(:pac2) { create(:participative_action_completed, user: user, decidim_participative_action: "update.Decidim::Meetings::Agenda") }
+
+    it "displays all actions" do
+      visit current_path
+
+      within ".card-Edition .list-actions-completed" do
+        expect(page).to have_content(pac1.participative_action.translated_recommendation)
+        expect(page).to have_content(pac2.participative_action.translated_recommendation)
       end
 
-      it "displays actions uncompleted" do
-        visit current_path
+      find("#openModalEdition").click
 
-        expect(page).not_to have_css(".card-Collaboration .list-actions-completed li")
-
-        within ".card-Collaboration .list-actions-uncompleted" do
-          expect(page).to have_content(" ")
-        end
-
-        find("#openModalCollaboration").click
-
-        expect(page).not_to have_css("#exampleModalCollaboration .modal-actions-completed li")
-
-        within "#exampleModalCollaboration .modal-actions-uncompleted" do
-          expect(page).to have_content(" ")
-        end
-      end
-    end
-
-    context "when some participative actions are completed" do
-      let!(:participative_actions) do
-        create_list(:participative_action, 6, :collab, organization: organization)
-        create_list(:participative_action, 8, :completed, :collab, organization: organization)
+      within "#exampleModalEdition .modal-actions-completed" do
+        expect(page).to have_content(pac1.participative_action.translated_recommendation)
+        expect(page).to have_content(pac2.participative_action.translated_recommendation)
       end
 
-      it "displays all actions" do
-        visit current_path
-
-        within ".card-Collaboration .list-actions-completed" do
-          expect(page).to have_content(" ")
-        end
-
-        within ".card-Collaboration .list-actions-uncompleted" do
-          expect(page).to have_content(" ")
-        end
-
-        find("#openModalCollaboration").click
-
-        within "#exampleModalCollaboration .modal-actions-completed" do
-          expect(page).to have_content(" ")
-        end
-
-        within "#exampleModalCollaboration .modal-actions-uncompleted" do
-          expect(page).to have_content(" ")
-        end
-      end
-    end
-
-    context "when participative actions are all completed" do
-      let!(:participative_actions) do
-        create_list(:participative_action, 9, :completed, :collab, organization: organization)
-      end
-
-      it "displays completed actions" do
-        visit current_path
-
-        within ".card-Collaboration .list-actions-completed" do
-          expect(page).to have_content(" ")
-        end
-
-        expect(page).not_to have_css(".card-Collaboration .list-actions-uncompleted li")
-
-        find("#openModalCollaboration").click
-
-        within "#exampleModalCollaboration .modal-actions-completed" do
-          expect(page).to have_content(" ")
-        end
-
-        expect(page).not_to have_css("#exampleModalCollaboration .modal-actions-uncompleted li")
+      within "#exampleModalEdition .modal-actions-uncompleted" do
+        expect(page).to have_content(Decidim::Ludens::ParticipativeAction.find("create.Decidim::StaticPage").translated_recommendation)
       end
     end
   end
@@ -217,6 +100,25 @@ describe "Ludens", type: :system do
       click_link "Disable the assistant"
 
       expect(page).to have_content("Enable the assistant")
+    end
+  end
+
+  context "when you want to activate ludens" do
+    it "activate ludens" do
+      click_link "Disable the assistant"
+      click_link "Enable the assistant"
+
+      expect(page).to have_content("Disable the assistant")
+    end
+  end
+
+  context "when you want to reset ludens" do
+    it "reset ludens" do
+      click_link "Reset the assistant"
+      click_link "OK"
+
+      expect(page).to have_content("0/")
+      expect(page).to have_content("Level 1")
     end
   end
 end

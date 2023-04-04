@@ -10,14 +10,8 @@ module Decidim
       paths["lib/tasks"] = nil
 
       routes do
-        # Add admin engine routes here
-        # resources :ludens do
-        #   collection do
-        #     resources :exports, only: [:create]
-        #   end
-        # end
-        # root to: "ludens#index"
-        get "ludens/toggle" => "ludens#toggle", :as => :toggle_ludens
+        post "/toggle" => "ludens#toggle", :as => :toggle_ludens
+        post "/reset" => "ludens#reset", :as => :reset_ludens
         root to: "ludens#show"
       end
 

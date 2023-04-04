@@ -1,16 +1,24 @@
 <div class="recap_assistant grid-y float-left">
   <div class="assistant_values grid-y">
     <div class="grid-x assistant_container">
-      <h3 class="assistant_level letter_spaced"><b> <%= t "decidim.admin.assistant.level" %> <%= current_organization.level %> </b></h3>
-      <input type=hidden name="level_up_message" id="level-up-message" value="<%= t("decidim.admin.assistant.levelMessage") %> <%= current_organization.level %>"/>
-      <input type=hidden name="level_up" id="level-up" value="<%= current_organization.assistant["level_up"] %>"/>
-      <% current_organization.update!(assistant: current_organization.assistant.dup.merge({"level_up": "displayed"})) %>
-      <h5 class="assistant_score"><%= current_organization.score %>/<%= current_organization.step_scores[current_organization.level-1] %></h5>
+      <h3 class="assistant_level letter_spaced">
+        <%= t "decidim.admin.assistant.level", level: participative_actions_level(current_user) %>
+      </h3>
+      <input type=hidden
+             name="level_up_message"
+             id="level-up-message"
+             value="<%= t("decidim.admin.assistant.levelMessage", level: participative_actions_level(current_user)) %>">
+      <input type=hidden name="level_up" id="level-up" value="<%= display_level_up(current_user) %>">
+      <h5 class="assistant_score">
+        <%= participative_actions_score(current_user) %>/<%= participative_actions_level_points(current_user) %>
+      </h5>
     </div>
     <div class="progress">
-      <input class="paliers" type="hidden" value="<%= current_organization.step_scores %>"/>
+      <input class="paliers" type="hidden" value="<%= participative_actions_level_points %>">
       <div class="color progress_bar"></div>
     </div>
   </div>
-  <%= image_tag ActionController::Base.helpers.asset_pack_path("media/images/badge"+current_organization.level.to_s+".png"), class: "card__image avatar float-center badge-level-"+current_organization.level.to_s, alt: "avatar" %>
+  <%= image_tag ActionController::Base.helpers.asset_pack_path("media/images/badge#{participative_actions_level(current_user)}.png"),
+                class: "card__image avatar float-center badge-level-#{participative_actions_level(current_user)}",
+                alt: "avatar" %>
 </div>

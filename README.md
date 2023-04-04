@@ -27,17 +27,26 @@ if migrations are not installed by themselves, execute
 bundle exec rake decidim_ludens:install:migrations
 ```
  
-When organizations are created, initialize the module by executing
+You may need to install a package by yourself with
 ```bash
-bundle exec rake decidim_ludens:initialize
+npm install confetti-js --save
+```
+
+If you need to add the module on an existing platform, you can retrieve old actions by executing
+```bash
+bundle exec rake decidim_ludens:retrieve_actions
+```
+
+If you need to remove unregistered actions, after updating the config file for example, you can execute
+```bash
+bundle exec rake decidim_ludens:remove_unregistered_actions
 ```
 
 If you need to customize the actions, you can copy the yaml file by executing
 ```bash
 bundle exec rake decidim_ludens:get_file
 ```
-
-You can then customize it, removing and adding action as you want, and rerun the initialize rake task
+You can then customize it, removing and adding action as you want, and then execute the retrieve commands and remove unregistered actions command
 
 ## Contributing
 

@@ -8,5 +8,10 @@ module Decidim
   # This namespace holds the logic of the `Ludens` component. This component
   # allows users to create ludens in a participatory space.
   module Ludens
+    include ActiveSupport::Configurable
+
+    config_accessor :enable_ludens do
+      true
+    end
   end
 end

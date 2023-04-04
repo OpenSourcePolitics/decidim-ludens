@@ -5,30 +5,12 @@
     </h2>
   </div>
   <div class="grid-x desc_levels text-center">
-    <div class="grid-y desc_level">
-      <%= image_tag ActionController::Base.helpers.asset_pack_path("media/images/badge1.png"), class: "card__image levelsImage float-center", alt: "avatar" %>
-      <h3 class="letter_spaced"> <b><%= t("decidim.admin.assistant.level") %> 1</b></h3>
-      <p class="levelDescription"> <%= t("decidim.admin.assistant.level1") %> </p>
-    </div>
-    <div class="grid-y desc_level">
-      <%= image_tag ActionController::Base.helpers.asset_pack_path("media/images/badge2.png"), class: "card__image levelsImage float-center", alt: "avatar" %>
-      <h3 class="letter_spaced"> <b><%= t("decidim.admin.assistant.level") %> 2</b></h3>
-      <p class="levelDescription"> <%= t("decidim.admin.assistant.level2") %> </p>
-    </div>
-    <div class="grid-y desc_level">
-      <%= image_tag ActionController::Base.helpers.asset_pack_path("media/images/badge3.png"), class: "card__image levelsImage float-center", alt: "avatar" %>
-      <h3 class="letter_spaced"><b> <%= t("decidim.admin.assistant.level") %> 3</b></h3>
-      <p class="levelDescription"> <%= t("decidim.admin.assistant.level3") %> </p>
-    </div>
-    <div class="grid-y desc_level">
-      <%= image_tag ActionController::Base.helpers.asset_pack_path("media/images/badge4.png"), class: "card__image levelsImage float-center", alt: "avatar" %>
-      <h3 class="letter_spaced"><b> <%= t("decidim.admin.assistant.level") %> 4</b></h3>
-      <p class="levelDescription"> <%= t("decidim.admin.assistant.level4") %> </p>
-    </div>
-    <div class="grid-y desc_level desc_level_last">
-      <%= image_tag ActionController::Base.helpers.asset_pack_path("media/images/badge5.png"), class: "card__image levelsImage float-center", alt: "avatar" %>
-      <h3 class="letter_spaced"> <b><%= t("decidim.admin.assistant.level") %> 5</b></h3>
-      <p class="levelDescription"> <%= t("decidim.admin.assistant.level5") %> </p>
-    </div>
+    <% (1..5).each { |i| %>
+      <div class="grid-y desc_level">
+        <%= image_tag ActionController::Base.helpers.asset_pack_path("media/images/badge#{i}.png"), class: "card__image levelsImage float-center", alt: "avatar" %>
+        <h3 class="letter_spaced"><b><%= t("decidim.admin.assistant.level", level: "#{i}") %></b></h3>
+        <p class="levelDescription"> <%= t("decidim.admin.assistant.level_#{i}") %> </p>
+      </div>
+    <% } %>
   </div>
 </div>
