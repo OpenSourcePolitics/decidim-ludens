@@ -15,9 +15,9 @@ module Decidim
         return if participative_action.blank?
         return if Decidim::Ludens::ParticipativeActionCompleted.exists?(user: @user, decidim_participative_action: participative_action.global_id)
 
-        score_before = @user.participative_actions_score
+        level_before = @user.participative_actions_level
         create_participative_action_completed
-        send_info_in_cache(has_leveled_up?(@user, score_before))
+        send_info_in_cache(has_leveled_up?(@user, level_before))
         true
       end
 
@@ -39,9 +39,9 @@ module Decidim
                                                                       .first
       end
 
-      def has_leveled_up?(user, score_before)
+      def has_leveled_up?(user, level_before)
         user.participative_actions_completed.reload
-        Decidim::Ludens::ParticipativeAction.level_points[user.participative_actions_level - 1] > score_before
+        user.participative_actions_level > level_before
       end
     end
   end
