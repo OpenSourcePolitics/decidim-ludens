@@ -8,7 +8,7 @@ module Decidim
     end
 
     def self.compatible_decidim_version
-      "~> 0.26"
+      "0.26.0"
     end
   end
 end
