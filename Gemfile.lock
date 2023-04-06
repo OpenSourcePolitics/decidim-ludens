@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    decidim-ludens (0.26.2)
-      decidim-core (= 0.26.2)
+    decidim-ludens (1.0.0)
+      decidim-core (~> 0.26.0)
 
 GEM
   remote: https://rubygems.org/
@@ -760,8 +760,8 @@ DEPENDENCIES
   bootsnap (~> 1.4)
   byebug (~> 11.0)
   codecov
-  decidim (= 0.26.2)
-  decidim-dev (= 0.26.2)
+  decidim
+  decidim-dev
   decidim-ludens!
   faker (~> 2.14)
   letter_opener_web (~> 1.3)
