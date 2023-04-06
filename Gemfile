@@ -4,13 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-base_path = ""
-base_path = "../" if File.basename(__dir__) == "development_app"
-require_relative "#{base_path}lib/decidim/ludens/version"
-
-DECIDIM_VERSION = Decidim::Ludens.compatible_decidim_version
-
-gem "decidim", DECIDIM_VERSION
+gem "decidim"
 gem "decidim-ludens", path: "."
 
 gem "bootsnap", "~> 1.4"
@@ -19,7 +13,7 @@ gem "puma", ">= 5.5.1"
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
 
-  gem "decidim-dev", DECIDIM_VERSION
+  gem "decidim-dev"
 end
 
 group :development do
