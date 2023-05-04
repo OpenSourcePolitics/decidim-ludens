@@ -18,8 +18,14 @@ module Decidim
       @actions_file ||= if File.exist?(Rails.root.join("config/participative_actions.yaml"))
                           YAML.safe_load(File.read(Rails.root.join("config/participative_actions.yaml")))
                         else
-                          YAML.safe_load(File.read(decidim_ludens_path.join("config/participative_actions.yaml")))
+                          yaml_from_file
                         end
+    end
+
+    def self.yaml_from_file
+      return unless decidim_ludens_path
+
+      YAML.safe_load(File.read(decidim_ludens_path.join("config/participative_actions.yaml")))
     end
 
     def self.decidim_ludens_path
