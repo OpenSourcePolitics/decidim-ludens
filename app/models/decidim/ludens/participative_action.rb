@@ -14,19 +14,10 @@ module Decidim
         @recommendation = recommendation
         @documentation = documentation
       end
-
       # rubocop:enable Metrics/ParameterLists
 
-      def self.actions_file
-        @actions_file ||= if File.exist?(Rails.root.join("config/participative_actions.yaml"))
-                            YAML.safe_load(File.read(Rails.root.join("config/participative_actions.yaml")))
-                          else
-                            YAML.safe_load(File.read("#{`bundle info decidim-ludens --path`.strip}/config/participative_actions.yaml"))
-                          end
-      end
-
       def self.actions
-        @actions ||= actions_file.fetch("actions", []).map do |category, resources|
+        @actions ||= Decidim::Ludens.actions_file.fetch("actions", []).map do |category, resources|
           resources.map do |resource, all_actions|
             all_actions.map do |action, infos|
               ParticipativeAction.new(
