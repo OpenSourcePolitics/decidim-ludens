@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email = [""]
   s.license = "AGPL-3.0"
   s.homepage = "https://github.com/OpenSourcePolitics/decidim-ludens"
-  s.required_ruby_version = ">= 2.7"
+  s.required_ruby_version = ">= 3.0"
 
   s.name = "decidim-ludens"
   s.summary = "A decidim participative assistant gamified module"
@@ -19,4 +19,5 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,lib}/**/*", "LICENSE-AGPLv3.txt", "package.json", "Rakefile", "README.md"]
 
   s.add_dependency "decidim-core", "~> #{Decidim::Ludens.compatible_decidim_version}"
+  s.metadata["rubygems_mfa_required"] = "true"
 end

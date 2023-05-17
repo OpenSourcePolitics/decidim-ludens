@@ -20,7 +20,7 @@ module Decidim
           let!(:resource) { create :user }
 
           it "returns nil" do
-            expect(subject_run).to eq(nil)
+            expect(subject_run).to be_nil
           end
         end
 
@@ -29,7 +29,7 @@ module Decidim
           let!(:participative_action) { create :participative_action_completed, decidim_participative_action: "create.Decidim::ParticipatoryProcess", user: user }
 
           it "returns nil" do
-            expect(subject_run).to eq(nil)
+            expect(subject_run).to be_nil
           end
         end
 

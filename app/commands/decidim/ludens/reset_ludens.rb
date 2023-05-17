@@ -3,7 +3,7 @@
 module Decidim
   module Ludens
     # A command with all the business logic to destroy all participative actions completed by a user.
-    class ResetLudens < Rectify::Command
+    class ResetLudens < Decidim::Command
       # Public: Initializes the command.
       #
       # user - The user to reset

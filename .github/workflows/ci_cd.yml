@@ -4,7 +4,7 @@ on: [push]
 env:
   CI: "true"
   SIMPLECOV: "true"
-  RUBY_VERSION: 2.7.5
+  RUBY_VERSION: 3.0.1
   DECIDIM_MODULE: .
 
 jobs:
