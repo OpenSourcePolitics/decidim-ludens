@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,lib}/**/*", "LICENSE-AGPLv3.txt", "package.json", "Rakefile", "README.md"]
 
-  s.add_dependency "decidim-core", Decidim::Ludens.decidim_version
+  s.add_dependency "decidim-core", "~> #{Decidim::Ludens.compatible_decidim_version}"
   s.metadata["rubygems_mfa_required"] = "true"
 end

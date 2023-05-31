@@ -8,9 +8,5 @@
       <%= t "decidim.admin.assistant.explication.content" %>
     </h3>
   </div>
-  <% if current_organization.assistant %>
-    <%= link_to t("decidim.admin.assistant.enable"), :toggle_ludens, class: "cell small-2 button" %>
-  <% else %>
-    <p><%==  t "decidim.admin.assistant.cannot_activate" %></p>
-  <% end %>
+  <%= link_to t("decidim.admin.assistant.enable"), :toggle_ludens, method: :post, class: "cell small-2 button" %>
 </div>

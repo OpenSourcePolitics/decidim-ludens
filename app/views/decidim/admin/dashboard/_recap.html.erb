@@ -5,18 +5,26 @@
     </h2>
   </div>
   <div class="table-scroll grid-x">
-    <%= render(
-          partial: "decidim/admin/dashboard/recap_assistant"
-        ) %>
+    <%= render(partial: "decidim/admin/dashboard/recap_assistant") %>
     <div class="assistant_recommendations">
       <div>
-        <h3 class="letter_spaced"> <b> <%= t("decidim.admin.assistant.recommendations") %> </b> </h3>
+        <h3 class="letter_spaced"><b> <%= t("decidim.admin.assistant.recommendations") %> </b></h3>
         <ul class="list-recommendations-uncompleted">
-          <% if current_organization.last_done_recommendation %>
-            <li class="recommendation no-bullet"> <a target="_blank" href="<%= current_organization.last_done_recommendation.documentation %>"><%= current_organization.last_done_recommendation.translated_recommendation %></a> <span class="recommendation-points"> <%= current_organization.last_done_recommendation.points %> <%= t("decidim.admin.assistant.points") %></span></li>
+          <% if last_completed %>
+            <li class="recommendation no-bullet">
+              <a target="_blank" href="<%= last_completed.participative_action.documentation %>">
+                <%= last_completed.participative_action.translated_recommendation %>
+              </a>
+              <span class="recommendation-points"><%= t("decidim.admin.assistant.points", points: last_completed.points) %></span>
+            </li>
           <% end %>
-          <% current_organization.recommendations.each do |recommendation| %>
-            <li class="recommendation bulleted"> <a target="_blank" href="<%= recommendation.documentation %>"><%= recommendation.translated_recommendation %></a><span class="recommendation-points"> <%= recommendation.points %> <%= t("decidim.admin.assistant.points") %></span></li>
+          <% participative_actions_recommendations(current_user).each do |recommendation| %>
+            <li class="recommendation bulleted">
+              <a target="_blank" href="<%= recommendation.documentation %>">
+                <%= recommendation.translated_recommendation %>
+              </a>
+              <span class="recommendation-points"><%= t("decidim.admin.assistant.points", points: recommendation.points) %></span>
+            </li>
           <% end %>
         </ul>
       </div>

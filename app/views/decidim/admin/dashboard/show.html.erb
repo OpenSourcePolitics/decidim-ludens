@@ -22,7 +22,7 @@
               }
             ) %>
       </div>
-      <% if current_organization.enable_ludens %>
+      <% if current_user.ludens_enabled? %>
         <div class="cell small-6">
           <%= render(
                 partial: "decidim/admin/dashboard/recap",
@@ -31,7 +31,7 @@
                 }
               ) %>
         </div>
-      <% end  %>
+      <% end %>
     <% end %>
   </div>
 

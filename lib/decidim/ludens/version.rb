@@ -4,11 +4,11 @@ module Decidim
   # This holds the decidim-meetings version.
   module Ludens
     def self.version
-      "1.1"
+      "1.0.0"
     end
 
-    def self.decidim_version
-      "~> 0.27"
+    def self.compatible_decidim_version
+      "0.27.0"
     end
   end
 end
