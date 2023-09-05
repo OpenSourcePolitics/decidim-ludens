@@ -61,12 +61,13 @@
   font-family: "Source Sans Pro", Helvetica, Roboto, Arial, sans-serif;
 }
 
-.progress{
+.recap_assistant .progress{
   height: 5px;
   width: 9vw;
   background-color: lightgray;
 }
-.progress_bar{
+
+.recap_assistant .progress_bar{
   position: absolute;
   background-color: green;
   width: 3vw;
