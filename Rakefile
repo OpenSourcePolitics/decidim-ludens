@@ -4,6 +4,8 @@ require "decidim/dev/common_rake"
 
 def install_module(path)
   Dir.chdir(path) do
+    system("yarn add @babel/plugin-proposal-private-property-in-object --dev")
+    system("yarn add @babel/plugin-proposal-private-methods --dev")
     system("bundle exec rake decidim_ludens:install:migrations")
     system("bundle exec rake db:migrate")
   end
