@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "confetti-js": "^0.0.18"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
